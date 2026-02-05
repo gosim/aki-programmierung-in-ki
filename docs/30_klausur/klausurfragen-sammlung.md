@@ -278,6 +278,150 @@ def text_bereinigen(text):
 
 ---
 
+# Aufgabe 4: Schaltjahr pruefen (10 Punkte)
+
+**Schreiben Sie ein Programm, das prueft, ob ein eingegebenes Jahr ein Schaltjahr ist.**
+
+Regeln:
+- Durch 4 teilbar → Schaltjahr
+- ABER durch 100 teilbar → KEIN Schaltjahr
+- ABER durch 400 teilbar → doch Schaltjahr
+
+**Loesung:**
+
+```python
+jahr = int(input("Jahr: "))
+
+if jahr % 400 == 0:
+    print("Schaltjahr")
+elif jahr % 100 == 0:
+    print("Gemeinjahr")
+elif jahr % 4 == 0:
+    print("Schaltjahr")
+else:
+    print("Gemeinjahr")
+```
+
+**Alternative (kompakter):**
+
+```python
+jahr = int(input("Jahr: "))
+
+if (jahr % 4 == 0 and jahr % 100 != 0) or (jahr % 400 == 0):
+    print("Schaltjahr")
+else:
+    print("Gemeinjahr")
+```
+
+**Wichtige Punkte:**
+
+1. **Reihenfolge der Bedingungen:**
+   - ZUERST durch 400 pruefen (Sonderfall)
+   - DANN durch 100 (Ausnahme)
+   - DANN durch 4 (Grundregel)
+
+2. **Testfaelle:**
+   - 2000 → Schaltjahr (durch 400 teilbar)
+   - 1900 → Gemeinjahr (durch 100, aber nicht durch 400)
+   - 2024 → Schaltjahr (durch 4, nicht durch 100)
+   - 2023 → Gemeinjahr (nicht durch 4)
+
+---
+
+# Aufgabe 5: Wie viele Zahlen sind gleich? (10 Punkte)
+
+**Schreiben Sie ein Programm, das drei ganze Zahlen vom Benutzer entgegennimmt und angibt, wie viele davon gleich sind.**
+
+- Wenn alle drei gleich → 3
+- Wenn genau zwei gleich → 2
+- Wenn alle verschieden → 0
+
+**Loesung:**
+
+```python
+z1 = int(input("Zahl 1: "))
+z2 = int(input("Zahl 2: "))
+z3 = int(input("Zahl 3: "))
+
+if z1 == z2 == z3:
+    print(3)
+elif z1 == z2 or z1 == z3 or z2 == z3:
+    print(2)
+else:
+    print(0)
+```
+
+**Wichtige Punkte:**
+
+1. **Verkettete Vergleiche:**
+   - Python erlaubt `z1 == z2 == z3` (wie in Mathe!)
+   - Entspricht `z1 == z2 and z2 == z3`
+
+2. **Logische Operatoren:**
+   - `or` - mindestens eine Bedingung muss wahr sein
+   - `and` - alle Bedingungen muessen wahr sein
+
+**Beispiel:**
+```
+Zahl 1: 3
+Zahl 2: -4
+Zahl 3: 3
+2
+```
+
+---
+
+# Aufgabe 6: Pluralendung (10 Punkte)
+
+**Schreiben Sie ein Programm, das den Benutzer nach einer Zahl fragt und grammatikalisch korrekt ausgibt: "N Datei(en) kopiert."**
+
+**Loesung:**
+
+```python
+anzahl = int(input("Wie viele Dateien sollen kopiert werden? "))
+
+if anzahl == 1:
+    print(f"{anzahl} Datei kopiert.")
+else:
+    print(f"{anzahl} Dateien kopiert.")
+```
+
+**Erweiterte Version mit Validierung:**
+
+```python
+try:
+    anzahl = int(input("Anzahl: "))
+    if anzahl < 0:
+        print("Fehler: Negative Zahl!")
+    elif anzahl == 1:
+        print(f"{anzahl} Datei kopiert.")
+    else:
+        print(f"{anzahl} Dateien kopiert.")
+except ValueError:
+    print("Bitte eine ganze Zahl eingeben!")
+```
+
+**Wichtige Punkte:**
+
+1. **f-Strings:**
+   - `f"{variable}"` - formatierter String
+   - Variable wird direkt im Text eingefuegt
+
+2. **Grammatik beachten:**
+   - 1 → Singular ("Datei")
+   - 0, 2, 3, ... → Plural ("Dateien")
+
+**Beispiel:**
+```
+Wie viele Dateien sollen kopiert werden? 1
+1 Datei kopiert.
+
+Wie viele Dateien sollen kopiert werden? 15
+15 Dateien kopiert.
+```
+
+---
+
 # Zusammenfassung: Klausurtipps
 
 ## Haeufige Fallen:
