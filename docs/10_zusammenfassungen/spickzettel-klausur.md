@@ -69,13 +69,18 @@ print(s.name)  # Anna
 print(s)       # Anna: 1.3
 ```
 
-## 8. Listen: append, pop, sort
+## 8. Listen: append, pop, sort, in
 ```python
 liste = [3, 1, 2]
 liste.append(4)      # [3, 1, 2, 4] - am Ende
 liste.pop()          # gibt 4 zurueck, entfernt es
 liste.sort()         # [1, 2, 3] - sortiert
 liste[1:3]           # [1, 2] - slicing (Index 1, 2)
+
+# Element in Liste pruefen
+3 in [1, 2, 3]       # True
+5 in [1, 2, 3]       # False
+"x" not in ["a","b"] # True
 ```
 
 ## 9. Dateien: with open()
