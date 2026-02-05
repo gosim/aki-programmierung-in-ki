@@ -315,6 +315,8 @@ Das ist ein wichtiger Unterschied zu einfachen Datentypen (int, str).
 
 **Schreiben Sie eine Funktion `fizzbuzz(n)`, die fuer Zahlen von 1 bis n FizzBuzz ausgibt.**
 
+> **Hinweis:** Siehe auch: Klausurfragen-Sammlung Aufgabe 2
+
 <details>
 <summary>Loesung anzeigen</summary>
 

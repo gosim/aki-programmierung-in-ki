@@ -1,28 +1,14 @@
-# Python Spickzettel - Klausur PKI
+# Python Spickzettel - Klausur PKI (A4)
 
-## 1. Modulo-Operator (Teilbarkeit)
-
+## 1. dict.get() Zaehlmuster (30 Punkte!)
 ```python
-x % y     # Rest der Division
-x % 3 == 0   # x ist durch 3 teilbar
-15 % 5 == 0  # True (15 teilbar durch 5)
+count = {}
+for word in text.split():
+    count[word] = count.get(word, 0) + 1
+# get(key, 0) gibt 0 zurueck wenn key nicht existiert
 ```
 
-## 2. FizzBuzz-Logik
-
-```python
-if x % 3 == 0 and x % 5 == 0:
-    print("FizzBuzz")
-elif x % 3 == 0:
-    print("Fizz")
-elif x % 5 == 0:
-    print("Buzz")
-else:
-    print(x)
-```
-
-## 3. try-except (Benutzereingabe)
-
+## 2. try-except bei input
 ```python
 try:
     zahl = int(input("Zahl: "))
@@ -30,94 +16,95 @@ except ValueError:
     print("Ungueltige Eingabe!")
 ```
 
-## 4. Dictionary zum Zaehlen
-
+## 3. for-Schleife mit range() - KLAUSURFALLE!
 ```python
-d = {}
-d[key] = d.get(key, 0) + 1
+i = 27
+j = 27
+for i in range(3):  # i wird 0, 1, 2 - UEBERSCHRIEBEN!
+    j += 1
+print(i, j)  # Ausgabe: 2 30  (i ist 2, NICHT 27!)
+```
 
-# Buchstaben zaehlen:
-for buchstabe in text:
-    count[buchstabe] = count.get(buchstabe, 0) + 1
+## 4. FizzBuzz (Modulo)
+```python
+for x in range(1, 101):
+    if x % 15 == 0:      # oder: x % 3 == 0 and x % 5 == 0
+        print("FizzBuzz")
+    elif x % 3 == 0:
+        print("Fizz")
+    elif x % 5 == 0:
+        print("Buzz")
+    else:
+        print(x)
 ```
 
 ## 5. String-Methoden
-
 ```python
-s.lower()           # kleinbuchstaben
-s.upper()           # GROSSBUCHSTABEN
-s.replace("a", "b") # ersetzen
-s.split()           # in Liste aufteilen
-s.strip()           # Leerzeichen entfernen
+s = s.lower()              # kleinbuchstaben - SPEICHERN!
+s = s.replace("alt", "neu") # ersetzen
+s.split()                  # "a b" -> ['a', 'b']
+s.strip()                  # Leerzeichen entfernen
+" ".join(liste)            # ['a','b'] -> "a b"
 ```
 
-## 6. Umlaute ersetzen
-
+## 6. Umlaute ersetzen (15 Punkte!)
 ```python
 text = text.lower()
-text = text.replace("ä", "ae")
-text = text.replace("ö", "oe")
-text = text.replace("ü", "ue")
-text = text.replace("ß", "ss")
+text = text.replace("ä", "ae").replace("ö", "oe")
+text = text.replace("ü", "ue").replace("ß", "ss")
 ```
 
-## 7. Listen
-
+## 7. OOP: class, __init__, self, __str__
 ```python
-liste.append(x)     # am Ende hinzufuegen
-liste.pop()         # letztes entfernen
-liste.sort()        # sortieren
-liste[1:3]          # slicing (Index 1, 2)
+class Student:
+    def __init__(self, name, note):  # Konstruktor
+        self.name = name             # self = aktuelles Objekt
+        self.note = note
+
+    def __str__(self):               # fuer print()
+        return f"{self.name}: {self.note}"
+
+s = Student("Anna", 1.3)
+print(s.name)  # Anna
+print(s)       # Anna: 1.3
 ```
 
-## 8. Schleifen
-
+## 8. Listen: append, pop, sort
 ```python
-for i in range(5):      # 0, 1, 2, 3, 4
-for i in range(1, 6):   # 1, 2, 3, 4, 5
-for item in liste:      # ueber Liste
+liste = [3, 1, 2]
+liste.append(4)      # [3, 1, 2, 4] - am Ende
+liste.pop()          # gibt 4 zurueck, entfernt es
+liste.sort()         # [1, 2, 3] - sortiert
+liste[1:3]           # [1, 2] - slicing (Index 1, 2)
+```
+
+## 9. Dateien: with open()
+```python
+# Lesen
+with open("datei.txt", "r") as f:
+    inhalt = f.read()      # alles lesen
+    # oder: for zeile in f:  # zeilenweise
+
+# Schreiben
+with open("datei.txt", "w") as f:   # w=ueberschreiben, a=anhaengen
+    f.write("Text\n")
+```
+
+## 10. Wichtige Typen und range()
+```python
+range(5)      # 0, 1, 2, 3, 4 (NICHT 5!)
+range(1, 6)   # 1, 2, 3, 4, 5
 for k, v in d.items():  # ueber Dictionary
-```
-
-## 9. Funktionen
-
-```python
-def name(param):
-    return ergebnis
-```
-
-## 10. Wichtige Typen
-
-```python
-type(42)     # <class 'int'>
-type(3.14)   # <class 'float'>
-type("abc")  # <class 'str'>
-type([1,2])  # <class 'list'>
-type({"a":1})# <class 'dict'>
 ```
 
 ---
 
-## ACHTUNG - Typische Fallen!
+## FALLEN - AUSWENDIG LERNEN!
 
-1. **range(3)** → 0, 1, 2 (nicht bis 3!)
-
-2. **for-Schleife überschreibt Variable:**
-   ```python
-   i = 27
-   for i in range(3):  # i wird 0,1,2
-       pass
-   # i ist 2, nicht 27!
-   ```
-
-3. **Strings sind unveränderlich:**
-   ```python
-   s.upper()      # gibt neuen String zurück
-   s = s.upper()  # speichern nicht vergessen!
-   ```
-
-4. **dict[key] vs dict.get(key):**
-   ```python
-   d["x"]        # KeyError wenn nicht vorhanden
-   d.get("x", 0) # gibt 0 zurück (kein Fehler)
-   ```
+| Falle | Falsch | Richtig |
+|-------|--------|---------|
+| range(3) | 0,1,2,3 | 0,1,2 |
+| for i ueberschreibt | i bleibt | i = letzter Wert |
+| s.upper() | aendert s | s = s.upper() |
+| d["x"] wenn fehlt | gibt None | KeyError! |
+| d.get("x", 0) | KeyError | gibt 0 |

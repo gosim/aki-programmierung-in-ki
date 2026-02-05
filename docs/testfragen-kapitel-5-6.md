@@ -85,6 +85,8 @@ Ergebnis: [1, 2, 3, 4, 5]
 
 ### Frage 5.3: KLAUSURAUFGABE - for-Schleife ueberschreibt Variable!
 
+**KLAUSURAUFGABE - siehe auch klausurfragen-sammlung.md Aufgabe 1a**
+
 **Was ist der Wert von i und j nach der Schleife?**
 
 ```python
@@ -337,6 +339,8 @@ yth
 ---
 
 ### Frage 6.5: KLAUSURAUFGABE - Textverarbeitung!
+
+**KLAUSURAUFGABE - siehe auch klausurfragen-sammlung.md Aufgabe 3**
 
 **Schreiben Sie Code, der einen Text in Kleinbuchstaben umwandelt und alle deutschen Umlaute ersetzt (`ä`->`ae`, `ö`->`oe`, `ü`->`ue`, `ß`->`ss`).**
 

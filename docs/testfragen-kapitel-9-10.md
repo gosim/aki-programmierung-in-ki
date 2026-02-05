@@ -151,41 +151,7 @@ count[w] = count.get(w, 0) + 1
 
 ---
 
-### Frage 9.4: Buchstaben zaehlen
-
-**Schreiben Sie Code, der zaehlt, wie oft jeder Buchstabe in einem String vorkommt.**
-
-<details>
-<summary>Loesung anzeigen</summary>
-
-```python
-text = "hallo"
-zaehler = {}
-
-for buchstabe in text:
-    zaehler[buchstabe] = zaehler.get(buchstabe, 0) + 1
-
-print(zaehler)
-# Ausgabe: {'h': 1, 'a': 1, 'l': 2, 'o': 1}
-```
-
-**Nur Buchstaben zaehlen (keine Leerzeichen):**
-```python
-text = "hallo welt"
-zaehler = {}
-
-for buchstabe in text:
-    if buchstabe.isalpha():  # Nur wenn es ein Buchstabe ist
-        zaehler[buchstabe] = zaehler.get(buchstabe, 0) + 1
-
-print(zaehler)
-# {'h': 1, 'a': 1, 'l': 3, 'o': 1, 'w': 1, 'e': 1, 't': 1}
-```
-</details>
-
----
-
-**Frage 9.5:** Was ist die Ausgabe?
+**Frage 9.4:** Was ist die Ausgabe?
 
 ```python
 d = {"a": 1, "b": 2}
@@ -212,7 +178,7 @@ print(d.get("c", 0))  # Gibt 0 zurueck (kein Fehler)
 
 ---
 
-**Frage 9.6:** Was ist die Ausgabe?
+**Frage 9.5:** Was ist die Ausgabe?
 
 ```python
 d = {"a": 1, "b": 2}
@@ -234,7 +200,7 @@ print(d.get("c", "nicht gefunden"))
 
 ---
 
-**Frage 9.7:** Wie iteriert man ueber alle Key-Value-Paare eines Dictionarys?
+**Frage 9.6:** Wie iteriert man ueber alle Key-Value-Paare eines Dictionarys?
 
 <details>
 <summary>Loesung anzeigen</summary>
@@ -265,7 +231,7 @@ c: 3
 
 ---
 
-**Frage 9.8:** Wie erstellt man ein Dictionary aus zwei Listen?
+**Frage 9.7:** Wie erstellt man ein Dictionary aus zwei Listen?
 
 ```python
 keys = ["a", "b", "c"]
@@ -292,7 +258,7 @@ for i in range(len(keys)):
 
 ---
 
-**Frage 9.9:** Was ist die Ausgabe?
+**Frage 9.8:** Was ist die Ausgabe?
 
 ```python
 d = {}

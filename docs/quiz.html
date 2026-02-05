@@ -1819,17 +1819,6 @@
     "source": "testfragen-kapitel-3.md"
   },
   {
-    "id": "kap3_3.11",
-    "type": "freetext",
-    "chapter": "3",
-    "question": "### Frage 3.11: Komplette FizzBuzz-Bedingung\n\n**Schreiben Sie die if/elif/else-Struktur für FizzBuzz:**\n- Durch 3 und 5 teilbar → \"FizzBuzz\"\n- Nur durch 3 teilbar → \"Fizz\"\n- Nur durch 5 teilbar → \"Buzz\"\n- Sonst → die Zahl selbst",
-    "questionHtml": "<h3>Frage 3.11: Komplette FizzBuzz-Bedingung</h3><br><br><strong>Schreiben Sie die if/elif/else-Struktur für FizzBuzz:</strong>\n<ul>\n<li>Durch 3 und 5 teilbar → \"FizzBuzz\"</li>\n<li>Nur durch 3 teilbar → \"Fizz\"</li>\n<li>Nur durch 5 teilbar → \"Buzz\"</li>\n<li>Sonst → die Zahl selbst</li>\n</ul>",
-    "options": [],
-    "correct": [],
-    "explanation": "<pre><code class=\"python\">def fizzbuzz_check(zahl):<br>\n    if zahl % 3 == 0 and zahl % 5 == 0:<br>\n        print(\"FizzBuzz\")<br>\n    elif zahl % 3 == 0:<br>\n        print(\"Fizz\")<br>\n    elif zahl % 5 == 0:<br>\n        print(\"Buzz\")<br>\n    else:<br>\n        print(zahl)\n</code></pre><br><br><strong>Wichtig:</strong> Die Reihenfolge ist entscheidend!\n<ul>\n<li>Zuerst <code>% 3 and % 5</code> prüfen (FizzBuzz)</li>\n<li>Dann einzeln % 3 (Fizz)</li>\n<li>Dann einzeln % 5 (Buzz)</li>\n<li>Sonst die Zahl</li>\n</ul><br><br>Wenn man die Reihenfolge ändert, funktioniert es nicht korrekt!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 3 (Bedingte Ausführung: if/elif/else, try/except) | <strong>Folien:</strong> vl-03.html</p>",
-    "source": "testfragen-kapitel-3.md"
-  },
-  {
     "id": "kap4_1",
     "type": "yesno",
     "chapter": "4",
@@ -2031,8 +2020,8 @@
     "id": "kap4_4.10",
     "type": "freetext",
     "chapter": "4",
-    "question": "### Frage 4.10: FizzBuzz als Funktion\n\n**Schreiben Sie eine Funktion `fizzbuzz(n)`, die für Zahlen von 1 bis n FizzBuzz ausgibt.**",
-    "questionHtml": "<h3>Frage 4.10: FizzBuzz als Funktion</h3><br><br><strong>Schreiben Sie eine Funktion <code>fizzbuzz(n)</code>, die für Zahlen von 1 bis n FizzBuzz ausgibt.</strong>",
+    "question": "### Frage 4.10: FizzBuzz als Funktion\n\n**Schreiben Sie eine Funktion `fizzbuzz(n)`, die für Zahlen von 1 bis n FizzBuzz ausgibt.**\n\n> **Hinweis:** Siehe auch: Klausurfragen-Sammlung Aufgabe 2",
+    "questionHtml": "<h3>Frage 4.10: FizzBuzz als Funktion</h3><br><br><strong>Schreiben Sie eine Funktion <code>fizzbuzz(n)</code>, die für Zahlen von 1 bis n FizzBuzz ausgibt.</strong><br><br><blockquote><strong>Hinweis:</strong> Siehe auch: Klausurfragen-Sammlung Aufgabe 2</blockquote>",
     "options": [],
     "correct": [],
     "explanation": "<pre><code class=\"python\">def fizzbuzz(n):<br>\n    for i in range(1, n + 1):<br>\n        if i % 3 == 0 and i % 5 == 0:<br>\n            print(\"FizzBuzz\")<br>\n        elif i % 3 == 0:<br>\n            print(\"Fizz\")<br>\n        elif i % 5 == 0:<br>\n            print(\"Buzz\")<br>\n        else:<br>\n            print(i)<br><br># Aufruf:<br>\nfizzbuzz(15)\n</code></pre><br><br><strong>Ausgabe:</strong>\n<pre><code class=\"\">1<br>\n2<br>\nFizz<br>\n4<br>\nBuzz<br>\nFizz<br>\n7<br>\n8<br>\nFizz<br>\nBuzz<br>\n11<br>\nFizz<br>\n13<br>\n14<br>\nFizzBuzz\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 4 (Funktionen: def, return, Parameter) | <strong>Folien:</strong> vl-04.pdf</p>",
@@ -2126,8 +2115,8 @@
     "id": "kap5-6_5.3",
     "type": "freetext",
     "chapter": "5-6",
-    "question": "### Frage 5.3: KLAUSURAUFGABE - for-Schleife überschreibt Variable!\n\n**Was ist der Wert von i und j nach der Schleife?**\n\n```python\ni = 27\nj = 27\n\nfor i in range(3):\n    j += 1\n\nprint(i, j)\n```",
-    "questionHtml": "<h3>Frage 5.3: KLAUSURAUFGABE - for-Schleife überschreibt Variable!</h3><br><br><strong>Was ist der Wert von i und j nach der Schleife?</strong><br><br><pre><code class=\"python\">i = 27<br>\nj = 27<br><br>for i in range(3):<br>\n    j += 1<br><br>print(i, j)\n</code></pre>",
+    "question": "### Frage 5.3: KLAUSURAUFGABE - for-Schleife überschreibt Variable!\n\n**KLAUSURAUFGABE - siehe auch klausurfragen-sammlung.md Aufgabe 1a**\n\n**Was ist der Wert von i und j nach der Schleife?**\n\n```python\ni = 27\nj = 27\n\nfor i in range(3):\n    j += 1\n\nprint(i, j)\n```",
+    "questionHtml": "<h3>Frage 5.3: KLAUSURAUFGABE - for-Schleife überschreibt Variable!</h3><br><br><strong>KLAUSURAUFGABE - siehe auch klausurfragen-sammlung.md Aufgabe 1a</strong><br><br><strong>Was ist der Wert von i und j nach der Schleife?</strong><br><br><pre><code class=\"python\">i = 27<br>\nj = 27<br><br>for i in range(3):<br>\n    j += 1<br><br>print(i, j)\n</code></pre>",
     "options": [],
     "correct": [],
     "explanation": "<strong>Ausgabe: <code>2 30</code></strong><br><br><strong>Schritt-für-Schritt-Erklärung:</strong><br><br><ol>\n<li><code>i = 27</code> und <code>j = 27</code> (Initialwerte)</li>\n<li><code>for i in range(3):</code> - Die Schleifenvariable <code>i</code> überschreibt den alten Wert!<ul>\n<li>Durchlauf 1: i=0, j=28</li>\n<li>Durchlauf 2: i=1, j=29</li>\n<li>Durchlauf 3: i=2, j=30</li>\n</ul></li>\n<li>Nach der Schleife: i=2 (letzter Wert von range), j=30</li>\n</ol><br><br><strong>WICHTIG:</strong> Die for-Schleife überschreibt die Variable <code>i</code>! Der ursprüngliche Wert 27 ist verloren.<br><br>Dies war eine echte Klausuraufgabe mit 30 Punkten!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 5 (Iteration: for, while, range) & Kapitel 6 (Zeichenketten) | <strong>Folien:</strong> vl-06.html</p>",
@@ -2297,8 +2286,8 @@
     "id": "kap5-6_6.5",
     "type": "freetext",
     "chapter": "5-6",
-    "question": "### Frage 6.5: KLAUSURAUFGABE - Textverarbeitung!\n\n**Schreiben Sie Code, der einen Text in Kleinbuchstaben umwandelt und alle deutschen Umlaute ersetzt (`ä`->`ae`, `ö`->`oe`, `ü`->`ue`, `ß`->`ss`).**",
-    "questionHtml": "<h3>Frage 6.5: KLAUSURAUFGABE - Textverarbeitung!</h3><br><br><strong>Schreiben Sie Code, der einen Text in Kleinbuchstaben umwandelt und alle deutschen Umlaute ersetzt (<code>ä</code>-><code>ae</code>, <code>ö</code>-><code>oe</code>, <code>ü</code>-><code>ue</code>, <code>ß</code>-><code>ss</code>).</strong>",
+    "question": "### Frage 6.5: KLAUSURAUFGABE - Textverarbeitung!\n\n**KLAUSURAUFGABE - siehe auch klausurfragen-sammlung.md Aufgabe 3**\n\n**Schreiben Sie Code, der einen Text in Kleinbuchstaben umwandelt und alle deutschen Umlaute ersetzt (`ä`->`ae`, `ö`->`oe`, `ü`->`ue`, `ß`->`ss`).**",
+    "questionHtml": "<h3>Frage 6.5: KLAUSURAUFGABE - Textverarbeitung!</h3><br><br><strong>KLAUSURAUFGABE - siehe auch klausurfragen-sammlung.md Aufgabe 3</strong><br><br><strong>Schreiben Sie Code, der einen Text in Kleinbuchstaben umwandelt und alle deutschen Umlaute ersetzt (<code>ä</code>-><code>ae</code>, <code>ö</code>-><code>oe</code>, <code>ü</code>-><code>ue</code>, <code>ß</code>-><code>ss</code>).</strong>",
     "options": [],
     "correct": [],
     "explanation": "<pre><code class=\"python\">text = \"Groesse und Uebung\"<br>\ntext = text.lower()<br>\ntext = text.replace(\"ä\", \"ae\")<br>\ntext = text.replace(\"ö\", \"oe\")<br>\ntext = text.replace(\"ü\", \"ue\")<br>\ntext = text.replace(\"ß\", \"ss\")<br>\nprint(text)  # groesse und uebung\n</code></pre><br><br><strong>Als Funktion:</strong>\n<pre><code class=\"python\">def text_bereinigen(text):<br>\n    text = text.lower()<br>\n    text = text.replace(\"ä\", \"ae\")<br>\n    text = text.replace(\"ö\", \"oe\")<br>\n    text = text.replace(\"ü\", \"ue\")<br>\n    text = text.replace(\"ß\", \"ss\")<br>\n    return text<br><br># Test<br>\nprint(text_bereinigen(\"Größe und Übung\"))<br>\n# Ausgabe: groesse und uebung\n</code></pre><br><br><strong>Mit Dictionary (eleganter):</strong>\n<pre><code class=\"python\">def text_bereinigen(text):<br>\n    text = text.lower()<br>\n    ersetzungen = {\"ä\": \"ae\", \"ö\": \"oe\", \"ü\": \"ue\", \"ß\": \"ss\"}<br>\n    for alt, neu in ersetzungen.items():<br>\n        text = text.replace(alt, neu)<br>\n    return text\n</code></pre><br><br>Dies war eine echte Klausuraufgabe mit 15 Punkten!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 5 (Iteration: for, while, range) & Kapitel 6 (Zeichenketten) | <strong>Folien:</strong> vl-06.html</p>",
@@ -2769,17 +2758,6 @@
   },
   {
     "id": "kap9-10_9.4",
-    "type": "freetext",
-    "chapter": "9-10",
-    "question": "### Frage 9.4: Buchstaben zählen\n\n**Schreiben Sie Code, der zählt, wie oft jeder Buchstabe in einem String vorkommt.**",
-    "questionHtml": "<h3>Frage 9.4: Buchstaben zählen</h3><br><br><strong>Schreiben Sie Code, der zählt, wie oft jeder Buchstabe in einem String vorkommt.</strong>",
-    "options": [],
-    "correct": [],
-    "explanation": "<pre><code class=\"python\">text = \"hallo\"<br>\nzaehler = {}<br><br>for buchstabe in text:<br>\n    zaehler[buchstabe] = zaehler.get(buchstabe, 0) + 1<br><br>print(zaehler)<br>\n# Ausgabe: {'h': 1, 'a': 1, 'l': 2, 'o': 1}\n</code></pre><br><br><strong>Nur Buchstaben zählen (keine Leerzeichen):</strong>\n<pre><code class=\"python\">text = \"hallo welt\"<br>\nzaehler = {}<br><br>for buchstabe in text:<br>\n    if buchstabe.isalpha():  # Nur wenn es ein Buchstabe ist<br>\n        zaehler[buchstabe] = zaehler.get(buchstabe, 0) + 1<br><br>print(zaehler)<br>\n# {'h': 1, 'a': 1, 'l': 3, 'o': 1, 'w': 1, 'e': 1, 't': 1}\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
-    "source": "testfragen-kapitel-9-10.md"
-  },
-  {
-    "id": "kap9-10_9.5",
     "type": "mc",
     "chapter": "9-10",
     "question": "Was ist die Ausgabe?\n\n```python\nd = {\"a\": 1, \"b\": 2}\nprint(d[\"c\"])\n```",
@@ -2797,7 +2775,7 @@
     "source": "testfragen-kapitel-9-10.md"
   },
   {
-    "id": "kap9-10_9.6",
+    "id": "kap9-10_9.5",
     "type": "mc",
     "chapter": "9-10",
     "question": "Was ist die Ausgabe?\n\n```python\nd = {\"a\": 1, \"b\": 2}\nprint(d.get(\"c\", \"nicht gefunden\"))\n```",
@@ -2815,29 +2793,29 @@
     "source": "testfragen-kapitel-9-10.md"
   },
   {
-    "id": "kap9-10_9.7",
+    "id": "kap9-10_9.6",
     "type": "freetext",
     "chapter": "9-10",
-    "question": "**Frage 9.7:** Wie iteriert man über alle Key-Value-Paare eines Dictionarys?",
-    "questionHtml": "<strong>Frage 9.7:</strong> Wie iteriert man über alle Key-Value-Paare eines Dictionarys?",
+    "question": "**Frage 9.6:** Wie iteriert man über alle Key-Value-Paare eines Dictionarys?",
+    "questionHtml": "<strong>Frage 9.6:</strong> Wie iteriert man über alle Key-Value-Paare eines Dictionarys?",
     "options": [],
     "correct": [],
     "explanation": "<pre><code class=\"python\">d = {\"a\": 1, \"b\": 2, \"c\": 3}<br><br># Ueber Keys und Values:<br>\nfor key, value in d.items():<br>\n    print(f\"{key}: {value}\")<br><br># Nur ueber Keys:<br>\nfor key in d.keys():<br>\n    print(key)<br><br># Nur ueber Values:<br>\nfor value in d.values():<br>\n    print(value)\n</code></pre><br><br><strong>Ausgabe von items():</strong>\n<pre><code class=\"\">a: 1<br>\nb: 2<br>\nc: 3\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
   },
   {
-    "id": "kap9-10_9.8",
+    "id": "kap9-10_9.7",
     "type": "freetext",
     "chapter": "9-10",
-    "question": "**Frage 9.8:** Wie erstellt man ein Dictionary aus zwei Listen?\n\n```python\nkeys = [\"a\", \"b\", \"c\"]\nvalues = [1, 2, 3]\n```",
-    "questionHtml": "<strong>Frage 9.8:</strong> Wie erstellt man ein Dictionary aus zwei Listen?<br><br><pre><code class=\"python\">keys = [\"a\", \"b\", \"c\"]<br>\nvalues = [1, 2, 3]\n</code></pre>",
+    "question": "**Frage 9.7:** Wie erstellt man ein Dictionary aus zwei Listen?\n\n```python\nkeys = [\"a\", \"b\", \"c\"]\nvalues = [1, 2, 3]\n```",
+    "questionHtml": "<strong>Frage 9.7:</strong> Wie erstellt man ein Dictionary aus zwei Listen?<br><br><pre><code class=\"python\">keys = [\"a\", \"b\", \"c\"]<br>\nvalues = [1, 2, 3]\n</code></pre>",
     "options": [],
     "correct": [],
     "explanation": "<pre><code class=\"python\">keys = [\"a\", \"b\", \"c\"]<br>\nvalues = [1, 2, 3]<br><br># Mit zip() und dict():<br>\nd = dict(zip(keys, values))<br>\nprint(d)  # {'a': 1, 'b': 2, 'c': 3}<br><br># Oder mit Schleife:<br>\nd = {}<br>\nfor i in range(len(keys)):<br>\n    d[keys[i]] = values[i]\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
   },
   {
-    "id": "kap9-10_9.9",
+    "id": "kap9-10_9.8",
     "type": "mc",
     "chapter": "9-10",
     "question": "Was ist die Ausgabe?\n\n```python\nd = {}\nd[\"x\"] = d.get(\"x\", 0) + 1\nd[\"x\"] = d.get(\"x\", 0) + 1\nd[\"x\"] = d.get(\"x\", 0) + 1\nprint(d[\"x\"])\n```",
@@ -3505,6 +3483,186 @@
   },
   {
     "id": "q_21",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.23:** Was ist die Ausgabe?\n\n```python\ndef lohn(stunden, satz):\n    if stunden > 40:\n        return 40 * satz + (stunden - 40) * satz * 1.5\n    return stunden * satz\n\nprint(lohn(45, 10))\n```",
+    "questionHtml": "<strong>Frage E.23:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def lohn(stunden, satz):<br>\n    if stunden &gt; 40:<br>\n        return 40 * satz + (stunden - 40) * satz * 1.5<br>\n    return stunden * satz<br><br>print(lohn(45, 10))\n</code></pre>",
+    "options": [
+      "a) 450",
+      "b) 475",
+      "c) 500",
+      "d) 525"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>Reguläre Stunden: 40 * 10 = 400</li>\n<li>Überstunden: 5 * 10 * 1.5 = 75</li>\n<li>Gesamt: 400 + 75 = 475</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_22",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.24:** Was ist die Ausgabe?\n\n```python\nemail = \"anna@example.com\"\ndomain = email.split(\"@\")[1]\nprint(domain)\n```",
+    "questionHtml": "<strong>Frage E.24:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">email = \"anna@example.com\"<br>\ndomain = email.split(\"@\")[1]<br>\nprint(domain)\n</code></pre>",
+    "options": [
+      "a) anna",
+      "b) @example.com",
+      "c) example.com",
+      "d) [\"anna\", \"example.com\"]"
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "<strong>Richtig: c)</strong><br><br><code>split(\"@\")</code> teilt den String an \"@\" in eine Liste: [\"anna\", \"example.com\"]\n<code>[1]</code> gibt das zweite Element zurück: \"example.com\"<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_23",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.25:** Was ist die Ausgabe?\n\n```python\ncounts = {}\nwords = [\"a\", \"b\", \"a\", \"c\", \"a\"]\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint(counts[\"a\"])\n```",
+    "questionHtml": "<strong>Frage E.25:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">counts = {}<br>\nwords = [\"a\", \"b\", \"a\", \"c\", \"a\"]<br>\nfor w in words:<br>\n    counts[w] = counts.get(w, 0) + 1<br>\nprint(counts[\"a\"])\n</code></pre>",
+    "options": [
+      "a) 1",
+      "b) 2",
+      "c) 3",
+      "d) KeyError"
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "<strong>Richtig: c)</strong><br><br>Das Zählmuster zählt \"a\" dreimal (Index 0, 2, 4).\n<code>counts = {\"a\": 3, \"b\": 1, \"c\": 1}</code><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_24",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.26:** Was ist die Ausgabe?\n\n```python\nline = \"From user@mail.de Sat\"\nif line.startswith(\"From \"):\n    words = line.split()\n    print(words[1])\n```",
+    "questionHtml": "<strong>Frage E.26:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">line = \"From user@mail.de Sat\"<br>\nif line.startswith(\"From \"):<br>\n    words = line.split()<br>\n    print(words[1])\n</code></pre>",
+    "options": [
+      "a) From",
+      "b) user@mail.de",
+      "c) user",
+      "d) Sat"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br><code>split()</code> teilt an Leerzeichen: [\"From\", \"user@mail.de\", \"Sat\"]\n<code>words[1]</code> ist das zweite Element: \"user@mail.de\"<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_25",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.27:** Was ist die Ausgabe?\n\n```python\ndef teiler(n):\n    result = []\n    for i in range(1, n + 1):\n        if n % i == 0:\n            result.append(i)\n    return result\n\nprint(len(teiler(12)))\n```",
+    "questionHtml": "<strong>Frage E.27:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def teiler(n):<br>\n    result = []<br>\n    for i in range(1, n + 1):<br>\n        if n % i == 0:<br>\n            result.append(i)<br>\n    return result<br><br>print(len(teiler(12)))\n</code></pre>",
+    "options": [
+      "a) 4",
+      "b) 5",
+      "c) 6",
+      "d) 12"
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "<strong>Richtig: c)</strong><br><br>Teiler von 12 sind: 1, 2, 3, 4, 6, 12<br>\nDas sind 6 Teiler.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_26",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.28:** Was ist die Ausgabe?\n\n```python\ndef fib(n):\n    a, b = 1, 1\n    for _ in range(n - 2):\n        a, b = b, a + b\n    return b\n\nprint(fib(7))\n```",
+    "questionHtml": "<strong>Frage E.28:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def fib(n):<br>\n    a, b = 1, 1<br>\n    for _ in range(n - 2):<br>\n        a, b = b, a + b<br>\n    return b<br><br>print(fib(7))\n</code></pre>",
+    "options": [
+      "a) 8",
+      "b) 13",
+      "c) 21",
+      "d) 5"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br>Fibonacci: 1, 1, 2, 3, 5, 8, 13<br>\nDie 7. Fibonacci-Zahl ist 13.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_27",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.29:** Was ist die Ausgabe?\n\n```python\ntext = \"X-Value: 0.875\"\npos = text.find(\":\")\nwert = float(text[pos+1:].strip())\nprint(wert > 0.5)\n```",
+    "questionHtml": "<strong>Frage E.29:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">text = \"X-Value: 0.875\"<br>\npos = text.find(\":\")<br>\nwert = float(text[pos+1:].strip())<br>\nprint(wert &gt; 0.5)\n</code></pre>",
+    "options": [
+      "a) True",
+      "b) False",
+      "c) 0.875",
+      "d) Fehler"
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "<strong>Richtig: a)</strong><br><br><ul>\n<li><code>find(\":\")</code> gibt Position 7 zurück</li>\n<li><code>text[8:]</code> ist \" 0.875\"</li>\n<li><code>strip()</code> entfernt Leerzeichen: \"0.875\"</li>\n<li><code>float(\"0.875\")</code> = 0.875</li>\n<li>0.875 > 0.5 ist True</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_28",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.30:** Was ist die Ausgabe?\n\n```python\nd = {\"a\": 5, \"b\": 3, \"c\": 8}\nmax_key = None\nmax_val = 0\nfor k, v in d.items():\n    if v > max_val:\n        max_val = v\n        max_key = k\nprint(max_key)\n```",
+    "questionHtml": "<strong>Frage E.30:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {\"a\": 5, \"b\": 3, \"c\": 8}<br>\nmax_key = None<br>\nmax_val = 0<br>\nfor k, v in d.items():<br>\n    if v &gt; max_val:<br>\n        max_val = v<br>\n        max_key = k<br>\nprint(max_key)\n</code></pre>",
+    "options": [
+      "a) a",
+      "b) b",
+      "c) c",
+      "d) 8"
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "<strong>Richtig: c)</strong><br><br>Die Schleife findet den Schlüssel mit dem höchsten Wert.<br>\n\"c\" hat den Wert 8 (höchster Wert).<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_29",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.31:** Was ist die Ausgabe?\n\n```python\nbrutto = 15000\nif brutto <= 10000:\n    rate = 0\nelif brutto <= 14000:\n    rate = 0.14\nelse:\n    rate = 0.22\nnetto = brutto - brutto * rate\nprint(netto)\n```",
+    "questionHtml": "<strong>Frage E.31:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">brutto = 15000<br>\nif brutto &lt;= 10000:<br>\n    rate = 0<br>\nelif brutto &lt;= 14000:<br>\n    rate = 0.14<br>\nelse:<br>\n    rate = 0.22<br>\nnetto = brutto - brutto * rate<br>\nprint(netto)\n</code></pre>",
+    "options": [
+      "a) 15000",
+      "b) 13200",
+      "c) 12900",
+      "d) 11700"
+    ],
+    "correct": [
+      "d"
+    ],
+    "explanation": "<strong>Richtig: d)</strong><br><br>15000 > 14000, also rate = 0.22<br>\nnetto = 15000 - 15000 * 0.22 = 15000 - 3300 = 11700<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_30",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.32:** Was ist die Ausgabe?\n\n```python\nsumme = 0\nzahlen = [3, 7, 2, 9, 4]\nfor z in zahlen:\n    if z > 5:\n        summe += z\nprint(summe)\n```",
+    "questionHtml": "<strong>Frage E.32:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">summe = 0<br>\nzahlen = [3, 7, 2, 9, 4]<br>\nfor z in zahlen:<br>\n    if z &gt; 5:<br>\n        summe += z<br>\nprint(summe)\n</code></pre>",
+    "options": [
+      "a) 16",
+      "b) 25",
+      "c) 9",
+      "d) 7"
+    ],
+    "correct": [
+      "a"
+    ],
+    "explanation": "<strong>Richtig: a)</strong><br><br>Nur Zahlen > 5 werden addiert: 7 + 9 = 16<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_31",
     "type": "freetext",
     "chapter": "Extra",
     "question": "### Frage E.21: Schreibe eine Funktion\n\n**Schreibe eine Funktion `ist_gerade(n)`, die True zurückgibt, wenn n gerade ist, sonst False.**",
@@ -3515,47 +3673,279 @@
     "source": "programmieruebungen-extra.md"
   },
   {
-    "id": "q_22",
+    "id": "q_32",
     "type": "freetext",
     "chapter": "Extra",
-    "question": "### Frage E.22: Buchstaben zählen\n\n**Schreibe Code, der zählt wie oft jeder Buchstabe in \"abracadabra\" vorkommt.**",
-    "questionHtml": "<h3>Frage E.22: Buchstaben zählen</h3><br><br><strong>Schreibe Code, der zählt wie oft jeder Buchstabe in \"abracadabra\" vorkommt.</strong>",
-    "options": [],
-    "correct": [],
-    "explanation": "<pre><code class=\"python\">text = \"abracadabra\"<br>\ncount = {}<br>\nfor c in text:<br>\n    count[c] = count.get(c, 0) + 1<br>\nprint(count)<br>\n# Ausgabe: {'a': 5, 'b': 2, 'r': 2, 'c': 1, 'd': 1}\n</code></pre><br><br><strong>Dies ist ein klassisches Klausurbeispiel für dict.get()!</strong><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
-    "source": "programmieruebungen-extra.md"
-  },
-  {
-    "id": "q_23",
-    "type": "freetext",
-    "chapter": "Extra",
-    "question": "### Frage E.23: Maximum finden\n\n**Schreibe eine Funktion `maximum(liste)`, die den grössten Wert einer Liste zurückgibt (ohne max() zu verwenden).**",
-    "questionHtml": "<h3>Frage E.23: Maximum finden</h3><br><br><strong>Schreibe eine Funktion <code>maximum(liste)</code>, die den grössten Wert einer Liste zurückgibt (ohne max() zu verwenden).</strong>",
-    "options": [],
-    "correct": [],
-    "explanation": "<pre><code class=\"python\">def maximum(liste):<br>\n    if len(liste) == 0:<br>\n        return None<br>\n    groesster = liste[0]<br>\n    for element in liste:<br>\n        if element &gt; groesster:<br>\n            groesster = element<br>\n    return groesster<br><br># Test:<br>\nprint(maximum([3, 1, 4, 1, 5, 9]))  # 9\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
-    "source": "programmieruebungen-extra.md"
-  },
-  {
-    "id": "q_24",
-    "type": "freetext",
-    "chapter": "Extra",
-    "question": "### Frage E.24: Liste filtern\n\n**Schreibe Code, der aus einer Liste nur die geraden Zahlen in eine neue Liste kopiert.**",
-    "questionHtml": "<h3>Frage E.24: Liste filtern</h3><br><br><strong>Schreibe Code, der aus einer Liste nur die geraden Zahlen in eine neue Liste kopiert.</strong>",
-    "options": [],
-    "correct": [],
-    "explanation": "<pre><code class=\"python\">zahlen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]<br>\ngerade = []<br>\nfor z in zahlen:<br>\n    if z % 2 == 0:<br>\n        gerade.append(z)<br>\nprint(gerade)  # [2, 4, 6, 8, 10]\n</code></pre><br><br><strong>Mit List Comprehension (eleganter):</strong>\n<pre><code class=\"python\">gerade = [z for z in zahlen if z % 2 == 0]\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
-    "source": "programmieruebungen-extra.md"
-  },
-  {
-    "id": "q_25",
-    "type": "freetext",
-    "chapter": "Extra",
-    "question": "### Frage E.25: Wörter umdrehen\n\n**Schreibe eine Funktion, die alle Wörter in einem Satz umdreht.**\nBeispiel: \"Hallo Welt\" -> \"ollaH tleW\"",
-    "questionHtml": "<h3>Frage E.25: Wörter umdrehen</h3><br><br><strong>Schreibe eine Funktion, die alle Wörter in einem Satz umdreht.</strong><br>\nBeispiel: \"Hallo Welt\" -> \"ollaH tleW\"",
+    "question": "### Frage E.22: Wörter umdrehen\n\n**Schreibe eine Funktion, die alle Wörter in einem Satz umdreht.**\nBeispiel: \"Hallo Welt\" -> \"ollaH tleW\"",
+    "questionHtml": "<h3>Frage E.22: Wörter umdrehen</h3><br><br><strong>Schreibe eine Funktion, die alle Wörter in einem Satz umdreht.</strong><br>\nBeispiel: \"Hallo Welt\" -> \"ollaH tleW\"",
     "options": [],
     "correct": [],
     "explanation": "<pre><code class=\"python\">def woerter_umdrehen(satz):<br>\n    woerter = satz.split()<br>\n    umgedreht = []<br>\n    for wort in woerter:<br>\n        umgedreht.append(wort[::-1])<br>\n    return \" \".join(umgedreht)<br><br># Test:<br>\nprint(woerter_umdrehen(\"Hallo Welt\"))  # \"ollaH tleW\"\n</code></pre><br><br><strong>Mit List Comprehension:</strong>\n<pre><code class=\"python\">def woerter_umdrehen(satz):<br>\n    return \" \".join([w[::-1] for w in satz.split()])\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_33",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.33: Rechteck berechnen\n\n**Schreibe Code, der Umfang und Fläche eines Rechtecks berechnet (Höhe 5, Breite 8).**",
+    "questionHtml": "<h3>Frage E.33: Rechteck berechnen</h3><br><br><strong>Schreibe Code, der Umfang und Fläche eines Rechtecks berechnet (Höhe 5, Breite 8).</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">hoehe = 5<br>\nbreite = 8<br><br>umfang = 2 * (hoehe + breite)<br>\nflaeche = hoehe * breite<br><br>print(f\"Umfang: {umfang} cm\")    # 26 cm<br>\nprint(f\"Flaeche: {flaeche} cm²\")  # 40 cm²\n</code></pre><br><br><strong>Formeln:</strong>\n<ul>\n<li>Umfang = 2 * (Höhe + Breite)</li>\n<li>Fläche = Höhe * Breite</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_34",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.34: Kreis berechnen\n\n**Schreibe Code, der Umfang und Fläche eines Kreises berechnet (Radius 4).**",
+    "questionHtml": "<h3>Frage E.34: Kreis berechnen</h3><br><br><strong>Schreibe Code, der Umfang und Fläche eines Kreises berechnet (Radius 4).</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">import math<br><br>radius = 4<br><br>umfang = 2 * math.pi * radius<br>\nflaeche = math.pi * radius ** 2<br><br>print(f\"Umfang: {umfang:.2f}\")   # 25.13<br>\nprint(f\"Flaeche: {flaeche:.2f}\")  # 50.27\n</code></pre><br><br><strong>Formeln:</strong>\n<ul>\n<li>Umfang = 2 * π * r</li>\n<li>Fläche = π * r²</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_35",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.35: Potenzberechnung mit Eingabe\n\n**Schreibe Code, der Basis und Exponent vom Benutzer einliest und die Potenz berechnet.**",
+    "questionHtml": "<h3>Frage E.35: Potenzberechnung mit Eingabe</h3><br><br><strong>Schreibe Code, der Basis und Exponent vom Benutzer einliest und die Potenz berechnet.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">basis = float(input(\"Basis: \"))<br>\nexponent = float(input(\"Exponent: \"))<br><br>ergebnis = basis ** exponent<br><br>print(f\"{basis} hoch {exponent} = {ergebnis}\")\n</code></pre><br><br><strong>Beispiel:</strong> 2 hoch 10 = 1024<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_36",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.36: Teiler prüfen\n\n**Schreibe Code, der prüft ob eine Zahl ein Teiler einer anderen ist.**",
+    "questionHtml": "<h3>Frage E.36: Teiler prüfen</h3><br><br><strong>Schreibe Code, der prüft ob eine Zahl ein Teiler einer anderen ist.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">zahl = int(input(\"Zahl: \"))<br>\nteiler = int(input(\"Moeglicher Teiler: \"))<br><br>if zahl % teiler == 0:<br>\n    print(f\"{teiler} ist ein Teiler von {zahl}\")<br>\nelse:<br>\n    print(f\"{teiler} ist kein Teiler von {zahl}\")\n</code></pre><br><br><strong>Erklärung:</strong> <code>a % b == 0</code> prüft ob a durch b teilbar ist (Rest = 0).<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_37",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.37: Zahlen 1 bis 50 ausgeben\n\n**Schreibe eine While-Schleife, die alle Zahlen von 1 bis 50 ausgibt.**",
+    "questionHtml": "<h3>Frage E.37: Zahlen 1 bis 50 ausgeben</h3><br><br><strong>Schreibe eine While-Schleife, die alle Zahlen von 1 bis 50 ausgibt.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\"># Mit while:<br>\ni = 1<br>\nwhile i &lt;= 50:<br>\n    print(i)<br>\n    i += 1<br><br># Alternativ mit for:<br>\nfor i in range(1, 51):<br>\n    print(i)\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_38",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.38: Laufende Summe\n\n**Schreibe Code, der Zahlen einliest und die laufende Summe zeigt, bis 0 eingegeben wird.**",
+    "questionHtml": "<h3>Frage E.38: Laufende Summe</h3><br><br><strong>Schreibe Code, der Zahlen einliest und die laufende Summe zeigt, bis 0 eingegeben wird.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">summe = 0<br><br>while True:<br>\n    zahl = float(input(\"Zahl eingeben (0 zum Beenden): \"))<br>\n    summe += zahl<br>\n    print(f\"Aktuelle Summe: {summe}\")<br>\n    if zahl == 0:<br>\n        break<br><br>print(f\"Endsumme: {summe}\")\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_39",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.39: Alle Teiler finden\n\n**Schreibe eine Funktion, die alle Teiler einer Zahl findet und ausgibt.**",
+    "questionHtml": "<h3>Frage E.39: Alle Teiler finden</h3><br><br><strong>Schreibe eine Funktion, die alle Teiler einer Zahl findet und ausgibt.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">def alle_teiler(n):<br>\n    teiler = []<br>\n    i = 1<br>\n    while i &lt;= n:<br>\n        if n % i == 0:<br>\n            teiler.append(i)<br>\n        i += 1<br>\n    return teiler<br><br># Test:<br>\nprint(alle_teiler(24))  # [1, 2, 3, 4, 6, 8, 12, 24]\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_40",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.40: Multiplikationstabelle (1x1)\n\n**Schreibe Code, der das kleine Einmaleins (1-10) als Tabelle ausgibt.**",
+    "questionHtml": "<h3>Frage E.40: Multiplikationstabelle (1x1)</h3><br><br><strong>Schreibe Code, der das kleine Einmaleins (1-10) als Tabelle ausgibt.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">for i in range(1, 11):<br>\n    for j in range(1, 11):<br>\n        print(f\"{i*j:4d}\", end=\"\")<br>\n    print()  # Neue Zeile nach jeder Reihe\n</code></pre><br><br><strong>Ausgabe:</strong>\n<pre><code class=\"\">   1   2   3   4   5   6   7   8   9  10<br>\n   2   4   6   8  10  12  14  16  18  20<br>\n...<br>\n  10  20  30  40  50  60  70  80  90 100\n</code></pre><br><br><strong>Erklärung:</strong> <code>{wert:4d}</code> formatiert als 4-stellige Zahl (rechtsbündig).<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_41",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.41: Fibonacci-Folge\n\n**Schreibe eine Funktion, die die ersten n Fibonacci-Zahlen berechnet.**",
+    "questionHtml": "<h3>Frage E.41: Fibonacci-Folge</h3><br><br><strong>Schreibe eine Funktion, die die ersten n Fibonacci-Zahlen berechnet.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">def fibonacci(n):<br>\n    if n &lt;= 0:<br>\n        return []<br><br>    folge = [1]<br>\n    if n == 1:<br>\n        return folge<br><br>    folge.append(1)<br>\n    while len(folge) &lt; n:<br>\n        naechste = folge[-1] + folge[-2]<br>\n        folge.append(naechste)<br><br>    return folge<br><br># Test:<br>\nprint(fibonacci(10))  # [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]\n</code></pre><br><br><strong>Erklärung:</strong> Jede Fibonacci-Zahl ist die Summe der beiden vorherigen.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_42",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.42: E-Mail-Domain extrahieren\n\n**Schreibe eine Funktion, die die Domain aus einer E-Mail-Adresse extrahiert.**",
+    "questionHtml": "<h3>Frage E.42: E-Mail-Domain extrahieren</h3><br><br><strong>Schreibe eine Funktion, die die Domain aus einer E-Mail-Adresse extrahiert.</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">def get_domain(email):<br>\n    parts = email.split(\"@\")<br>\n    if len(parts) == 2:<br>\n        return parts[1]<br>\n    return None<br><br># Test:<br>\nprint(get_domain(\"anna@example.com\"))  # \"example.com\"<br>\nprint(get_domain(\"test@uni-dortmund.de\"))  # \"uni-dortmund.de\"\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_43",
+    "type": "freetext",
+    "chapter": "Extra",
+    "question": "### Frage E.43: Wörter aus Datei zählen\n\n**Schreibe Code, der alle Wörter in einer Datei zählt (mit dict.get()).**",
+    "questionHtml": "<h3>Frage E.43: Wörter aus Datei zählen</h3><br><br><strong>Schreibe Code, der alle Wörter in einer Datei zählt (mit dict.get()).</strong>",
+    "options": [],
+    "correct": [],
+    "explanation": "<pre><code class=\"python\">def woerter_zaehlen(filename):<br>\n    counts = {}<br>\n    with open(filename) as f:<br>\n        for line in f:<br>\n            words = line.split()<br>\n            for word in words:<br>\n                counts[word] = counts.get(word, 0) + 1<br>\n    return counts<br><br># Aufruf:<br>\nwort_counts = woerter_zaehlen(\"text.txt\")<br>\nfor wort, anzahl in wort_counts.items():<br>\n    print(f\"{wort}: {anzahl}\")\n</code></pre><br><br><strong>Das Zählmuster:</strong> <code>d[key] = d.get(key, 0) + 1</code> ist essentiell für die Klausur!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_44",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.44:** Was ist die Ausgabe? (Lohnberechnung mit Überstunden)\n\n```python\nhours = 45\nrate = 10\nif hours <= 40:\n    pay = hours * rate\nelse:\n    overtime = hours - 40\n    pay = (rate * 40) + (1.5 * rate * overtime)\nprint(pay)\n```",
+    "questionHtml": "<strong>Frage E.44:</strong> Was ist die Ausgabe? (Lohnberechnung mit Überstunden)<br><br><pre><code class=\"python\">hours = 45<br>\nrate = 10<br>\nif hours &lt;= 40:<br>\n    pay = hours * rate<br>\nelse:<br>\n    overtime = hours - 40<br>\n    pay = (rate * 40) + (1.5 * rate * overtime)<br>\nprint(pay)\n</code></pre>",
+    "options": [
+      "a) 450",
+      "b) 475.0",
+      "c) 525.0",
+      "d) 500"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>hours > 40, also Überstundenberechnung</li>\n<li>overtime = 45 - 40 = 5</li>\n<li>pay = (10 * 40) + (1.5 * 10 * 5) = 400 + 75 = 475.0</li>\n</ul><br><br><strong>Quelle:</strong> exercise3_1.py aus Python for Everybody<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_45",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.45:** Was ist die Ausgabe?\n\n```python\ncount = 0\ntotal = 0\nzahlen = [4, 5, 7]\nfor z in zahlen:\n    count += 1\n    total += z\nprint(total, count, total/count)\n```",
+    "questionHtml": "<strong>Frage E.45:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">count = 0<br>\ntotal = 0<br>\nzahlen = [4, 5, 7]<br>\nfor z in zahlen:<br>\n    count += 1<br>\n    total += z<br>\nprint(total, count, total/count)\n</code></pre>",
+    "options": [
+      "a) 16 3 5.0",
+      "b) 16 3 5.333333333333333",
+      "c) 12 3 4.0",
+      "d) 16 4 4.0"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>total = 4 + 5 + 7 = 16</li>\n<li>count = 3</li>\n<li>average = 16 / 3 = 5.333333333333333</li>\n</ul><br><br><strong>Quelle:</strong> exercise5_1.py (Akkumulatoren-Muster)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_46",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.46:** Was ist die Ausgabe?\n\n```python\nmy_list = []\nwords = ['a', 'b', 'a', 'c', 'b']\nfor word in words:\n    if word not in my_list:\n        my_list.append(word)\nprint(sorted(my_list))\n```",
+    "questionHtml": "<strong>Frage E.46:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">my_list = []<br>\nwords = ['a', 'b', 'a', 'c', 'b']<br>\nfor word in words:<br>\n    if word not in my_list:<br>\n        my_list.append(word)<br>\nprint(sorted(my_list))\n</code></pre>",
+    "options": [
+      "a) ['a', 'a', 'b', 'b', 'c']",
+      "b) ['a', 'b', 'c']",
+      "c) ['c', 'b', 'a']",
+      "d) ['a', 'b', 'a', 'c', 'b']"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>Duplikate werden mit <code>if word not in my_list</code> gefiltert</li>\n<li>my_list = ['a', 'b', 'c'] (in Reihenfolge des ersten Auftretens)</li>\n<li>sorted() sortiert alphabetisch: ['a', 'b', 'c']</li>\n</ul><br><br><strong>Quelle:</strong> exercise8_4.py (Wörter aus Datei)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_47",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.47:** Was ist die Ausgabe?\n\n```python\nd = {}\nwords = ['From', 'To', 'From', 'Subject', 'From']\nfor w in words:\n    if w not in d:\n        d[w] = 1\n    else:\n        d[w] += 1\nprint(d['From'])\n```",
+    "questionHtml": "<strong>Frage E.47:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {}<br>\nwords = ['From', 'To', 'From', 'Subject', 'From']<br>\nfor w in words:<br>\n    if w not in d:<br>\n        d[w] = 1<br>\n    else:<br>\n        d[w] += 1<br>\nprint(d['From'])\n</code></pre>",
+    "options": [
+      "a) 1",
+      "b) 2",
+      "c) 3",
+      "d) KeyError"
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "<strong>Richtig: c)</strong><br><br>'From' kommt 3x vor (Index 0, 2, 4).<br>\nd = {'From': 3, 'To': 1, 'Subject': 1}<br><br><strong>Quelle:</strong> exercise10_1.py (E-Mail-Zählung)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_48",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.48:** Was ist die Ausgabe?\n\n```python\nlst = []\nd = {'a': 3, 'b': 1, 'c': 5}\nfor k, v in d.items():\n    lst.append((v, k))\nlst.sort(reverse=True)\nprint(lst[0])\n```",
+    "questionHtml": "<strong>Frage E.48:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">lst = []<br>\nd = {'a': 3, 'b': 1, 'c': 5}<br>\nfor k, v in d.items():<br>\n    lst.append((v, k))<br>\nlst.sort(reverse=True)<br>\nprint(lst[0])\n</code></pre>",
+    "options": [
+      "a) ('a', 3)",
+      "b) (5, 'c')",
+      "c) ('c', 5)",
+      "d) (1, 'b')"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>lst = [(3, 'a'), (1, 'b'), (5, 'c')]</li>\n<li>Nach sort(reverse=True): [(5, 'c'), (3, 'a'), (1, 'b')]</li>\n<li>lst[0] = (5, 'c')</li>\n</ul><br><br><strong>Tupel werden nach erstem Element sortiert!</strong><br><br><strong>Quelle:</strong> exercise10_1.py (Maximum finden)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_49",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.49:** Was ist die Ausgabe?\n\n```python\nline = \"From user@mail.de Sat Jan 5\"\nwords = line.split()\nif len(words) >= 2 and words[0] == 'From':\n    print(words[1].split('@')[1])\n```",
+    "questionHtml": "<strong>Frage E.49:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">line = \"From user@mail.de Sat Jan 5\"<br>\nwords = line.split()<br>\nif len(words) &gt;= 2 and words[0] == 'From':<br>\n    print(words[1].split('@')[1])\n</code></pre>",
+    "options": [
+      "a) user",
+      "b) mail.de",
+      "c) user@mail.de",
+      "d) Sat"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>words = ['From', 'user@mail.de', 'Sat', 'Jan', '5']</li>\n<li>words[1] = 'user@mail.de'</li>\n<li>words[1].split('@') = ['user', 'mail.de']</li>\n<li>[1] = 'mail.de'</li>\n</ul><br><br><strong>Quelle:</strong> exercise10_1.py (Domain extrahieren)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_50",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.50:** Was passiert bei diesem Code?\n\n```python\ntry:\n    hours = float(input('Hours: '))  # Eingabe: \"abc\"\n    print(hours)\nexcept ValueError:\n    print('Error')\n```",
+    "questionHtml": "<strong>Frage E.50:</strong> Was passiert bei diesem Code?<br><br><pre><code class=\"python\">try:<br>\n    hours = float(input('Hours: '))  # Eingabe: \"abc\"<br>\n    print(hours)<br>\nexcept ValueError:<br>\n    print('Error')\n</code></pre>",
+    "options": [
+      "a) Programm stürzt ab",
+      "b) Ausgabe: \"abc\"",
+      "c) Ausgabe: \"Error\"",
+      "d) Ausgabe: 0.0"
+    ],
+    "correct": [
+      "c"
+    ],
+    "explanation": "<strong>Richtig: c)</strong><br><br>float(\"abc\") wirft einen ValueError.<br>\nDieser wird von except gefangen, also wird \"Error\" ausgegeben.<br><br><strong>Quelle:</strong> exercise3_2.py (try/except für Eingabe)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "source": "programmieruebungen-extra.md"
+  },
+  {
+    "id": "q_51",
+    "type": "mc",
+    "chapter": "Extra",
+    "question": "**Frage E.51:** Was ist die Ausgabe?\n\n```python\nfruit = 'banana'\nindex = len(fruit) - 1\nresult = ''\nwhile index >= 0:\n    result += fruit[index]\n    index -= 1\nprint(result)\n```",
+    "questionHtml": "<strong>Frage E.51:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">fruit = 'banana'<br>\nindex = len(fruit) - 1<br>\nresult = ''<br>\nwhile index &gt;= 0:<br>\n    result += fruit[index]<br>\n    index -= 1<br>\nprint(result)\n</code></pre>",
+    "options": [
+      "a) banana",
+      "b) ananab",
+      "c) bananab",
+      "d) a"
+    ],
+    "correct": [
+      "b"
+    ],
+    "explanation": "<strong>Richtig: b)</strong><br><br>String rückwärts durchlaufen:\n<ul>\n<li>index=5: fruit[5]='a', index=4: fruit[4]='n', ...</li>\n<li>result = 'ananab'</li>\n</ul><br><br><strong>Alternativ:</strong> <code>fruit[::-1]</code> macht dasselbe!<br><br><strong>Quelle:</strong> exercise6_1.py (String rückwärts)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
