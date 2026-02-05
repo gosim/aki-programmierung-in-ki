@@ -758,6 +758,183 @@ konto.kontostand_anzeigen()   # Kontostand: 120 EUR
 
 ---
 
+## Teil 7: Bedingte Ausfuehrung (Klassiker)
+
+**Quelle:** Angepasst von https://course.raku.org/de/essentials/conditional-checks/exercises/
+
+---
+
+### Frage B.25: FizzBuzz (Lite-Version)
+
+**Schreiben Sie ein Programm, das eine positive ganze Zahl abfragt und folgende Bedingungen prueft:**
+- Geben Sie "Fizz" aus, wenn die Zahl durch 3 teilbar ist
+- Geben Sie "Buzz" aus, wenn die Zahl durch 5 teilbar ist
+- Geben Sie "FizzBuzz" aus, wenn durch beide teilbar
+- Sonst geben Sie die Zahl aus
+
+<details>
+<summary>Loesung anzeigen</summary>
+
+```python
+zahl = int(input("Geben Sie eine Zahl ein: "))
+
+if zahl % 3 == 0 and zahl % 5 == 0:
+    print("FizzBuzz")
+elif zahl % 3 == 0:
+    print("Fizz")
+elif zahl % 5 == 0:
+    print("Buzz")
+else:
+    print(zahl)
+```
+
+**Beispiel-Ausgabe:**
+```
+Geben Sie eine Zahl ein: 15
+FizzBuzz
+
+Geben Sie eine Zahl ein: 10
+Buzz
+
+Geben Sie eine Zahl ein: 9
+Fizz
+```
+
+**Wichtig:** Die Reihenfolge der if-Bedingungen ist entscheidend! Erst "beide", dann einzeln pruefen.
+
+</details>
+
+---
+
+### Frage B.26: Schaltjahr pruefen
+
+**Schreiben Sie ein Programm, das prueft, ob ein eingegebenes Jahr ein Schaltjahr ist.**
+
+Regeln:
+- Durch 4 teilbar → Schaltjahr
+- ABER durch 100 teilbar → KEIN Schaltjahr
+- ABER durch 400 teilbar → doch Schaltjahr
+
+<details>
+<summary>Loesung anzeigen</summary>
+
+```python
+jahr = int(input("Jahr: "))
+
+if jahr % 400 == 0:
+    print("Schaltjahr")
+elif jahr % 100 == 0:
+    print("Gemeinjahr")
+elif jahr % 4 == 0:
+    print("Schaltjahr")
+else:
+    print("Gemeinjahr")
+```
+
+**Alternative (kompakter):**
+```python
+jahr = int(input("Jahr: "))
+
+if (jahr % 4 == 0 and jahr % 100 != 0) or (jahr % 400 == 0):
+    print("Schaltjahr")
+else:
+    print("Gemeinjahr")
+```
+
+**Beispiele:**
+- 2000 → Schaltjahr (durch 400 teilbar)
+- 1900 → Gemeinjahr (durch 100, aber nicht durch 400)
+- 2024 → Schaltjahr (durch 4, nicht durch 100)
+- 2023 → Gemeinjahr (nicht durch 4)
+
+</details>
+
+---
+
+### Frage B.27: Wie viele Zahlen sind gleich?
+
+**Schreiben Sie ein Programm, das drei ganze Zahlen vom Benutzer entgegennimmt und angibt, wie viele davon gleich sind.**
+
+- Wenn alle drei gleich sind → 3
+- Wenn genau zwei gleich sind → 2
+- Wenn alle verschieden sind → 0
+
+<details>
+<summary>Loesung anzeigen</summary>
+
+```python
+z1 = int(input("Zahl 1: "))
+z2 = int(input("Zahl 2: "))
+z3 = int(input("Zahl 3: "))
+
+if z1 == z2 == z3:
+    print(3)
+elif z1 == z2 or z1 == z3 or z2 == z3:
+    print(2)
+else:
+    print(0)
+```
+
+**Beispiel-Ausgabe:**
+```
+Zahl 1: 3
+Zahl 2: -4
+Zahl 3: 3
+2
+```
+
+**Wichtig:** Python erlaubt verkettete Vergleiche wie `z1 == z2 == z3`!
+
+</details>
+
+---
+
+### Frage B.28: Pluralendung (Singular/Plural)
+
+**Schreiben Sie ein Programm, das den Benutzer nach einer Zahl fragt und dann grammatikalisch korrekt ausgibt: "N Datei(en) kopiert."**
+
+- 1 Datei → Singular
+- 0, 2, 3, ... Dateien → Plural
+
+<details>
+<summary>Loesung anzeigen</summary>
+
+```python
+anzahl = int(input("Wie viele Dateien sollen kopiert werden? "))
+
+if anzahl == 1:
+    print(f"{anzahl} Datei kopiert.")
+else:
+    print(f"{anzahl} Dateien kopiert.")
+```
+
+**Beispiel-Ausgabe:**
+```
+Wie viele Dateien sollen kopiert werden? 1
+1 Datei kopiert.
+
+Wie viele Dateien sollen kopiert werden? 15
+15 Dateien kopiert.
+```
+
+**Erweiterung mit Validierung:**
+```python
+try:
+    anzahl = int(input("Anzahl: "))
+    if anzahl < 0:
+        print("Fehler: Negative Zahl!")
+    elif anzahl == 1:
+        print(f"{anzahl} Datei kopiert.")
+    else:
+        print(f"{anzahl} Dateien kopiert.")
+except ValueError:
+    print("Bitte eine ganze Zahl eingeben!")
+```
+
+</details>
+
+---
+
 ## Zusammenfassung: Top 10 Klausurmuster
 
 ---
