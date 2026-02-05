@@ -158,12 +158,24 @@ except:
 ## Listen-Methoden
 
 ```python
-lst = [1, 2, 3]
-lst.append(4)       # [1, 2, 3, 4] - am Ende hinzufuegen
-lst.pop()           # Gibt 4 zurueck, entfernt es
+lst = [1, 2, 3, 2, 4]
+
+# Hinzufuegen/Entfernen
+lst.append(5)       # [1, 2, 3, 2, 4, 5] - am Ende hinzufuegen
+lst.pop()           # Gibt 5 zurueck, entfernt letztes Element
 lst.pop(0)          # Gibt 1 zurueck, entfernt erstes Element
-lst.sort()          # Aufsteigend sortieren
+lst.remove(2)       # Entfernt ERSTES Vorkommen von 2
+
+# Suchen - WICHTIG!
+lst.index(3)        # 2 - Index von 3 (ValueError wenn nicht gefunden!)
+lst.count(2)        # 1 - Anzahl Vorkommen von 2
+3 in lst            # True - Prueft ob Element vorhanden
+5 in lst            # False
+
+# Sortieren
+lst.sort()          # Aufsteigend sortieren (aendert Liste!)
 lst.sort(reverse=True)  # Absteigend sortieren
+sorted(lst)         # Gibt NEUE sortierte Liste zurueck
 lst.reverse()       # Reihenfolge umkehren
 
 # Aggregatfunktionen
@@ -171,6 +183,19 @@ len(lst)   # Anzahl Elemente
 sum(lst)   # Summe
 min(lst)   # Minimum
 max(lst)   # Maximum
+```
+
+**ACHTUNG: Listen haben KEIN find()!**
+```python
+# String: find() gibt -1 zurueck wenn nicht gefunden
+"hallo".find("x")   # -1
+
+# Liste: index() wirft ValueError wenn nicht gefunden!
+[1, 2, 3].index(5)  # ValueError!
+
+# Sicher pruefen:
+if 5 in lst:
+    pos = lst.index(5)
 ```
 
 ## Dictionary-Methoden
