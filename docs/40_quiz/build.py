@@ -11,6 +11,10 @@ import re
 import json
 import os
 import sys
+import random
+
+# Seed für reproduzierbare Randomisierung
+random.seed(2026)
 
 # --- Umlaut-Konvertierung ---
 
@@ -1051,6 +1055,78 @@ def main():
     all_questions = unique_questions
     if duplicates_removed:
         print(f"\n  {duplicates_removed} Duplikat(e) entfernt.")
+
+    # MC-Optionen randomisieren
+    mc_randomized = 0
+    for q in all_questions:
+        if q['type'] == 'mc' and len(q.get('options', [])) >= 2:
+            options = q['options']
+            correct = q.get('correct', [])
+
+            # Erstelle Mapping: Buchstabe -> Option-Text
+            option_map = {}
+            for opt in options:
+                m = re.match(r'([a-z])\)\s*(.+)', opt)
+                if m:
+                    option_map[m.group(1)] = m.group(2)
+
+            if not option_map:
+                continue
+
+            # Hole die korrekten Texte
+            correct_texts = [option_map.get(c, '') for c in correct if c in option_map]
+
+            # Mische die Optionen
+            items = list(option_map.items())
+            random.shuffle(items)
+
+            # Weise neue Buchstaben zu und erstelle Mapping alt->neu
+            new_letters = ['a', 'b', 'c', 'd'][:len(items)]
+            new_options = []
+            new_correct = []
+            letter_mapping = {}  # alt -> neu
+
+            for i, (old_letter, text) in enumerate(items):
+                new_letter = new_letters[i]
+                letter_mapping[old_letter] = new_letter
+                new_options.append(f"{new_letter}) {text}")
+                # Wenn dieser Text korrekt war, merke neuen Buchstaben
+                if text in correct_texts:
+                    new_correct.append(new_letter)
+
+            q['options'] = new_options
+            q['correct'] = sorted(new_correct)
+
+            # Aktualisiere auch die Erklärung
+            explanation = q.get('explanation', '')
+            for old_l, new_l in letter_mapping.items():
+                # Ersetze "Richtig: x)" -> "Richtig: y)"
+                explanation = re.sub(
+                    rf'(Richtig:\s*){old_l}\)',
+                    rf'\g<1>{new_l})',
+                    explanation
+                )
+                # Ersetze "Richtig: x<" -> "Richtig: y<"
+                explanation = re.sub(
+                    rf'(Richtig:\s*){old_l}<',
+                    rf'\g<1>{new_l}<',
+                    explanation
+                )
+            q['explanation'] = explanation
+
+            mc_randomized += 1
+
+    print(f"  {mc_randomized} MC-Fragen randomisiert.")
+
+    # Verteilung der korrekten Antworten ausgeben
+    answer_dist = {}
+    for q in all_questions:
+        if q['type'] == 'mc':
+            for c in q.get('correct', []):
+                answer_dist[c] = answer_dist.get(c, 0) + 1
+    if answer_dist:
+        dist_str = ', '.join(f"{k}:{v}" for k, v in sorted(answer_dist.items()))
+        print(f"  Verteilung korrekte Antworten: {dist_str}")
 
     # Statistik zaehlen
     for q in all_questions:
