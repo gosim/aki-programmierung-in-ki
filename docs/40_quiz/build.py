@@ -88,20 +88,20 @@ def convert_umlauts(text):
 # --- Konfiguration ---
 
 SOURCES = [
-    ("testfragen-kapitel-1-2.md", "1-2"),
-    ("testfragen-kapitel-3.md", "3"),
-    ("testfragen-kapitel-4.md", "4"),
-    ("testfragen-kapitel-5-6.md", "5-6"),
-    ("testfragen-kapitel-7-8.md", "7-8"),
-    ("testfragen-kapitel-9-10.md", "9-10"),
-    ("testfragen-kapitel-14.md", "14"),
-    ("programmieruebungen-extra.md", "Extra"),
-    ("beliebte-klausuraufgaben.md", "Beliebte"),
+    ("../20_testfragen/testfragen-kapitel-1-2.md", "1-2"),
+    ("../20_testfragen/testfragen-kapitel-3.md", "3"),
+    ("../20_testfragen/testfragen-kapitel-4.md", "4"),
+    ("../20_testfragen/testfragen-kapitel-5-6.md", "5-6"),
+    ("../20_testfragen/testfragen-kapitel-7-8.md", "7-8"),
+    ("../20_testfragen/testfragen-kapitel-9-10.md", "9-10"),
+    ("../20_testfragen/testfragen-kapitel-14.md", "14"),
+    ("../20_testfragen/programmieruebungen-extra.md", "Extra"),
+    ("../30_klausur/beliebte-klausuraufgaben.md", "Beliebte"),
 ]
 
 # Dateien ohne <details> Bloecke (Klausurfragen)
 KLAUSUR_SOURCES = [
-    ("klausurfragen-sammlung.md", "Klausur"),
+    ("../30_klausur/klausurfragen-sammlung.md", "Klausur"),
 ]
 
 # Referenzen zu Lehrbrief und Vorlesungsmaterialien
