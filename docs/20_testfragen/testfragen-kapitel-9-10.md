@@ -54,34 +54,7 @@ Nicht erlaubt: list, dict
 
 ---
 
-**Frage 9.1:** Was macht dieser Code?
-
-```python
-count = {}
-words = ["a", "b", "c"]
-for w in words:
-    count[w] = count.get(w, 0) + 1
-```
-
-- [ ] a) Erstellt eine leere Liste
-- [ ] b) Zaehlt die Haeufigkeit jedes Wortes
-- [ ] c) Sortiert die Woerter
-- [ ] d) Entfernt Duplikate
-
-<details>
-<summary>Loesung anzeigen</summary>
-
-**Richtig: b)**
-
-Dies ist ein **Zaehl-Pattern** mit Dictionaries!
-Jedes Wort wird gezaehlt, indem sein bisheriger Zaehler (oder 0) um 1 erhoeht wird.
-
-**Dies war eine echte Klausuraufgabe mit 30 Punkten!**
-</details>
-
----
-
-### Frage 9.2: KLAUSURAUFGABE - Dictionary zum Zaehlen!
+### Frage 9.1: KLAUSURAUFGABE - Dictionary zum Zaehlen!
 
 **Was ist die Ausgabe?**
 

@@ -2718,28 +2718,10 @@
   },
   {
     "id": "kap9-10_9.1",
-    "type": "mc",
-    "chapter": "9-10",
-    "question": "Was macht dieser Code?\n\n```python\ncount = {}\nwords = [\"a\", \"b\", \"c\"]\nfor w in words:\n    count[w] = count.get(w, 0) + 1\n```",
-    "questionHtml": "Was macht dieser Code?<br><br><pre><code class=\"python\">count = {}<br>\nwords = [\"a\", \"b\", \"c\"]<br>\nfor w in words:<br>\n    count[w] = count.get(w, 0) + 1\n</code></pre>",
-    "options": [
-      "a) Entfernt Duplikate",
-      "b) Sortiert die Wörter",
-      "c) Erstellt eine leere Liste",
-      "d) Zählt die Häufigkeit jedes Wortes"
-    ],
-    "correct": [
-      "d"
-    ],
-    "explanation": "<strong>Richtig: d)</strong><br><br>Dies ist ein <strong>Zähl-Pattern</strong> mit Dictionaries!<br>\nJedes Wort wird gezählt, indem sein bisheriger Zähler (oder 0) um 1 erhöht wird.<br><br><strong>Dies war eine echte Klausuraufgabe mit 30 Punkten!</strong><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
-    "source": "testfragen-kapitel-9-10.md"
-  },
-  {
-    "id": "kap9-10_9.2",
     "type": "freetext",
     "chapter": "9-10",
-    "question": "### Frage 9.2: KLAUSURAUFGABE - Dictionary zum Zählen!\n\n**Was ist die Ausgabe?**\n\n```python\ncount = {}\nwords = [\"a\", \"b\", \"c\"]\nfor w in words:\n    count[w] = count.get(w, 0) + 1\nprint(count)\n```",
-    "questionHtml": "<h3>Frage 9.2: KLAUSURAUFGABE - Dictionary zum Zählen!</h3><br><br><strong>Was ist die Ausgabe?</strong><br><br><pre><code class=\"python\">count = {}<br>\nwords = [\"a\", \"b\", \"c\"]<br>\nfor w in words:<br>\n    count[w] = count.get(w, 0) + 1<br>\nprint(count)\n</code></pre>",
+    "question": "### Frage 9.1: KLAUSURAUFGABE - Dictionary zum Zählen!\n\n**Was ist die Ausgabe?**\n\n```python\ncount = {}\nwords = [\"a\", \"b\", \"c\"]\nfor w in words:\n    count[w] = count.get(w, 0) + 1\nprint(count)\n```",
+    "questionHtml": "<h3>Frage 9.1: KLAUSURAUFGABE - Dictionary zum Zählen!</h3><br><br><strong>Was ist die Ausgabe?</strong><br><br><pre><code class=\"python\">count = {}<br>\nwords = [\"a\", \"b\", \"c\"]<br>\nfor w in words:<br>\n    count[w] = count.get(w, 0) + 1<br>\nprint(count)\n</code></pre>",
     "options": [],
     "correct": [],
     "explanation": "<strong>Ausgabe:</strong> <code>{'a': 1, 'b': 1, 'c': 1}</code><br><br><strong>Schritt-für-Schritt:</strong><br><br><ol>\n<li><code>count = {}</code> - Leeres Dictionary</li>\n<li>Für \"a\": <code>count.get(\"a\", 0)</code> gibt 0 (nicht vorhanden), dann 0+1=1<ul>\n<li><code>count = {\"a\": 1}</code></li>\n</ul></li>\n<li>Für \"b\": <code>count.get(\"b\", 0)</code> gibt 0 (nicht vorhanden), dann 0+1=1<ul>\n<li><code>count = {\"a\": 1, \"b\": 1}</code></li>\n</ul></li>\n<li>Für \"c\": <code>count.get(\"c\", 0)</code> gibt 0 (nicht vorhanden), dann 0+1=1<ul>\n<li><code>count = {\"a\": 1, \"b\": 1, \"c\": 1}</code></li>\n</ul></li>\n</ol><br><br><strong>Dies war eine echte Klausuraufgabe!</strong><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
@@ -2763,13 +2745,13 @@
     "question": "Was ist die Ausgabe?\n\n```python\nd = {\"a\": 1, \"b\": 2}\nprint(d[\"c\"])\n```",
     "questionHtml": "Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {\"a\": 1, \"b\": 2}<br>\nprint(d[\"c\"])\n</code></pre>",
     "options": [
-      "a) None",
-      "b) 0",
-      "c) \"\"",
-      "d) KeyError"
+      "a) \"\"",
+      "b) KeyError",
+      "c) None",
+      "d) 0"
     ],
     "correct": [
-      "d"
+      "b"
     ],
     "explanation": "<strong>Richtig: d)</strong><br><br>Ein <strong>KeyError</strong> tritt auf, wenn man mit <code>d[key]</code> auf einen nicht existierenden Key zugreift.<br><br><strong>Lösung:</strong> Benutze <code>get()</code>:\n<pre><code class=\"python\">print(d.get(\"c\", 0))  # Gibt 0 zurueck (kein Fehler)\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
@@ -2781,15 +2763,15 @@
     "question": "Was ist die Ausgabe?\n\n```python\nd = {\"a\": 1, \"b\": 2}\nprint(d.get(\"c\", \"nicht gefunden\"))\n```",
     "questionHtml": "Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {\"a\": 1, \"b\": 2}<br>\nprint(d.get(\"c\", \"nicht gefunden\"))\n</code></pre>",
     "options": [
-      "a) \"nicht gefunden\"",
-      "b) 0",
-      "c) None",
-      "d) KeyError"
+      "a) None",
+      "b) KeyError",
+      "c) 0",
+      "d) \"nicht gefunden\""
     ],
     "correct": [
-      "a"
+      "d"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br><code>get(key, default)</code> gibt den Standardwert zurück, wenn der Key nicht existiert.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><code>get(key, default)</code> gibt den Standardwert zurück, wenn der Key nicht existiert.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
   },
   {
@@ -2821,13 +2803,13 @@
     "question": "Was ist die Ausgabe?\n\n```python\nd = {}\nd[\"x\"] = d.get(\"x\", 0) + 1\nd[\"x\"] = d.get(\"x\", 0) + 1\nd[\"x\"] = d.get(\"x\", 0) + 1\nprint(d[\"x\"])\n```",
     "questionHtml": "Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {}<br>\nd[\"x\"] = d.get(\"x\", 0) + 1<br>\nd[\"x\"] = d.get(\"x\", 0) + 1<br>\nd[\"x\"] = d.get(\"x\", 0) + 1<br>\nprint(d[\"x\"])\n</code></pre>",
     "options": [
-      "a) 1",
-      "b) 0",
-      "c) 3",
-      "d) KeyError"
+      "a) 3",
+      "b) KeyError",
+      "c) 0",
+      "d) 1"
     ],
     "correct": [
-      "c"
+      "a"
     ],
     "explanation": "<strong>Richtig: c)</strong><br><br>Dreimal wird \"x\" um 1 erhöht:\n<ol>\n<li><code>d[\"x\"] = 0 + 1</code> → d[\"x\"] = 1</li>\n<li><code>d[\"x\"] = 1 + 1</code> → d[\"x\"] = 2</li>\n<li><code>d[\"x\"] = 2 + 1</code> → d[\"x\"] = 3</li>\n</ol><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
@@ -2887,15 +2869,15 @@
     "question": "Was ist der Unterschied zwischen Liste und Tupel?",
     "questionHtml": "Was ist der Unterschied zwischen Liste und Tupel?",
     "options": [
-      "a) Listen sind veränderbar, Tupel nicht",
+      "a) Tupel können mehr Elemente haben",
       "b) Listen sind schneller",
-      "c) Tupel können nur Zahlen enthalten",
-      "d) Tupel können mehr Elemente haben"
+      "c) Listen sind veränderbar, Tupel nicht",
+      "d) Tupel können nur Zahlen enthalten"
     ],
     "correct": [
-      "a"
+      "c"
     ],
-    "explanation": "<strong>Richtig: d)</strong><br><br>Der Hauptunterschied:\n<ul>\n<li><strong>Listen sind mutable</strong> (veränderbar): <code>append()</code>, <code>remove()</code>, <code>pop()</code> etc.</li>\n<li><strong>Tupel sind immutable</strong> (unveränderbar): keine Änderungen nach Erstellung</li>\n</ul><br><br>Wann Tupel verwenden?\n<ul>\n<li>Für unveränderliche Daten (z.B. Koordinaten)</li>\n<li>Als Dictionary-Keys</li>\n<li>Für Rückgabewerte von Funktionen</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
+    "explanation": "<strong>Richtig: c)</strong><br><br>Der Hauptunterschied:\n<ul>\n<li><strong>Listen sind mutable</strong> (veränderbar): <code>append()</code>, <code>remove()</code>, <code>pop()</code> etc.</li>\n<li><strong>Tupel sind immutable</strong> (unveränderbar): keine Änderungen nach Erstellung</li>\n</ul><br><br>Wann Tupel verwenden?\n<ul>\n<li>Für unveränderliche Daten (z.B. Koordinaten)</li>\n<li>Als Dictionary-Keys</li>\n<li>Für Rückgabewerte von Funktionen</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
   },
   {
@@ -2905,15 +2887,15 @@
     "question": "Wie erstellt man ein Tupel mit einem Element?",
     "questionHtml": "Wie erstellt man ein Tupel mit einem Element?",
     "options": [
-      "a) `t = 1,`",
-      "b) `t = (1,)`",
-      "c) `t = (1)`",
-      "d) `t = [1]`"
+      "a) `t = [1]`",
+      "b) `t = (1)`",
+      "c) `t = 1,`",
+      "d) `t = (1,)`"
     ],
     "correct": [
-      "b"
+      "d"
     ],
-    "explanation": "<strong>Richtig: b) und d)</strong><br><br>Für ein Tupel mit einem Element braucht man ein Komma:\n<ul>\n<li><code>(1)</code> ist nur die Zahl 1 (Klammern für Gruppierung)</li>\n<li><code>(1,)</code> ist ein Tupel mit einem Element</li>\n<li><code>1,</code> ist auch ein Tupel mit einem Element</li>\n</ul><br><br><pre><code class=\"python\">print(type((1)))   # &lt;class 'int'&gt;<br>\nprint(type((1,)))  # &lt;class 'tuple'&gt;\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
+    "explanation": "<strong>Richtig: d) und d)</strong><br><br>Für ein Tupel mit einem Element braucht man ein Komma:\n<ul>\n<li><code>(1)</code> ist nur die Zahl 1 (Klammern für Gruppierung)</li>\n<li><code>(1,)</code> ist ein Tupel mit einem Element</li>\n<li><code>1,</code> ist auch ein Tupel mit einem Element</li>\n</ul><br><br><pre><code class=\"python\">print(type((1)))   # &lt;class 'int'&gt;<br>\nprint(type((1,)))  # &lt;class 'tuple'&gt;\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
   },
   {
@@ -2934,15 +2916,15 @@
     "question": "Tuple Unpacking - Was ist die Ausgabe?\n\n```python\nt = (1, 2, 3)\na, b, c = t\nprint(b)\n```",
     "questionHtml": "Tuple Unpacking - Was ist die Ausgabe?<br><br><pre><code class=\"python\">t = (1, 2, 3)<br>\na, b, c = t<br>\nprint(b)\n</code></pre>",
     "options": [
-      "a) 2",
-      "b) Fehler",
+      "a) Fehler",
+      "b) 1",
       "c) (1, 2, 3)",
-      "d) 1"
+      "d) 2"
     ],
     "correct": [
-      "a"
+      "d"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br>Tuple Unpacking weist jedes Element einer Variablen zu:\n<ul>\n<li>a = 1</li>\n<li>b = 2</li>\n<li>c = 3</li>\n</ul><br><br>Das funktioniert auch mit Listen und in for-Schleifen:\n<pre><code class=\"python\">for key, value in d.items():<br>\n    print(key, value)\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br>Tuple Unpacking weist jedes Element einer Variablen zu:\n<ul>\n<li>a = 1</li>\n<li>b = 2</li>\n<li>c = 3</li>\n</ul><br><br>Das funktioniert auch mit Listen und in for-Schleifen:\n<pre><code class=\"python\">for key, value in d.items():<br>\n    print(key, value)\n</code></pre><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 9 (Dictionarys: get, keys, values) & Kapitel 10 (Tupel)</p>",
     "source": "testfragen-kapitel-9-10.md"
   },
   {
@@ -3023,14 +3005,14 @@
     "questionHtml": "Was macht <code>__init__</code>?",
     "options": [
       "a) Kopiert ein Objekt",
-      "b) Löscht ein Objekt",
-      "c) Initialisiert ein neues Objekt",
-      "d) Vergleicht Objekte"
+      "b) Vergleicht Objekte",
+      "c) Löscht ein Objekt",
+      "d) Initialisiert ein neues Objekt"
     ],
     "correct": [
-      "c"
+      "d"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br><code>__init__</code> ist der Konstruktor (Initialisierer). Er wird automatisch aufgerufen, wenn man ein neues Objekt mit <code>Klasse()</code> erstellt.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 14 (Objektorientierte Programmierung: class, __init__, self)</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><code>__init__</code> ist der Konstruktor (Initialisierer). Er wird automatisch aufgerufen, wenn man ein neues Objekt mit <code>Klasse()</code> erstellt.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 14 (Objektorientierte Programmierung: class, __init__, self)</p>",
     "source": "testfragen-kapitel-14.md"
   },
   {
@@ -3075,13 +3057,13 @@
     "options": [
       "a) 2 1",
       "b) 2 2",
-      "c) 3 0",
-      "d) 3 3"
+      "c) 3 3",
+      "d) 3 0"
     ],
     "correct": [
       "a"
     ],
-    "explanation": "<strong>Richtig: d)</strong><br><br><code>z1</code> und <code>z2</code> sind separate Objekte mit eigenen Attributen.\n<ul>\n<li>z1.erhöhen() zweimal → z1.stand = 2</li>\n<li>z2.erhöhen() einmal → z2.stand = 1</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 14 (Objektorientierte Programmierung: class, __init__, self)</p>",
+    "explanation": "<strong>Richtig: c)</strong><br><br><code>z1</code> und <code>z2</code> sind separate Objekte mit eigenen Attributen.\n<ul>\n<li>z1.erhöhen() zweimal → z1.stand = 2</li>\n<li>z2.erhöhen() einmal → z2.stand = 1</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 14 (Objektorientierte Programmierung: class, __init__, self)</p>",
     "source": "testfragen-kapitel-14.md"
   },
   {
@@ -3147,14 +3129,14 @@
     "questionHtml": "<strong>Frage E.1:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">x = 10<br>\ny = 3<br>\nprint(x // y)<br>\nprint(x % y)\n</code></pre>",
     "options": [
       "a) 3 und 0",
-      "b) 10 und 3",
-      "c) 3 und 1",
-      "d) 3.33 und 1"
+      "b) 3.33 und 1",
+      "c) 10 und 3",
+      "d) 3 und 1"
     ],
     "correct": [
-      "c"
+      "d"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br><ul>\n<li><code>x // y</code> ist die <strong>Ganzzahldivision</strong>: 10 // 3 = 3 (abgerundet)</li>\n<li><code>x % y</code> ist der <strong>Rest</strong> (Modulo): 10 % 3 = 1</li>\n</ul><br><br><strong>Merke:</strong> <code>//</code> gibt immer eine ganze Zahl, <code>%</code> gibt den Rest.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><ul>\n<li><code>x // y</code> ist die <strong>Ganzzahldivision</strong>: 10 // 3 = 3 (abgerundet)</li>\n<li><code>x % y</code> ist der <strong>Rest</strong> (Modulo): 10 % 3 = 1</li>\n</ul><br><br><strong>Merke:</strong> <code>//</code> gibt immer eine ganze Zahl, <code>%</code> gibt den Rest.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3164,8 +3146,8 @@
     "question": "**Frage E.3:** Was ist die Ausgabe?\n\n```python\ntext = \"Python\"\nprint(text[0] + text[-1])\n```",
     "questionHtml": "<strong>Frage E.3:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">text = \"Python\"<br>\nprint(text[0] + text[-1])\n</code></pre>",
     "options": [
-      "a) Python",
-      "b) on",
+      "a) on",
+      "b) Python",
       "c) Py",
       "d) Pn"
     ],
@@ -3182,15 +3164,15 @@
     "question": "**Frage E.4:** Was ist die Ausgabe?\n\n```python\nzahlen = [3, 1, 4, 1, 5]\nzahlen.sort()\nprint(zahlen[0])\n```",
     "questionHtml": "<strong>Frage E.4:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">zahlen = [3, 1, 4, 1, 5]<br>\nzahlen.sort()<br>\nprint(zahlen[0])\n</code></pre>",
     "options": [
-      "a) 5",
-      "b) 1",
-      "c) 4",
+      "a) 4",
+      "b) 5",
+      "c) 1",
       "d) 3"
     ],
     "correct": [
-      "b"
+      "c"
     ],
-    "explanation": "<strong>Richtig: b)</strong><br><br><code>sort()</code> sortiert die Liste <strong>aufsteigend</strong>: [1, 1, 3, 4, 5]\n<code>zahlen[0]</code> ist das erste Element: 1<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: c)</strong><br><br><code>sort()</code> sortiert die Liste <strong>aufsteigend</strong>: [1, 1, 3, 4, 5]\n<code>zahlen[0]</code> ist das erste Element: 1<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3200,10 +3182,10 @@
     "question": "**Frage E.5:** Was ist die Ausgabe?\n\n```python\na = 5\nb = 2\na, b = b, a\nprint(a, b)\n```",
     "questionHtml": "<strong>Frage E.5:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">a = 5<br>\nb = 2<br>\na, b = b, a<br>\nprint(a, b)\n</code></pre>",
     "options": [
-      "a) 5 2",
+      "a) 5 5",
       "b) 2 5",
       "c) 2 2",
-      "d) 5 5"
+      "d) 5 2"
     ],
     "correct": [
       "b"
@@ -3218,15 +3200,15 @@
     "question": "**Frage E.6:** Was ist die Ausgabe?\n\n```python\ncount = {}\ntext = \"aab\"\nfor c in text:\n    count[c] = count.get(c, 0) + 1\nprint(count[\"a\"])\n```",
     "questionHtml": "<strong>Frage E.6:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">count = {}<br>\ntext = \"aab\"<br>\nfor c in text:<br>\n    count[c] = count.get(c, 0) + 1<br>\nprint(count[\"a\"])\n</code></pre>",
     "options": [
-      "a) 3",
-      "b) 1",
-      "c) 2",
-      "d) KeyError"
+      "a) 1",
+      "b) 2",
+      "c) KeyError",
+      "d) 3"
     ],
     "correct": [
-      "c"
+      "b"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br>Der Code zählt Buchstaben:\n<ul>\n<li>'a': count.get('a', 0)=0, dann 1</li>\n<li>'a': count.get('a', 0)=1, dann 2</li>\n<li>'b': count.get('b', 0)=0, dann 1</li>\n</ul><br><br>count = {'a': 2, 'b': 1}\n<code>count[\"a\"]</code> = 2<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: b)</strong><br><br>Der Code zählt Buchstaben:\n<ul>\n<li>'a': count.get('a', 0)=0, dann 1</li>\n<li>'a': count.get('a', 0)=1, dann 2</li>\n<li>'b': count.get('b', 0)=0, dann 1</li>\n</ul><br><br>count = {'a': 2, 'b': 1}\n<code>count[\"a\"]</code> = 2<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3254,13 +3236,13 @@
     "question": "**Frage E.8:** Was ist die Ausgabe?\n\n```python\nx = 15\nif x % 3 == 0:\n    print(\"A\", end=\"\")\nif x % 5 == 0:\n    print(\"B\", end=\"\")\n```",
     "questionHtml": "<strong>Frage E.8:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">x = 15<br>\nif x % 3 == 0:<br>\n    print(\"A\", end=\"\")<br>\nif x % 5 == 0:<br>\n    print(\"B\", end=\"\")\n</code></pre>",
     "options": [
-      "a) Keine Ausgabe",
+      "a) AB",
       "b) A",
-      "c) AB",
-      "d) B"
+      "c) B",
+      "d) Keine Ausgabe"
     ],
     "correct": [
-      "c"
+      "a"
     ],
     "explanation": "<strong>Richtig: c)</strong><br><br>15 ist durch 3 teilbar (15 % 3 == 0) UND durch 5 teilbar (15 % 5 == 0).<br>\nBeide if-Bedingungen sind wahr, also wird \"A\" und dann \"B\" ausgegeben.<br><br><strong>Hinweis:</strong> Bei FizzBuzz wäre es wichtig, elif zu verwenden!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
@@ -3272,15 +3254,15 @@
     "question": "**Frage E.9:** Was ist die Ausgabe?\n\n```python\nliste = [1, 2, 3]\nliste.append(4)\nliste.pop()\nprint(liste)\n```",
     "questionHtml": "<strong>Frage E.9:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">liste = [1, 2, 3]<br>\nliste.append(4)<br>\nliste.pop()<br>\nprint(liste)\n</code></pre>",
     "options": [
-      "a) [1, 2, 3, 4]",
-      "b) [1, 2, 3]",
+      "a) [1, 2]",
+      "b) [1, 2, 3, 4]",
       "c) [2, 3, 4]",
-      "d) [1, 2]"
+      "d) [1, 2, 3]"
     ],
     "correct": [
-      "b"
+      "d"
     ],
-    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li><code>append(4)</code> fügt 4 am Ende hinzu: [1, 2, 3, 4]</li>\n<li><code>pop()</code> entfernt das letzte Element: [1, 2, 3]</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><ul>\n<li><code>append(4)</code> fügt 4 am Ende hinzu: [1, 2, 3, 4]</li>\n<li><code>pop()</code> entfernt das letzte Element: [1, 2, 3]</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3290,8 +3272,8 @@
     "question": "**Frage E.10:** Was ist die Ausgabe?\n\n```python\ns = \"hallo\"\ns = s.replace(\"l\", \"x\")\nprint(s)\n```",
     "questionHtml": "<strong>Frage E.10:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">s = \"hallo\"<br>\ns = s.replace(\"l\", \"x\")<br>\nprint(s)\n</code></pre>",
     "options": [
-      "a) haxlo",
-      "b) hallo",
+      "a) hallo",
+      "b) haxlo",
       "c) haxxo",
       "d) Fehler"
     ],
@@ -3308,15 +3290,15 @@
     "question": "**Frage E.11:** Was ist die Ausgabe?\n\n```python\nfor i in range(3):\n    for j in range(2):\n        print(i + j, end=\" \")\n```",
     "questionHtml": "<strong>Frage E.11:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">for i in range(3):<br>\n    for j in range(2):<br>\n        print(i + j, end=\" \")\n</code></pre>",
     "options": [
-      "a) 0 1 0 1 0 1",
-      "b) 0 1 2 0 1 2",
+      "a) 0 1 2 0 1 2",
+      "b) 0 1 1 2 2 3",
       "c) 0 0 1 1 2 2",
-      "d) 0 1 1 2 2 3"
+      "d) 0 1 0 1 0 1"
     ],
     "correct": [
-      "d"
+      "b"
     ],
-    "explanation": "<strong>Richtig: d)</strong><br><br>Verschachtelte Schleifen:\n<ul>\n<li>i=0: j=0 -> 0, j=1 -> 1</li>\n<li>i=1: j=0 -> 1, j=1 -> 2</li>\n<li>i=2: j=0 -> 2, j=1 -> 3</li>\n</ul><br><br>Ausgabe: 0 1 1 2 2 3<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: b)</strong><br><br>Verschachtelte Schleifen:\n<ul>\n<li>i=0: j=0 -> 0, j=1 -> 1</li>\n<li>i=1: j=0 -> 1, j=1 -> 2</li>\n<li>i=2: j=0 -> 2, j=1 -> 3</li>\n</ul><br><br>Ausgabe: 0 1 1 2 2 3<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3326,15 +3308,15 @@
     "question": "**Frage E.12:** Was ist die Ausgabe?\n\n```python\nd = {\"a\": 1, \"b\": 2}\nprint(d.get(\"c\", 99))\n```",
     "questionHtml": "<strong>Frage E.12:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {\"a\": 1, \"b\": 2}<br>\nprint(d.get(\"c\", 99))\n</code></pre>",
     "options": [
-      "a) KeyError",
-      "b) 99",
-      "c) \"c\"",
+      "a) \"c\"",
+      "b) KeyError",
+      "c) 99",
       "d) None"
     ],
     "correct": [
-      "b"
+      "c"
     ],
-    "explanation": "<strong>Richtig: b)</strong><br><br><code>d.get(\"c\", 99)</code> sucht den Schlüssel \"c\":\n<ul>\n<li>\"c\" ist nicht im Dictionary</li>\n<li>Also wird der Standardwert 99 zurückgegeben</li>\n</ul><br><br><strong>Merke:</strong> <code>d[\"c\"]</code> würde einen KeyError werfen, <code>d.get(\"c\", 99)</code> nicht!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: c)</strong><br><br><code>d.get(\"c\", 99)</code> sucht den Schlüssel \"c\":\n<ul>\n<li>\"c\" ist nicht im Dictionary</li>\n<li>Also wird der Standardwert 99 zurückgegeben</li>\n</ul><br><br><strong>Merke:</strong> <code>d[\"c\"]</code> würde einen KeyError werfen, <code>d.get(\"c\", 99)</code> nicht!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3345,8 +3327,8 @@
     "questionHtml": "<strong>Frage E.13:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">x = 7<br>\nwhile x &gt; 0:<br>\n    x -= 2<br>\n    if x == 3:<br>\n        continue<br>\n    print(x, end=\" \")\n</code></pre>",
     "options": [
       "a) 5 1 -1",
-      "b) 5 1",
-      "c) 7 5 3 1",
+      "b) 7 5 3 1",
+      "c) 5 1",
       "d) 5 3 1 -1"
     ],
     "correct": [
@@ -3363,14 +3345,14 @@
     "questionHtml": "<strong>Frage E.14:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def f(a, b=10):<br>\n    return a + b<br><br>print(f(5))<br>\nprint(f(5, 3))\n</code></pre>",
     "options": [
       "a) 5 und 8",
-      "b) 15 und 8",
+      "b) Fehler",
       "c) 15 und 15",
-      "d) Fehler"
+      "d) 15 und 8"
     ],
     "correct": [
-      "b"
+      "d"
     ],
-    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li><code>f(5)</code>: a=5, b=10 (Standardwert) -> 5+10=15</li>\n<li><code>f(5, 3)</code>: a=5, b=3 -> 5+3=8</li>\n</ul><br><br>Der Parameter b hat einen Standardwert von 10, der verwendet wird, wenn kein zweites Argument übergeben wird.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><ul>\n<li><code>f(5)</code>: a=5, b=10 (Standardwert) -> 5+10=15</li>\n<li><code>f(5, 3)</code>: a=5, b=3 -> 5+3=8</li>\n</ul><br><br>Der Parameter b hat einen Standardwert von 10, der verwendet wird, wenn kein zweites Argument übergeben wird.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3398,10 +3380,10 @@
     "question": "**Frage E.16:** Was ist die Ausgabe?\n\n```python\nn = 0\nfor i in range(1, 5):\n    n = n + i\nprint(n)\n```",
     "questionHtml": "<strong>Frage E.16:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">n = 0<br>\nfor i in range(1, 5):<br>\n    n = n + i<br>\nprint(n)\n</code></pre>",
     "options": [
-      "a) 15",
+      "a) 5",
       "b) 4",
       "c) 10",
-      "d) 5"
+      "d) 15"
     ],
     "correct": [
       "c"
@@ -3417,8 +3399,8 @@
     "questionHtml": "<strong>Frage E.17:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">woerter = [\"Apfel\", \"Birne\", \"Kirsche\"]<br>\nprint(woerter[-2])\n</code></pre>",
     "options": [
       "a) IndexError",
-      "b) Kirsche",
-      "c) Apfel",
+      "b) Apfel",
+      "c) Kirsche",
       "d) Birne"
     ],
     "correct": [
@@ -3434,15 +3416,15 @@
     "question": "**Frage E.18:** Was ist die Ausgabe?\n\n```python\nx = True\ny = False\nprint(x and y, x or y)\n```",
     "questionHtml": "<strong>Frage E.18:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">x = True<br>\ny = False<br>\nprint(x and y, x or y)\n</code></pre>",
     "options": [
-      "a) True True",
+      "a) False False",
       "b) True False",
-      "c) False True",
-      "d) False False"
+      "c) True True",
+      "d) False True"
     ],
     "correct": [
-      "c"
+      "d"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br><ul>\n<li><code>x and y</code>: True AND False = <strong>False</strong> (beide müssen True sein)</li>\n<li><code>x or y</code>: True OR False = <strong>True</strong> (mindestens einer muss True sein)</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><ul>\n<li><code>x and y</code>: True AND False = <strong>False</strong> (beide müssen True sein)</li>\n<li><code>x or y</code>: True OR False = <strong>True</strong> (mindestens einer muss True sein)</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3452,15 +3434,15 @@
     "question": "**Frage E.19:** Was ist die Ausgabe?\n\n```python\ndef aendern(liste):\n    liste.append(4)\n\nzahlen = [1, 2, 3]\naendern(zahlen)\nprint(zahlen)\n```",
     "questionHtml": "<strong>Frage E.19:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def aendern(liste):<br>\n    liste.append(4)<br><br>zahlen = [1, 2, 3]<br>\naendern(zahlen)<br>\nprint(zahlen)\n</code></pre>",
     "options": [
-      "a) [4]",
-      "b) [1, 2, 3, 4]",
-      "c) [1, 2, 3]",
+      "a) [1, 2, 3]",
+      "b) [4]",
+      "c) [1, 2, 3, 4]",
       "d) Fehler"
     ],
     "correct": [
-      "b"
+      "c"
     ],
-    "explanation": "<strong>Richtig: b)</strong><br><br>Listen werden per <strong>Referenz</strong> übergeben. Die Funktion ändert die Original-Liste!<br>\nNach <code>aendern(zahlen)</code> ist zahlen = [1, 2, 3, 4]<br><br><strong>Achtung:</strong> Bei unveränderlichen Typen (int, str) würde das nicht funktionieren!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: c)</strong><br><br>Listen werden per <strong>Referenz</strong> übergeben. Die Funktion ändert die Original-Liste!<br>\nNach <code>aendern(zahlen)</code> ist zahlen = [1, 2, 3, 4]<br><br><strong>Achtung:</strong> Bei unveränderlichen Typen (int, str) würde das nicht funktionieren!<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3470,10 +3452,10 @@
     "question": "**Frage E.20:** Was ist die Ausgabe?\n\n```python\ns = \"Python\"\nprint(s[::-1])\n```",
     "questionHtml": "<strong>Frage E.20:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">s = \"Python\"<br>\nprint(s[::-1])\n</code></pre>",
     "options": [
-      "a) n",
+      "a) P",
       "b) nohtyP",
       "c) Python",
-      "d) P"
+      "d) n"
     ],
     "correct": [
       "b"
@@ -3488,15 +3470,15 @@
     "question": "**Frage E.23:** Was ist die Ausgabe?\n\n```python\ndef lohn(stunden, satz):\n    if stunden > 40:\n        return 40 * satz + (stunden - 40) * satz * 1.5\n    return stunden * satz\n\nprint(lohn(45, 10))\n```",
     "questionHtml": "<strong>Frage E.23:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def lohn(stunden, satz):<br>\n    if stunden &gt; 40:<br>\n        return 40 * satz + (stunden - 40) * satz * 1.5<br>\n    return stunden * satz<br><br>print(lohn(45, 10))\n</code></pre>",
     "options": [
-      "a) 450",
-      "b) 500",
-      "c) 525",
-      "d) 475"
+      "a) 525",
+      "b) 475",
+      "c) 450",
+      "d) 500"
     ],
     "correct": [
-      "d"
+      "b"
     ],
-    "explanation": "<strong>Richtig: d)</strong><br><br><ul>\n<li>Reguläre Stunden: 40 * 10 = 400</li>\n<li>Überstunden: 5 * 10 * 1.5 = 75</li>\n<li>Gesamt: 400 + 75 = 475</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>Reguläre Stunden: 40 * 10 = 400</li>\n<li>Überstunden: 5 * 10 * 1.5 = 75</li>\n<li>Gesamt: 400 + 75 = 475</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3508,13 +3490,13 @@
     "options": [
       "a) anna",
       "b) example.com",
-      "c) @example.com",
-      "d) [\"anna\", \"example.com\"]"
+      "c) [\"anna\", \"example.com\"]",
+      "d) @example.com"
     ],
     "correct": [
       "b"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br><code>split(\"@\")</code> teilt den String an \"@\" in eine Liste: [\"anna\", \"example.com\"]\n<code>[1]</code> gibt das zweite Element zurück: \"example.com\"<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><code>split(\"@\")</code> teilt den String an \"@\" in eine Liste: [\"anna\", \"example.com\"]\n<code>[1]</code> gibt das zweite Element zurück: \"example.com\"<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3524,13 +3506,13 @@
     "question": "**Frage E.25:** Was ist die Ausgabe?\n\n```python\ncounts = {}\nwords = [\"a\", \"b\", \"a\", \"c\", \"a\"]\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint(counts[\"a\"])\n```",
     "questionHtml": "<strong>Frage E.25:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">counts = {}<br>\nwords = [\"a\", \"b\", \"a\", \"c\", \"a\"]<br>\nfor w in words:<br>\n    counts[w] = counts.get(w, 0) + 1<br>\nprint(counts[\"a\"])\n</code></pre>",
     "options": [
-      "a) 3",
-      "b) 2",
-      "c) 1",
+      "a) 1",
+      "b) 3",
+      "c) 2",
       "d) KeyError"
     ],
     "correct": [
-      "a"
+      "b"
     ],
     "explanation": "<strong>Richtig: c)</strong><br><br>Das Zählmuster zählt \"a\" dreimal (Index 0, 2, 4).\n<code>counts = {\"a\": 3, \"b\": 1, \"c\": 1}</code><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
@@ -3543,14 +3525,14 @@
     "questionHtml": "<strong>Frage E.26:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">line = \"From user@mail.de Sat\"<br>\nif line.startswith(\"From \"):<br>\n    words = line.split()<br>\n    print(words[1])\n</code></pre>",
     "options": [
       "a) user",
-      "b) From",
-      "c) user@mail.de",
+      "b) user@mail.de",
+      "c) From",
       "d) Sat"
     ],
     "correct": [
-      "c"
+      "b"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br><code>split()</code> teilt an Leerzeichen: [\"From\", \"user@mail.de\", \"Sat\"]\n<code>words[1]</code> ist das zweite Element: \"user@mail.de\"<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: b)</strong><br><br><code>split()</code> teilt an Leerzeichen: [\"From\", \"user@mail.de\", \"Sat\"]\n<code>words[1]</code> ist das zweite Element: \"user@mail.de\"<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3560,15 +3542,15 @@
     "question": "**Frage E.27:** Was ist die Ausgabe?\n\n```python\ndef teiler(n):\n    result = []\n    for i in range(1, n + 1):\n        if n % i == 0:\n            result.append(i)\n    return result\n\nprint(len(teiler(12)))\n```",
     "questionHtml": "<strong>Frage E.27:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def teiler(n):<br>\n    result = []<br>\n    for i in range(1, n + 1):<br>\n        if n % i == 0:<br>\n            result.append(i)<br>\n    return result<br><br>print(len(teiler(12)))\n</code></pre>",
     "options": [
-      "a) 5",
-      "b) 12",
-      "c) 4",
-      "d) 6"
+      "a) 6",
+      "b) 4",
+      "c) 5",
+      "d) 12"
     ],
     "correct": [
-      "d"
+      "a"
     ],
-    "explanation": "<strong>Richtig: d)</strong><br><br>Teiler von 12 sind: 1, 2, 3, 4, 6, 12<br>\nDas sind 6 Teiler.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: c)</strong><br><br>Teiler von 12 sind: 1, 2, 3, 4, 6, 12<br>\nDas sind 6 Teiler.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3578,13 +3560,13 @@
     "question": "**Frage E.28:** Was ist die Ausgabe?\n\n```python\ndef fib(n):\n    a, b = 1, 1\n    for _ in range(n - 2):\n        a, b = b, a + b\n    return b\n\nprint(fib(7))\n```",
     "questionHtml": "<strong>Frage E.28:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">def fib(n):<br>\n    a, b = 1, 1<br>\n    for _ in range(n - 2):<br>\n        a, b = b, a + b<br>\n    return b<br><br>print(fib(7))\n</code></pre>",
     "options": [
-      "a) 5",
-      "b) 21",
+      "a) 13",
+      "b) 5",
       "c) 8",
-      "d) 13"
+      "d) 21"
     ],
     "correct": [
-      "d"
+      "a"
     ],
     "explanation": "<strong>Richtig: d)</strong><br><br>Fibonacci: 1, 1, 2, 3, 5, 8, 13<br>\nDie 7. Fibonacci-Zahl ist 13.<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
@@ -3596,15 +3578,15 @@
     "question": "**Frage E.29:** Was ist die Ausgabe?\n\n```python\ntext = \"X-Value: 0.875\"\npos = text.find(\":\")\nwert = float(text[pos+1:].strip())\nprint(wert > 0.5)\n```",
     "questionHtml": "<strong>Frage E.29:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">text = \"X-Value: 0.875\"<br>\npos = text.find(\":\")<br>\nwert = float(text[pos+1:].strip())<br>\nprint(wert &gt; 0.5)\n</code></pre>",
     "options": [
-      "a) True",
-      "b) False",
-      "c) 0.875",
-      "d) Fehler"
+      "a) Fehler",
+      "b) 0.875",
+      "c) True",
+      "d) False"
     ],
     "correct": [
-      "a"
+      "c"
     ],
-    "explanation": "<strong>Richtig: a)</strong><br><br><ul>\n<li><code>find(\":\")</code> gibt Position 7 zurück</li>\n<li><code>text[8:]</code> ist \" 0.875\"</li>\n<li><code>strip()</code> entfernt Leerzeichen: \"0.875\"</li>\n<li><code>float(\"0.875\")</code> = 0.875</li>\n<li>0.875 > 0.5 ist True</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: c)</strong><br><br><ul>\n<li><code>find(\":\")</code> gibt Position 7 zurück</li>\n<li><code>text[8:]</code> ist \" 0.875\"</li>\n<li><code>strip()</code> entfernt Leerzeichen: \"0.875\"</li>\n<li><code>float(\"0.875\")</code> = 0.875</li>\n<li>0.875 > 0.5 ist True</li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3614,8 +3596,8 @@
     "question": "**Frage E.30:** Was ist die Ausgabe?\n\n```python\nd = {\"a\": 5, \"b\": 3, \"c\": 8}\nmax_key = None\nmax_val = 0\nfor k, v in d.items():\n    if v > max_val:\n        max_val = v\n        max_key = k\nprint(max_key)\n```",
     "questionHtml": "<strong>Frage E.30:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {\"a\": 5, \"b\": 3, \"c\": 8}<br>\nmax_key = None<br>\nmax_val = 0<br>\nfor k, v in d.items():<br>\n    if v &gt; max_val:<br>\n        max_val = v<br>\n        max_key = k<br>\nprint(max_key)\n</code></pre>",
     "options": [
-      "a) b",
-      "b) a",
+      "a) a",
+      "b) b",
       "c) c",
       "d) 8"
     ],
@@ -3632,15 +3614,15 @@
     "question": "**Frage E.31:** Was ist die Ausgabe?\n\n```python\nbrutto = 15000\nif brutto <= 10000:\n    rate = 0\nelif brutto <= 14000:\n    rate = 0.14\nelse:\n    rate = 0.22\nnetto = brutto - brutto * rate\nprint(netto)\n```",
     "questionHtml": "<strong>Frage E.31:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">brutto = 15000<br>\nif brutto &lt;= 10000:<br>\n    rate = 0<br>\nelif brutto &lt;= 14000:<br>\n    rate = 0.14<br>\nelse:<br>\n    rate = 0.22<br>\nnetto = brutto - brutto * rate<br>\nprint(netto)\n</code></pre>",
     "options": [
-      "a) 12900",
-      "b) 11700",
-      "c) 13200",
-      "d) 15000"
+      "a) 13200",
+      "b) 15000",
+      "c) 12900",
+      "d) 11700"
     ],
     "correct": [
-      "b"
+      "d"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br>15000 > 14000, also rate = 0.22<br>\nnetto = 15000 - 15000 * 0.22 = 15000 - 3300 = 11700<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br>15000 > 14000, also rate = 0.22<br>\nnetto = 15000 - 15000 * 0.22 = 15000 - 3300 = 11700<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3650,15 +3632,15 @@
     "question": "**Frage E.32:** Was ist die Ausgabe?\n\n```python\nsumme = 0\nzahlen = [3, 7, 2, 9, 4]\nfor z in zahlen:\n    if z > 5:\n        summe += z\nprint(summe)\n```",
     "questionHtml": "<strong>Frage E.32:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">summe = 0<br>\nzahlen = [3, 7, 2, 9, 4]<br>\nfor z in zahlen:<br>\n    if z &gt; 5:<br>\n        summe += z<br>\nprint(summe)\n</code></pre>",
     "options": [
-      "a) 25",
-      "b) 16",
-      "c) 7",
-      "d) 9"
+      "a) 9",
+      "b) 7",
+      "c) 25",
+      "d) 16"
     ],
     "correct": [
-      "b"
+      "d"
     ],
-    "explanation": "<strong>Richtig: b)</strong><br><br>Nur Zahlen > 5 werden addiert: 7 + 9 = 16<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br>Nur Zahlen > 5 werden addiert: 7 + 9 = 16<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3811,13 +3793,13 @@
     "question": "**Frage E.44:** Was ist die Ausgabe? (Lohnberechnung mit Überstunden)\n\n```python\nhours = 45\nrate = 10\nif hours <= 40:\n    pay = hours * rate\nelse:\n    overtime = hours - 40\n    pay = (rate * 40) + (1.5 * rate * overtime)\nprint(pay)\n```",
     "questionHtml": "<strong>Frage E.44:</strong> Was ist die Ausgabe? (Lohnberechnung mit Überstunden)<br><br><pre><code class=\"python\">hours = 45<br>\nrate = 10<br>\nif hours &lt;= 40:<br>\n    pay = hours * rate<br>\nelse:<br>\n    overtime = hours - 40<br>\n    pay = (rate * 40) + (1.5 * rate * overtime)<br>\nprint(pay)\n</code></pre>",
     "options": [
-      "a) 500",
-      "b) 475.0",
-      "c) 525.0",
-      "d) 450"
+      "a) 475.0",
+      "b) 450",
+      "c) 500",
+      "d) 525.0"
     ],
     "correct": [
-      "b"
+      "a"
     ],
     "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>hours > 40, also Überstundenberechnung</li>\n<li>overtime = 45 - 40 = 5</li>\n<li>pay = (10 * 40) + (1.5 * 10 * 5) = 400 + 75 = 475.0</li>\n</ul><br><br><strong>Quelle:</strong> exercise3_1.py aus Python for Everybody<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
@@ -3829,15 +3811,15 @@
     "question": "**Frage E.45:** Was ist die Ausgabe?\n\n```python\ncount = 0\ntotal = 0\nzahlen = [4, 5, 7]\nfor z in zahlen:\n    count += 1\n    total += z\nprint(total, count, total/count)\n```",
     "questionHtml": "<strong>Frage E.45:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">count = 0<br>\ntotal = 0<br>\nzahlen = [4, 5, 7]<br>\nfor z in zahlen:<br>\n    count += 1<br>\n    total += z<br>\nprint(total, count, total/count)\n</code></pre>",
     "options": [
-      "a) 16 3 5.0",
-      "b) 16 4 4.0",
+      "a) 16 4 4.0",
+      "b) 16 3 5.333333333333333",
       "c) 12 3 4.0",
-      "d) 16 3 5.333333333333333"
+      "d) 16 3 5.0"
     ],
     "correct": [
-      "d"
+      "b"
     ],
-    "explanation": "<strong>Richtig: d)</strong><br><br><ul>\n<li>total = 4 + 5 + 7 = 16</li>\n<li>count = 3</li>\n<li>average = 16 / 3 = 5.333333333333333</li>\n</ul><br><br><strong>Quelle:</strong> exercise5_1.py (Akkumulatoren-Muster)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>total = 4 + 5 + 7 = 16</li>\n<li>count = 3</li>\n<li>average = 16 / 3 = 5.333333333333333</li>\n</ul><br><br><strong>Quelle:</strong> exercise5_1.py (Akkumulatoren-Muster)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3847,15 +3829,15 @@
     "question": "**Frage E.46:** Was ist die Ausgabe?\n\n```python\nmy_list = []\nwords = ['a', 'b', 'a', 'c', 'b']\nfor word in words:\n    if word not in my_list:\n        my_list.append(word)\nprint(sorted(my_list))\n```",
     "questionHtml": "<strong>Frage E.46:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">my_list = []<br>\nwords = ['a', 'b', 'a', 'c', 'b']<br>\nfor word in words:<br>\n    if word not in my_list:<br>\n        my_list.append(word)<br>\nprint(sorted(my_list))\n</code></pre>",
     "options": [
-      "a) ['a', 'b', 'c']",
-      "b) ['a', 'a', 'b', 'b', 'c']",
-      "c) ['a', 'b', 'a', 'c', 'b']",
-      "d) ['c', 'b', 'a']"
+      "a) ['a', 'a', 'b', 'b', 'c']",
+      "b) ['a', 'b', 'a', 'c', 'b']",
+      "c) ['c', 'b', 'a']",
+      "d) ['a', 'b', 'c']"
     ],
     "correct": [
-      "a"
+      "d"
     ],
-    "explanation": "<strong>Richtig: b)</strong><br><br><ul>\n<li>Duplikate werden mit <code>if word not in my_list</code> gefiltert</li>\n<li>my_list = ['a', 'b', 'c'] (in Reihenfolge des ersten Auftretens)</li>\n<li>sorted() sortiert alphabetisch: ['a', 'b', 'c']</li>\n</ul><br><br><strong>Quelle:</strong> exercise8_4.py (Wörter aus Datei)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br><ul>\n<li>Duplikate werden mit <code>if word not in my_list</code> gefiltert</li>\n<li>my_list = ['a', 'b', 'c'] (in Reihenfolge des ersten Auftretens)</li>\n<li>sorted() sortiert alphabetisch: ['a', 'b', 'c']</li>\n</ul><br><br><strong>Quelle:</strong> exercise8_4.py (Wörter aus Datei)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3865,13 +3847,13 @@
     "question": "**Frage E.47:** Was ist die Ausgabe?\n\n```python\nd = {}\nwords = ['From', 'To', 'From', 'Subject', 'From']\nfor w in words:\n    if w not in d:\n        d[w] = 1\n    else:\n        d[w] += 1\nprint(d['From'])\n```",
     "questionHtml": "<strong>Frage E.47:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">d = {}<br>\nwords = ['From', 'To', 'From', 'Subject', 'From']<br>\nfor w in words:<br>\n    if w not in d:<br>\n        d[w] = 1<br>\n    else:<br>\n        d[w] += 1<br>\nprint(d['From'])\n</code></pre>",
     "options": [
-      "a) 3",
-      "b) KeyError",
-      "c) 2",
-      "d) 1"
+      "a) 2",
+      "b) 1",
+      "c) KeyError",
+      "d) 3"
     ],
     "correct": [
-      "a"
+      "d"
     ],
     "explanation": "<strong>Richtig: d)</strong><br><br>'From' kommt 3x vor (Index 0, 2, 4).<br>\nd = {'From': 3, 'To': 1, 'Subject': 1}<br><br><strong>Quelle:</strong> exercise10_1.py (E-Mail-Zählung)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
@@ -3883,13 +3865,13 @@
     "question": "**Frage E.48:** Was ist die Ausgabe?\n\n```python\nlst = []\nd = {'a': 3, 'b': 1, 'c': 5}\nfor k, v in d.items():\n    lst.append((v, k))\nlst.sort(reverse=True)\nprint(lst[0])\n```",
     "questionHtml": "<strong>Frage E.48:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">lst = []<br>\nd = {'a': 3, 'b': 1, 'c': 5}<br>\nfor k, v in d.items():<br>\n    lst.append((v, k))<br>\nlst.sort(reverse=True)<br>\nprint(lst[0])\n</code></pre>",
     "options": [
-      "a) (5, 'c')",
-      "b) ('c', 5)",
-      "c) ('a', 3)",
-      "d) (1, 'b')"
+      "a) ('c', 5)",
+      "b) (1, 'b')",
+      "c) (5, 'c')",
+      "d) ('a', 3)"
     ],
     "correct": [
-      "a"
+      "c"
     ],
     "explanation": "<strong>Richtig: c)</strong><br><br><ul>\n<li>lst = [(3, 'a'), (1, 'b'), (5, 'c')]</li>\n<li>Nach sort(reverse=True): [(5, 'c'), (3, 'a'), (1, 'b')]</li>\n<li>lst[0] = (5, 'c')</li>\n</ul><br><br><strong>Tupel werden nach erstem Element sortiert!</strong><br><br><strong>Quelle:</strong> exercise10_1.py (Maximum finden)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
@@ -3901,13 +3883,13 @@
     "question": "**Frage E.49:** Was ist die Ausgabe?\n\n```python\nline = \"From user@mail.de Sat Jan 5\"\nwords = line.split()\nif len(words) >= 2 and words[0] == 'From':\n    print(words[1].split('@')[1])\n```",
     "questionHtml": "<strong>Frage E.49:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">line = \"From user@mail.de Sat Jan 5\"<br>\nwords = line.split()<br>\nif len(words) &gt;= 2 and words[0] == 'From':<br>\n    print(words[1].split('@')[1])\n</code></pre>",
     "options": [
-      "a) user@mail.de",
-      "b) Sat",
-      "c) mail.de",
-      "d) user"
+      "a) mail.de",
+      "b) user@mail.de",
+      "c) user",
+      "d) Sat"
     ],
     "correct": [
-      "c"
+      "a"
     ],
     "explanation": "<strong>Richtig: c)</strong><br><br><ul>\n<li>words = ['From', 'user@mail.de', 'Sat', 'Jan', '5']</li>\n<li>words[1] = 'user@mail.de'</li>\n<li>words[1].split('@') = ['user', 'mail.de']</li>\n<li>[1] = 'mail.de'</li>\n</ul><br><br><strong>Quelle:</strong> exercise10_1.py (Domain extrahieren)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
@@ -3919,15 +3901,15 @@
     "question": "**Frage E.50:** Was passiert bei diesem Code?\n\n```python\ntry:\n    hours = float(input('Hours: '))  # Eingabe: \"abc\"\n    print(hours)\nexcept ValueError:\n    print('Error')\n```",
     "questionHtml": "<strong>Frage E.50:</strong> Was passiert bei diesem Code?<br><br><pre><code class=\"python\">try:<br>\n    hours = float(input('Hours: '))  # Eingabe: \"abc\"<br>\n    print(hours)<br>\nexcept ValueError:<br>\n    print('Error')\n</code></pre>",
     "options": [
-      "a) Ausgabe: 0.0",
-      "b) Ausgabe: \"abc\"",
-      "c) Ausgabe: \"Error\"",
+      "a) Ausgabe: \"Error\"",
+      "b) Ausgabe: 0.0",
+      "c) Ausgabe: \"abc\"",
       "d) Programm stürzt ab"
     ],
     "correct": [
-      "c"
+      "a"
     ],
-    "explanation": "<strong>Richtig: c)</strong><br><br>float(\"abc\") wirft einen ValueError.<br>\nDieser wird von except gefangen, also wird \"Error\" ausgegeben.<br><br><strong>Quelle:</strong> exercise3_2.py (try/except für Eingabe)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
+    "explanation": "<strong>Richtig: d)</strong><br><br>float(\"abc\") wirft einen ValueError.<br>\nDieser wird von except gefangen, also wird \"Error\" ausgegeben.<br><br><strong>Quelle:</strong> exercise3_2.py (try/except für Eingabe)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
   },
   {
@@ -3937,13 +3919,13 @@
     "question": "**Frage E.51:** Was ist die Ausgabe?\n\n```python\nfruit = 'banana'\nindex = len(fruit) - 1\nresult = ''\nwhile index >= 0:\n    result += fruit[index]\n    index -= 1\nprint(result)\n```",
     "questionHtml": "<strong>Frage E.51:</strong> Was ist die Ausgabe?<br><br><pre><code class=\"python\">fruit = 'banana'<br>\nindex = len(fruit) - 1<br>\nresult = ''<br>\nwhile index &gt;= 0:<br>\n    result += fruit[index]<br>\n    index -= 1<br>\nprint(result)\n</code></pre>",
     "options": [
-      "a) ananab",
-      "b) banana",
-      "c) a",
-      "d) bananab"
+      "a) a",
+      "b) ananab",
+      "c) bananab",
+      "d) banana"
     ],
     "correct": [
-      "a"
+      "b"
     ],
     "explanation": "<strong>Richtig: b)</strong><br><br>String rückwärts durchlaufen:\n<ul>\n<li>index=5: fruit[5]='a', index=4: fruit[4]='n', ...</li>\n<li>result = 'ananab'</li>\n</ul><br><br><strong>Alternativ:</strong> <code>fruit[::-1]</code> macht dasselbe!<br><br><strong>Quelle:</strong> exercise6_1.py (String rückwärts)<hr><p class=\"reference\"><strong>📚 Quelle:</strong> Gemischte Themen aus Python für alle</p>",
     "source": "programmieruebungen-extra.md"
