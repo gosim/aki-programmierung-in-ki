@@ -12,6 +12,43 @@
 
 # SCHNELLREFERENZ: Alle wichtigen Konzepte
 
+## Wichtige Built-in-Funktionen
+
+| Funktion | Beschreibung | Beispiel | Ergebnis |
+|----------|--------------|----------|----------|
+| `print()` | Ausgabe auf Konsole | `print("Hallo")` | Hallo |
+| `input()` | Eingabe vom Benutzer | `name = input("Name: ")` | (wartet auf Eingabe) |
+| `len()` | Laenge (String, Liste) | `len("abc")` | `3` |
+| `type()` | Datentyp abfragen | `type(42)` | `<class 'int'>` |
+| `int()` | In Ganzzahl umwandeln | `int("5")` | `5` |
+| `str()` | In String umwandeln | `str(5)` | `"5"` |
+| `float()` | In Dezimalzahl | `float("3.14")` | `3.14` |
+| `range()` | Zahlenbereich erzeugen | `range(5)` | `0, 1, 2, 3, 4` |
+| `sum()` | Summe einer Liste | `sum([1, 2, 3])` | `6` |
+| `min()` | Minimum | `min(1, 2, 3)` | `1` |
+| `max()` | Maximum | `max(1, 2, 3)` | `3` |
+| `abs()` | Absolutwert | `abs(-5)` | `5` |
+| `round()` | Runden | `round(3.7)` | `4` |
+| `sorted()` | Sortierte Kopie | `sorted([3,1,2])` | `[1, 2, 3]` |
+| `list()` | In Liste umwandeln | `list("abc")` | `["a","b","c"]` |
+| `dict()` | Leeres Dictionary | `dict()` | `{}` |
+| `bool()` | In Boolean | `bool(0)` | `False` |
+| `enumerate()` | Index + Wert | `enumerate(["a","b"])` | `(0,"a"), (1,"b")` |
+
+**Typische Klausurfallen:**
+```python
+# input() gibt IMMER einen String zurueck!
+alter = input("Alter: ")    # alter ist "25" (String!)
+alter = int(input("Alter: "))  # alter ist 25 (Integer)
+
+# len() funktioniert fuer Strings UND Listen
+len("hallo")      # 5
+len([1, 2, 3])    # 3
+len({"a": 1})     # 1 (Anzahl der Keys)
+```
+
+---
+
 ## dict.get() - SEHR WICHTIG!
 
 ```python
