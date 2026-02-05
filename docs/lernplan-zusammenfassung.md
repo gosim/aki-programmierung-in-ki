@@ -10,6 +10,229 @@
 
 ---
 
+# SCHNELLREFERENZ: Alle wichtigen Konzepte
+
+## dict.get() - SEHR WICHTIG!
+
+```python
+d = {"a": 1, "b": 2}
+
+# PROBLEM: Direkter Zugriff wirft Fehler bei fehlendem Key
+d["c"]              # KeyError! Programm stuerzt ab!
+
+# LOESUNG: get() gibt Standardwert zurueck
+d.get("c")          # None (kein Fehler)
+d.get("c", 0)       # 0 (Standardwert wenn Key fehlt)
+d.get("a", 0)       # 1 (Key existiert, also wird Wert zurueckgegeben)
+```
+
+**Warum wichtig?** Ermoeglicht sicheres Zaehlen ohne vorherige Pruefung!
+
+## Das Zaehlmuster mit dict.get()
+
+```python
+# OHNE get() - umstaendlich:
+count = {}
+for word in words:
+    if word in count:
+        count[word] = count[word] + 1
+    else:
+        count[word] = 1
+
+# MIT get() - elegant:
+count = {}
+for word in words:
+    count[word] = count.get(word, 0) + 1
+```
+
+**So funktioniert es Schritt fuer Schritt:**
+```python
+words = ["a", "b", "a"]
+count = {}
+
+# Durchlauf 1: word = "a"
+count["a"] = count.get("a", 0) + 1  # get("a", 0) = 0, also count["a"] = 1
+
+# Durchlauf 2: word = "b"
+count["b"] = count.get("b", 0) + 1  # get("b", 0) = 0, also count["b"] = 1
+
+# Durchlauf 3: word = "a"
+count["a"] = count.get("a", 0) + 1  # get("a", 0) = 1, also count["a"] = 2
+
+# Ergebnis: {"a": 2, "b": 1}
+```
+
+## String-Methoden - Uebersicht
+
+| Methode | Beschreibung | Beispiel | Ergebnis |
+|---------|--------------|----------|----------|
+| `lower()` | Kleinbuchstaben | `"ABC".lower()` | `"abc"` |
+| `upper()` | Grossbuchstaben | `"abc".upper()` | `"ABC"` |
+| `strip()` | Leerzeichen entfernen | `"  hi  ".strip()` | `"hi"` |
+| `split()` | In Liste aufteilen | `"a b c".split()` | `["a","b","c"]` |
+| `split(",")` | An Zeichen teilen | `"a,b,c".split(",")` | `["a","b","c"]` |
+| `replace(a,b)` | Ersetzen | `"hallo".replace("l","x")` | `"haxxo"` |
+| `find(x)` | Position finden | `"hallo".find("l")` | `2` |
+| `startswith(x)` | Anfang pruefen | `"hallo".startswith("ha")` | `True` |
+| `len(s)` | Laenge | `len("hallo")` | `5` |
+
+**WICHTIG:** Strings sind unveraenderlich! Ergebnis speichern!
+```python
+text = "HALLO"
+text.lower()        # Gibt "hallo" zurueck, text bleibt "HALLO"
+text = text.lower() # Jetzt ist text = "hallo"
+```
+
+## Slicing - Strings und Listen
+
+```python
+s = "Python"    # Index: 0=P, 1=y, 2=t, 3=h, 4=o, 5=n
+                # Negativ: -6=P, -5=y, -4=t, -3=h, -2=o, -1=n
+
+s[0]      # "P"     - erstes Zeichen
+s[-1]     # "n"     - letztes Zeichen
+s[1:4]    # "yth"   - Index 1 bis 3 (4 ist EXKLUSIV!)
+s[:3]     # "Pyt"   - von Anfang bis Index 2
+s[2:]     # "thon"  - von Index 2 bis Ende
+s[::2]    # "Pto"   - jedes zweite Zeichen
+s[::-1]   # "nohtyP" - UMKEHREN!
+```
+
+## range() - ACHTUNG: Endwert ist exklusiv!
+
+```python
+range(5)        # 0, 1, 2, 3, 4      (NICHT 5!)
+range(1, 5)     # 1, 2, 3, 4         (NICHT 5!)
+range(0, 10, 2) # 0, 2, 4, 6, 8      (Schrittweite 2)
+range(5, 0, -1) # 5, 4, 3, 2, 1      (rueckwaerts)
+```
+
+## for-Schleife - KLAUSURFALLE!
+
+```python
+i = 100
+for i in range(3):  # i wird ueberschrieben mit 0, 1, 2
+    pass
+print(i)  # Ausgabe: 2 (NICHT 100!)
+```
+
+**Nach der Schleife hat i den LETZTEN Wert aus range()!**
+
+## Modulo % - Teilbarkeit pruefen
+
+```python
+x % 2 == 0   # x ist gerade
+x % 2 == 1   # x ist ungerade
+x % 3 == 0   # x ist durch 3 teilbar
+x % 5 == 0   # x ist durch 5 teilbar
+x % 15 == 0  # x ist durch 15 teilbar (3 UND 5)
+```
+
+**FizzBuzz-Logik:**
+```python
+for x in range(1, 101):
+    if x % 15 == 0:      # ZUERST 15 pruefen!
+        print("FizzBuzz")
+    elif x % 3 == 0:
+        print("Fizz")
+    elif x % 5 == 0:
+        print("Buzz")
+    else:
+        print(x)
+```
+
+## try-except - Fehler abfangen
+
+```python
+try:
+    zahl = int(input("Zahl: "))  # Kann ValueError werfen
+    ergebnis = 10 / zahl         # Kann ZeroDivisionError werfen
+except ValueError:
+    print("Keine gueltige Zahl!")
+except ZeroDivisionError:
+    print("Division durch Null!")
+except:
+    print("Unbekannter Fehler!")
+```
+
+## Listen-Methoden
+
+```python
+lst = [1, 2, 3]
+lst.append(4)       # [1, 2, 3, 4] - am Ende hinzufuegen
+lst.pop()           # Gibt 4 zurueck, entfernt es
+lst.pop(0)          # Gibt 1 zurueck, entfernt erstes Element
+lst.sort()          # Aufsteigend sortieren
+lst.sort(reverse=True)  # Absteigend sortieren
+lst.reverse()       # Reihenfolge umkehren
+
+# Aggregatfunktionen
+len(lst)   # Anzahl Elemente
+sum(lst)   # Summe
+min(lst)   # Minimum
+max(lst)   # Maximum
+```
+
+## Dictionary-Methoden
+
+```python
+d = {"a": 1, "b": 2}
+
+d["a"]              # 1 (KeyError wenn nicht vorhanden!)
+d.get("a")          # 1
+d.get("c")          # None
+d.get("c", 0)       # 0 (Standardwert)
+
+d.keys()            # dict_keys(["a", "b"])
+d.values()          # dict_values([1, 2])
+d.items()           # dict_items([("a", 1), ("b", 2)])
+
+"a" in d            # True (prueft NUR Schluessel!)
+len(d)              # 2
+```
+
+## Dateien lesen
+
+```python
+# Empfohlen: with-Statement (schliesst automatisch)
+with open("datei.txt", "r") as f:
+    for line in f:
+        line = line.strip()  # Zeilenumbruch entfernen!
+        words = line.split() # In Woerter aufteilen
+        print(words)
+```
+
+## Tupel - unveraenderliche Listen
+
+```python
+t = (1, 2, 3)       # Tupel mit Klammern
+t = 1, 2, 3         # Auch ohne Klammern
+t = (5,)            # Einelementig: Komma wichtig!
+
+# Tuple Unpacking
+x, y = (10, 20)     # x=10, y=20
+a, b = b, a         # Variablen tauschen!
+
+# In for-Schleifen
+for key, value in d.items():
+    print(key, value)
+```
+
+## Funktionen definieren
+
+```python
+def funktionsname(parameter1, parameter2="default"):
+    """Docstring: Beschreibung"""
+    # Code hier
+    return ergebnis
+
+# Aufruf
+ergebnis = funktionsname(wert1, wert2)
+ergebnis = funktionsname(wert1)  # parameter2 = "default"
+```
+
+---
+
 ## Prioritaet A: MUSS sitzen!
 
 ### 1. dict.get() zum Zaehlen (30 Punkte!)
