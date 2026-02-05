@@ -141,6 +141,22 @@ for x in range(1, 101):
         print(x)
 ```
 
+## Verkettete Vergleiche (KLAUSURRELEVANT!)
+
+```python
+# Statt:
+if x >= 0 and x <= 100:
+    print("Gueltig")
+
+# Eleganter:
+if 0 <= x <= 100:
+    print("Gueltig")
+
+# Haeufig bei Notenvergabe:
+if 0.0 <= punkte <= 1.0:
+    # Punkte sind gueltig
+```
+
 ## try-except - Fehler abfangen
 
 ```python
@@ -155,6 +171,15 @@ except:
     print("Unbekannter Fehler!")
 ```
 
+**Multiple Exceptions zusammenfassen:**
+```python
+try:
+    zahl = float(input("Zahl: "))
+except (ValueError, TypeError):  # Mehrere Exceptions!
+    print("Fehler bei Eingabe")
+    quit()  # Programm beenden
+```
+
 ## Listen-Methoden
 
 ```python
@@ -165,6 +190,8 @@ lst.append(5)       # [1, 2, 3, 2, 4, 5] - am Ende hinzufuegen
 lst.pop()           # Gibt 5 zurueck, entfernt letztes Element
 lst.pop(0)          # Gibt 1 zurueck, entfernt erstes Element
 lst.remove(2)       # Entfernt ERSTES Vorkommen von 2
+del lst[0]          # Loescht Element an Index 0
+del lst[-1]         # Loescht letztes Element
 
 # Suchen - WICHTIG!
 lst.index(3)        # 2 - Index von 3 (ValueError wenn nicht gefunden!)
@@ -214,6 +241,31 @@ d.items()           # dict_items([("a", 1), ("b", 2)])
 
 "a" in d            # True (prueft NUR Schluessel!)
 len(d)              # 2
+
+# items() in Liste konvertieren (fuer Sortierung!)
+liste = list(d.items())  # [("a", 1), ("b", 2)]
+```
+
+## Tupel-Liste fuer Sortierung (KLAUSURRELEVANT!)
+
+```python
+# Maximum aus Dictionary finden - WICHTIGES MUSTER!
+d = {"anna": 3, "ben": 5, "clara": 2}
+
+# 1. Tupel-Liste erstellen (Wert, Schluessel)
+lst = []
+for key, val in d.items():
+    lst.append((val, key))  # (Wert, Schluessel)!
+# lst = [(3, "anna"), (5, "ben"), (2, "clara")]
+
+# 2. Sortieren (sortiert nach erstem Element = Wert)
+lst.sort(reverse=True)
+# lst = [(5, "ben"), (3, "anna"), (2, "clara")]
+
+# 3. Maximum ist erstes Element
+print(lst[0])       # (5, "ben")
+print(lst[0][1])    # "ben" (Name)
+print(lst[0][0])    # 5 (Anzahl)
 ```
 
 ## Dateien lesen
