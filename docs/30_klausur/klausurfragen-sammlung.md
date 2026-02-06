@@ -866,6 +866,91 @@ print(student)  # Max Mustermann: Noten=[85, 92], Durchschnitt=88.50
 
 ---
 
+# Aufgabe 16: *args und **kwargs
+
+## Aufgabe 16a: Was bedeutet *args?
+
+**Was ist die Ausgabe?**
+
+```python
+def test(*args):
+    print(type(args))
+    print(args)
+
+test(1, 2, 3)
+```
+
+**Loesung:**
+
+```
+<class 'tuple'>
+(1, 2, 3)
+```
+
+**Erklaerung:**
+- `*args` sammelt alle Positions-Argumente in einem **Tupel**
+- Der Name `args` ist Konvention, wichtig ist der `*`
+
+---
+
+## Aufgabe 16b: Was bedeutet **kwargs?
+
+**Was ist die Ausgabe?**
+
+```python
+def test(**kwargs):
+    print(type(kwargs))
+    print(kwargs)
+
+test(name="Anna", alter=25)
+```
+
+**Loesung:**
+
+```
+<class 'dict'>
+{'name': 'Anna', 'alter': 25}
+```
+
+**Erklaerung:**
+- `**kwargs` sammelt alle Keyword-Argumente in einem **Dictionary**
+- Der Name `kwargs` ist Konvention, wichtig ist der `**`
+
+---
+
+## Aufgabe 16c: Kombination
+
+**Was ist die Ausgabe?**
+
+```python
+def info(a, b, *args, **kwargs):
+    print(f"a={a}, b={b}")
+    print(f"args={args}")
+    print(f"kwargs={kwargs}")
+
+info(1, 2, 3, 4, x=10, y=20)
+```
+
+- [ ] a) Fehler
+- [ ] b) a=1, b=2, args=(3, 4), kwargs={'x': 10, 'y': 20}
+- [ ] c) a=1, b=2, args=(3, 4, 10, 20), kwargs={}
+- [ ] d) a=1, b=2, args=(), kwargs={'3': 4, 'x': 10, 'y': 20}
+
+<details>
+<summary>Loesung anzeigen</summary>
+
+**Richtig: b)**
+
+- `a=1, b=2` - die ersten zwei Argumente
+- `args=(3, 4)` - restliche Positions-Argumente als Tupel
+- `kwargs={'x': 10, 'y': 20}` - Keyword-Argumente als Dictionary
+
+**Reihenfolge der Parameter:** normale → mit Standardwert → *args → **kwargs
+
+</details>
+
+---
+
 # Zusammenfassung: Klausurtipps
 
 ## Haeufige Fallen:

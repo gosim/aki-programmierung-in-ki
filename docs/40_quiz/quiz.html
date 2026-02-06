@@ -4463,6 +4463,28 @@
     "correct": [],
     "explanation": "<strong>Lösung:</strong><br><br><pre><code class=\"python\">class Student:<br>\n    def __init__(self, name, noten=None):<br>\n        self.name = name<br>\n        if noten is None:<br>\n            self.noten = []<br>\n        else:<br>\n            self.noten = noten<br><br>    def add_grade(self, grade):<br>\n        self.noten.append(grade)<br><br>    def average_grade(self):<br>\n        if len(self.noten) == 0:<br>\n            return 0<br>\n        return sum(self.noten) / len(self.noten)<br><br>    def __str__(self):<br>\n        avg = self.average_grade()<br>\n        return f\"{self.name}: Noten={self.noten}, Durchschnitt={avg:.2f}\"<br><br># Beispielcode<br>\nstudent = Student(\"Max Mustermann\")<br>\nstudent.add_grade(85)<br>\nstudent.add_grade(92)<br>\nprint(student)  # Max Mustermann: Noten=[85, 92], Durchschnitt=88.50\n</code></pre><br><br><strong>Wichtige Punkte:</strong><br><br><ol>\n<li><strong>Mutable Default Argument Falle:</strong><ul>\n<li>FALSCH: <code>def __init__(self, name, noten=[])</code></li>\n<li>Die leere Liste wird GETEILT zwischen allen Instanzen!</li>\n<li>RICHTIG: <code>noten=None</code> und dann im Body prüfen</li>\n</ul></li>\n<li><strong><code>self</code> Parameter:</strong><ul>\n<li>Jede Methode braucht <code>self</code> als ersten Parameter</li>\n<li><code>self.attribut</code> greift auf Instanzattribute zu</li>\n</ul></li>\n<li><strong><code>__str__</code> Methode:</strong><ul>\n<li>Wird von <code>print()</code> aufgerufen</li>\n<li>Muss einen String zurückgeben</li>\n</ul></li>\n</ol><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 7 (Dateien: open, read, write) & Kapitel 8 (Listen) | <strong>Folien:</strong> vl-07.pdf</p>",
     "source": "klausurfragen-sammlung.md"
+  },
+  {
+    "id": "klausur_22",
+    "type": "freetext",
+    "chapter": "7-8",
+    "question": "# Aufgabe 16: *args und **kwargs\n\n## Aufgabe 16a: Was bedeutet *args?\n\n**Was ist die Ausgabe?**\n\n```python\ndef test(*args):\n    print(type(args))\n    print(args)\n\ntest(1, 2, 3)\n```",
+    "questionHtml": "# Aufgabe 16: *args und **kwargs<br><br><h2>Aufgabe 16a: Was bedeutet <em>args?</h2><br><br><strong>Was ist die Ausgabe?</strong><br><br><pre><code class=\"python\">def test(</em>args):<br>\n    print(type(args))<br>\n    print(args)<br><br>test(1, 2, 3)\n</code></pre>",
+    "options": [],
+    "correct": [],
+    "explanation": "<strong>Lösung:</strong><br><br><pre><code class=\"\">&lt;class 'tuple'&gt;<br>\n(1, 2, 3)\n</code></pre><br><br><strong>Erklärung:</strong>\n<ul>\n<li><code>*args</code> sammelt alle Positions-Argumente in einem <strong>Tupel</strong></li>\n<li>Der Name <code>args</code> ist Konvention, wichtig ist der <code>*</code></li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 7 (Dateien: open, read, write) & Kapitel 8 (Listen) | <strong>Folien:</strong> vl-07.pdf</p>",
+    "source": "klausurfragen-sammlung.md"
+  },
+  {
+    "id": "klausur_23",
+    "type": "freetext",
+    "chapter": "7-8",
+    "question": "## Aufgabe 16b: Was bedeutet **kwargs?\n\n**Was ist die Ausgabe?**\n\n```python\ndef test(**kwargs):\n    print(type(kwargs))\n    print(kwargs)\n\ntest(name=\"Anna\", alter=25)\n```",
+    "questionHtml": "<h2>Aufgabe 16b: Was bedeutet **kwargs?</h2><br><br><strong>Was ist die Ausgabe?</strong><br><br><pre><code class=\"python\">def test(**kwargs):<br>\n    print(type(kwargs))<br>\n    print(kwargs)<br><br>test(name=\"Anna\", alter=25)\n</code></pre>",
+    "options": [],
+    "correct": [],
+    "explanation": "<strong>Lösung:</strong><br><br><pre><code class=\"\">&lt;class 'dict'&gt;<br>\n{'name': 'Anna', 'alter': 25}\n</code></pre><br><br><strong>Erklärung:</strong>\n<ul>\n<li><code>**kwargs</code> sammelt alle Keyword-Argumente in einem <strong>Dictionary</strong></li>\n<li>Der Name <code>kwargs</code> ist Konvention, wichtig ist der <code>**</code></li>\n</ul><hr><p class=\"reference\"><strong>📚 Quelle:</strong> Python für alle, Kapitel 7 (Dateien: open, read, write) & Kapitel 8 (Listen) | <strong>Folien:</strong> vl-07.pdf</p>",
+    "source": "klausurfragen-sammlung.md"
   }
 ];
 

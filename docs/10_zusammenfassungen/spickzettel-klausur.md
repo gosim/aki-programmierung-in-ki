@@ -90,6 +90,24 @@ def funktion(param1, param2=10):  # param2 hat Standardwert
 # Aufruf
 x = funktion(5)          # x = 15
 x = funktion(5, 3)       # x = 8
+
+# *args - beliebig vielePositions-Argumente (als Tupel)
+def summe(*zahlen):
+    return sum(zahlen)
+summe(1, 2, 3)           # 6
+summe(1, 2, 3, 4, 5)     # 15
+
+# **kwargs - beliebig viele Keyword-Argumente (als Dict)
+def info(**daten):
+    for key, val in daten.items():
+        print(f"{key}: {val}")
+info(name="Anna", alter=25)  # name: Anna, alter: 25
+
+# Kombination
+def alles(a, b, *args, **kwargs):
+    print(a, b)          # Pflicht-Parameter
+    print(args)          # Tupel mit Rest-Positionen
+    print(kwargs)        # Dict mit Keyword-Args
 ```
 
 ## 6. Strings
@@ -296,12 +314,17 @@ for x in range(1, 101):
     else:
         print(x)
 
-# Umlaute ersetzen
+# Umlaute ersetzen - Variante 1
 text = text.lower()
 text = text.replace("ä", "ae")
 text = text.replace("ö", "oe")
 text = text.replace("ü", "ue")
 text = text.replace("ß", "ss")
+
+# Umlaute ersetzen - Variante 2 (mit Dict)
+ersetzungen = {"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss"}
+for alt, neu in ersetzungen.items():
+    text = text.replace(alt, neu)
 ```
 
 ---

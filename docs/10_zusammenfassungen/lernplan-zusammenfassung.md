@@ -590,6 +590,74 @@ print(minimum)  # 1
 print(maximum)  # 5
 ```
 
+## *args und **kwargs - Variable Anzahl von Argumenten
+
+### *args - Beliebig viele Positions-Argumente
+
+Der `*` vor einem Parameter sammelt alle zusaetzlichen Positions-Argumente in einem **Tupel**.
+
+```python
+def summe(*zahlen):
+    """Akzeptiert beliebig viele Zahlen."""
+    print(type(zahlen))  # <class 'tuple'>
+    return sum(zahlen)
+
+print(summe(1, 2))           # 3
+print(summe(1, 2, 3, 4, 5))  # 15
+print(summe())               # 0 (leeres Tupel)
+```
+
+### **kwargs - Beliebig viele Keyword-Argumente
+
+Der `**` vor einem Parameter sammelt alle zusaetzlichen Keyword-Argumente in einem **Dictionary**.
+
+```python
+def person_info(**daten):
+    """Akzeptiert beliebig viele benannte Argumente."""
+    print(type(daten))  # <class 'dict'>
+    for key, value in daten.items():
+        print(f"{key}: {value}")
+
+person_info(name="Anna", alter=25, stadt="Berlin")
+# Ausgabe:
+# name: Anna
+# alter: 25
+# stadt: Berlin
+```
+
+### Kombination aller Parameter-Typen
+
+**Reihenfolge ist wichtig:**
+1. Normale Parameter
+2. Parameter mit Standardwert
+3. `*args`
+4. `**kwargs`
+
+```python
+def beispiel(a, b, c=10, *args, **kwargs):
+    print(f"a={a}, b={b}, c={c}")
+    print(f"args={args}")
+    print(f"kwargs={kwargs}")
+
+beispiel(1, 2, 3, 4, 5, name="Test", wert=42)
+# a=1, b=2, c=3
+# args=(4, 5)
+# kwargs={'name': 'Test', 'wert': 42}
+```
+
+### Entpacken mit * und **
+
+```python
+# Liste/Tupel entpacken mit *
+zahlen = [1, 2, 3]
+print(*zahlen)        # 1 2 3 (als separate Argumente)
+print(sum(zahlen))    # Funktioniert auch ohne *
+
+# Dictionary entpacken mit **
+daten = {"name": "Max", "alter": 30}
+person_info(**daten)  # Wie: person_info(name="Max", alter=30)
+```
+
 ---
 
 # Kapitel 5: Iteration (Schleifen)
@@ -724,18 +792,47 @@ len("Hallo")  # 5
 
 ## Umlaute ersetzen (KLAUSURAUFGABE!)
 
+**Loesung 1: Mit mehreren replace()-Aufrufen**
+
 ```python
 def text_bereinigen(text):
     text = text.lower()
-    text = text.replace("ae", "ae")
-    text = text.replace("oe", "oe")
-    text = text.replace("ue", "ue")
-    text = text.replace("ss", "ss")
+    text = text.replace("ä", "ae")
+    text = text.replace("ö", "oe")
+    text = text.replace("ü", "ue")
+    text = text.replace("ß", "ss")
     return text
 
 # Beispiel
-print(text_bereinigen("Groesse"))  # 'groesse'
+print(text_bereinigen("Größe"))  # 'groesse'
 ```
+
+**Loesung 2: Mit Dictionary (eleganter!)**
+
+```python
+def text_bereinigen(text):
+    text = text.lower()
+
+    ersetzungen = {
+        "ä": "ae",
+        "ö": "oe",
+        "ü": "ue",
+        "ß": "ss"
+    }
+
+    for alt, neu in ersetzungen.items():
+        text = text.replace(alt, neu)
+
+    return text
+
+# Beispiel
+print(text_bereinigen("Größe und Übung"))  # 'groesse und uebung'
+```
+
+**Vorteile der Dictionary-Loesung:**
+- Leichter erweiterbar (neue Ersetzungen einfach hinzufuegen)
+- Weniger Code-Wiederholung
+- Uebersichtlicher bei vielen Ersetzungen
 
 ---
 
