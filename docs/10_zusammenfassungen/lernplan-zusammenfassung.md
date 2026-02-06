@@ -1043,6 +1043,32 @@ print(s1)           # "Student: Anna (12345)"
 - `self` ist die Referenz auf das aktuelle Objekt
 - Alle Methoden brauchen `self` als ersten Parameter
 
+## Was ist der Unterschied zwischen Klasse und Objekt? (PROBEKLAUSUR!)
+
+**Klasse:**
+- Eine Klasse ist ein **Bauplan** oder eine **Vorlage** fuer Objekte
+- Definiert Attribute (Daten) und Methoden (Funktionen)
+- Beispiel: `class Student:` definiert WAS ein Student hat/kann
+
+**Objekt:**
+- Ein Objekt ist eine **konkrete Instanz** einer Klasse
+- Hat eigene Werte fuer die Attribute
+- Beispiel: `s1 = Student("Anna", 12345)` ist EIN bestimmter Student
+
+```python
+# Klasse = Bauplan
+class Auto:
+    def __init__(self, marke, farbe):
+        self.marke = marke
+        self.farbe = farbe
+
+# Objekte = konkrete Instanzen
+auto1 = Auto("VW", "rot")      # Ein Objekt
+auto2 = Auto("BMW", "blau")    # Ein anderes Objekt
+```
+
+**Merkregel:** Klasse ist wie ein Keksausstecher, Objekte sind die Kekse.
+
 ## Beispiel: Student mit Noten
 
 ```python
@@ -1074,7 +1100,59 @@ print(s.durchschnitt())  # 1.6666...
 
 # Zusaetzliche Themen
 
-## NumPy Grundlagen
+## Module importieren (PROBEKLAUSUR!)
+
+```python
+# 1. Ganzes Modul importieren
+import math
+print(math.sqrt(16))     # 4.0
+print(math.pi)           # 3.141592653589793
+
+# 2. Modul mit Alias importieren
+import math as m
+print(m.sqrt(16))        # 4.0
+
+# 3. Nur bestimmte Funktion importieren
+from math import sqrt
+print(sqrt(16))          # 4.0 - ohne Prefix!
+
+# 4. Mehrere Funktionen importieren
+from math import sqrt, pi, sin
+
+# Haeufige Aliase (Konvention):
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+## Set (Menge) - PROBEKLAUSUR!
+
+**Unterschied Dictionary vs Set:**
+- **Dictionary:** Speichert Key-Value-Paare `{"a": 1, "b": 2}`
+- **Set:** Speichert nur Werte, KEINE Duplikate `{1, 2, 3}`
+
+```python
+# Set erstellen
+s = {1, 2, 3}
+s = {1, 2, 2, 3, 3, 3}    # Ergebnis: {1, 2, 3} - Duplikate entfernt!
+
+# Liste zu Set (Duplikate entfernen)
+liste = [1, 2, 2, 3, 3, 3]
+eindeutig = set(liste)    # {1, 2, 3}
+
+# Element pruefen
+print(3 in s)             # True
+print(5 in s)             # False
+
+# Set-Operationen
+a = {1, 2, 3}
+b = {2, 3, 4}
+print(a | b)              # {1, 2, 3, 4} - Vereinigung
+print(a & b)              # {2, 3} - Schnittmenge
+print(a - b)              # {1} - Differenz
+```
+
+## NumPy Grundlagen (PROBEKLAUSUR!)
 
 ```python
 import numpy as np
@@ -1084,10 +1162,17 @@ a = np.array([[1, 2, 3], [4, 5, 6]])
 print(a.shape)  # (2, 3)
 
 # Spezielle Arrays
-nullen = np.zeros((3, 3))
-einsen = np.ones((2, 4))
+np.zeros((3, 3))   # 3x3-Matrix nur mit 0en
+np.ones((3, 3))    # 3x3-Matrix nur mit 1en
+np.eye(3)          # 3x3-Einheitsmatrix
 
-# Elementweise Operationen
+# PROBEKLAUSUR-AUFGABE: Elementweise Addition!
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = np.ones((3, 3))   # [[1,1,1], [1,1,1], [1,1,1]]
+c = a + b             # Elementweise Addition!
+# c = [[2,3,4], [5,6,7], [8,9,10]]
+
+# Weitere elementweise Operationen
 b = a + 1   # Addiert 1 zu jedem Element
 c = a * 2   # Multipliziert jedes Element mit 2
 ```

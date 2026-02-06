@@ -422,6 +422,450 @@ Wie viele Dateien sollen kopiert werden? 15
 
 ---
 
+# Aufgabe 7: Module importieren (PROBEKLAUSUR!)
+
+## Aufgabe 7a: Spezifische Funktion importieren
+
+**Wie koennen Sie nur die Funktion `sqrt` aus dem Modul `math` importieren?**
+
+**Loesung:**
+
+```python
+from math import sqrt
+
+# Jetzt kann sqrt direkt verwendet werden:
+print(sqrt(16))  # 4.0
+```
+
+**Erklaerung:**
+- `from modul import funktion` importiert nur die angegebene Funktion
+- Die Funktion kann dann OHNE Modulprefix verwendet werden
+- Alternative: `from math import sqrt, pi, sin` fuer mehrere Funktionen
+
+---
+
+## Aufgabe 7b: Modul mit Alias importieren
+
+**Wie koennen Sie das Modul `math` unter dem Namen `m` importieren?**
+
+**Loesung:**
+
+```python
+import math as m
+
+# Jetzt wird m statt math verwendet:
+print(m.sqrt(16))  # 4.0
+print(m.pi)        # 3.141592653589793
+```
+
+**Erklaerung:**
+- `import modul as alias` gibt dem Modul einen Kurznamen
+- Nuetzlich fuer lange Modulnamen: `import numpy as np`
+- Spart Tipparbeit und ist Konvention (np, pd, plt)
+
+---
+
+## Alle Import-Varianten im Ueberblick
+
+```python
+# 1. Ganzes Modul importieren
+import math
+print(math.sqrt(16))  # 4.0
+
+# 2. Modul mit Alias
+import math as m
+print(m.sqrt(16))     # 4.0
+
+# 3. Spezifische Funktion importieren
+from math import sqrt
+print(sqrt(16))       # 4.0
+
+# 4. Mehrere Funktionen importieren
+from math import sqrt, pi, sin
+print(pi)             # 3.141592653589793
+
+# 5. Alles importieren (NICHT EMPFOHLEN!)
+from math import *    # Kann Namenskonflikte verursachen
+```
+
+---
+
+# Aufgabe 8: NumPy Grundlagen (PROBEKLAUSUR!)
+
+**Was tut folgender NumPy-Code? Geben Sie die Werte der Matrix c an.**
+
+```python
+import numpy as np
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = np.ones((3, 3))
+c = a + b
+```
+
+**Loesung:**
+
+**Wert von c:**
+```python
+c = [[2, 3, 4],
+     [5, 6, 7],
+     [8, 9, 10]]
+```
+
+**Erklaerung:**
+
+1. `np.array([[1,2,3], [4,5,6], [7,8,9]])` erstellt eine 3x3-Matrix:
+   ```
+   a = [[1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]]
+   ```
+
+2. `np.ones((3, 3))` erstellt eine 3x3-Matrix nur mit Einsen:
+   ```
+   b = [[1, 1, 1],
+        [1, 1, 1],
+        [1, 1, 1]]
+   ```
+
+3. `c = a + b` addiert die Matrizen **elementweise**:
+   ```
+   c[0,0] = 1 + 1 = 2
+   c[0,1] = 2 + 1 = 3
+   c[0,2] = 3 + 1 = 4
+   ... usw.
+   ```
+
+**Wichtige NumPy-Funktionen:**
+
+```python
+import numpy as np
+
+np.array([1, 2, 3])      # 1D-Array
+np.array([[1,2], [3,4]]) # 2D-Array (Matrix)
+np.zeros((2, 3))         # 2x3-Matrix mit Nullen
+np.ones((3, 3))          # 3x3-Matrix mit Einsen
+np.eye(3)                # 3x3-Einheitsmatrix
+np.arange(0, 10, 2)      # [0, 2, 4, 6, 8]
+
+# Elementweise Operationen
+a + b   # Addition
+a - b   # Subtraktion
+a * b   # Multiplikation (elementweise!)
+a @ b   # Matrixmultiplikation
+```
+
+---
+
+# Aufgabe 9: random Modul (PROBEKLAUSUR!)
+
+**Schreiben Sie eine Funktion `wuerfel5()`, die eine Liste mit fuenf Zufallszahlen von 1 bis 6 zurueckgibt.**
+
+**Loesung:**
+
+```python
+from random import randint
+
+def wuerfel5():
+    ergebnis = []
+    for _ in range(5):
+        ergebnis.append(randint(1, 6))
+    return ergebnis
+
+# Test:
+print(wuerfel5())  # z.B. [3, 1, 5, 2, 6]
+```
+
+**Alternative mit List Comprehension:**
+
+```python
+from random import randint
+
+def wuerfel5():
+    return [randint(1, 6) for _ in range(5)]
+```
+
+**Wichtige random-Funktionen:**
+
+```python
+from random import randint, random, choice, shuffle
+
+randint(1, 6)        # Zufallszahl 1 bis 6 (inklusive!)
+random()             # Zufallszahl 0.0 bis 1.0
+choice([1,2,3])      # Zufaelliges Element aus Liste
+shuffle(liste)       # Liste mischen (in-place!)
+```
+
+---
+
+# Aufgabe 10: Dreierpasch (PROBEKLAUSUR!)
+
+**Schreiben Sie eine Funktion `dreierpasch(wurf)`, die True zurueckgibt, wenn die Liste mindestens drei gleiche Augenzahlen enthaelt.**
+
+**Loesung:**
+
+```python
+def dreierpasch(wurf):
+    # Zaehle jede Augenzahl
+    zaehler = {}
+    for zahl in wurf:
+        zaehler[zahl] = zaehler.get(zahl, 0) + 1
+
+    # Pruefe ob mindestens eine Zahl 3x oder oefter vorkommt
+    for anzahl in zaehler.values():
+        if anzahl >= 3:
+            return True
+    return False
+
+# Test:
+print(dreierpasch([3, 1, 2, 3, 3]))  # True (dreimal 3)
+print(dreierpasch([1, 2, 3, 4, 5]))  # False
+print(dreierpasch([6, 6, 6, 6, 1]))  # True (viermal 6)
+```
+
+**Alternative mit max():**
+
+```python
+def dreierpasch(wurf):
+    zaehler = {}
+    for zahl in wurf:
+        zaehler[zahl] = zaehler.get(zahl, 0) + 1
+    return max(zaehler.values()) >= 3
+```
+
+---
+
+# Aufgabe 11: Dictionary vs Menge (PROBEKLAUSUR!)
+
+**Was ist der Unterschied zwischen einem Dictionary und einer Menge (Set) in Python?**
+
+**Loesung:**
+
+| Eigenschaft | Dictionary | Menge (Set) |
+|-------------|------------|-------------|
+| Syntax | `{"a": 1, "b": 2}` | `{1, 2, 3}` |
+| Speichert | Key-Value-Paare | Nur Werte |
+| Zugriff | `d["key"]` | `x in s` |
+| Duplikate | Keys eindeutig | Keine Duplikate |
+| Reihenfolge | Erhalten (ab 3.7) | Nicht garantiert |
+
+**Beispiele:**
+
+```python
+# Dictionary: Key-Value-Paare
+person = {"name": "Anna", "alter": 25}
+print(person["name"])  # "Anna"
+
+# Menge (Set): Nur einzigartige Werte
+zahlen = {1, 2, 2, 3, 3, 3}
+print(zahlen)  # {1, 2, 3} - Duplikate entfernt!
+
+# Set aus Liste erstellen (Duplikate entfernen)
+liste = [1, 2, 2, 3, 3, 3]
+eindeutig = set(liste)  # {1, 2, 3}
+```
+
+**Wann was verwenden?**
+- **Dictionary:** Wenn Werte zu Schluesseln gehoeren (z.B. Name → Alter)
+- **Set:** Wenn nur eindeutige Werte wichtig sind (z.B. alle verschiedenen Woerter)
+
+---
+
+# Aufgabe 12: Listen-Operationen (PROBEKLAUSUR!)
+
+## Aufgabe 12a: Liste erweitern mit +=
+
+**Was ist der Wert von `a` nach folgender Code-Zeile?**
+
+```python
+a = [1, 2, 3]
+a += [4, 5]
+```
+
+**Loesung:**
+
+`a = [1, 2, 3, 4, 5]`
+
+**Erklaerung:**
+- `a += [4, 5]` ist aequivalent zu `a.extend([4, 5])`
+- Die Elemente 4 und 5 werden einzeln angehaengt
+- Die Liste wird **in-place** erweitert
+
+---
+
+## Aufgabe 12b: Liste erweitern mit extend()
+
+**Was ist der Wert von `a` nach folgender Code-Zeile?**
+
+```python
+a = [1, 2, 3]
+a.extend([4, 5])
+```
+
+**Loesung:**
+
+`a = [1, 2, 3, 4, 5]`
+
+**Erklaerung:**
+- `extend()` fuegt alle Elemente der uebergebenen Liste einzeln hinzu
+- Gleich wie `a += [4, 5]`
+
+---
+
+## Aufgabe 12c: IndexError (WICHTIG!)
+
+**Was ist an folgendem Code falsch?**
+
+```python
+a = [1, 2, 3]
+a[3] = 4
+```
+
+**Loesung:**
+
+**IndexError: list assignment index out of range**
+
+**Erklaerung:**
+- Liste `a` hat 3 Elemente mit Indizes 0, 1, 2
+- Index 3 existiert NICHT
+- Man kann nicht auf einen nicht existierenden Index zuweisen
+
+**Richtig waere:**
+```python
+a = [1, 2, 3]
+a.append(4)  # [1, 2, 3, 4]
+# ODER
+a = [1, 2, 3]
+a += [4]     # [1, 2, 3, 4]
+```
+
+---
+
+# Aufgabe 13: List Comprehension (PROBEKLAUSUR!)
+
+## Aufgabe 13a: Quadratzahlen
+
+**Erzeugen Sie eine Liste mit den Quadraten der Zahlen von 1 bis k.**
+
+**Loesung:**
+
+```python
+k = 5
+quadrate = [i**2 for i in range(1, k+1)]
+print(quadrate)  # [1, 4, 9, 16, 25]
+```
+
+**Erklaerung:**
+- `range(1, k+1)` erzeugt Zahlen 1 bis k
+- `i**2` berechnet das Quadrat
+- List Comprehension: `[ausdruck for variable in iterable]`
+
+---
+
+## Aufgabe 13b: List Comprehension verstehen
+
+**Schreiben Sie den Wert von `a` nach: `a = [i**2 for i in range(5)]`**
+
+**Loesung:**
+
+`a = [0, 1, 4, 9, 16]`
+
+**Erklaerung:**
+- `range(5)` erzeugt 0, 1, 2, 3, 4
+- Quadrate: 0², 1², 2², 3², 4² = 0, 1, 4, 9, 16
+
+---
+
+# Aufgabe 14: input() Falle (PROBEKLAUSUR!)
+
+**Was ist an folgendem Code falsch?**
+
+```python
+number = input("Bitte eine Zahl eingeben: ")
+print(number * 2)
+```
+
+**Loesung:**
+
+**Das Problem:** `input()` gibt IMMER einen **String** zurueck!
+
+Wenn der Benutzer "5" eingibt:
+- `number` ist der String `"5"` (nicht die Zahl 5)
+- `"5" * 2` ergibt `"55"` (String-Verdopplung!)
+- NICHT 10 wie erwartet
+
+**Korrektur:**
+
+```python
+number = int(input("Bitte eine Zahl eingeben: "))
+print(number * 2)  # Jetzt: 10
+```
+
+**Mit Fehlerbehandlung:**
+
+```python
+try:
+    number = int(input("Bitte eine Zahl eingeben: "))
+    print(number * 2)
+except ValueError:
+    print("Ungueltige Zahl!")
+```
+
+---
+
+# Aufgabe 15: Klasse Student (PROBEKLAUSUR!)
+
+**Erstellen Sie eine Klasse `Student` mit:**
+1. Konstruktor mit Name und optionaler Notenliste
+2. Methode `add_grade(grade)` zum Hinzufuegen einer Note
+3. Methode `average_grade()` fuer den Notendurchschnitt
+4. Methode `__str__()` fuer die String-Darstellung
+
+**Loesung:**
+
+```python
+class Student:
+    def __init__(self, name, noten=None):
+        self.name = name
+        if noten is None:
+            self.noten = []
+        else:
+            self.noten = noten
+
+    def add_grade(self, grade):
+        self.noten.append(grade)
+
+    def average_grade(self):
+        if len(self.noten) == 0:
+            return 0
+        return sum(self.noten) / len(self.noten)
+
+    def __str__(self):
+        avg = self.average_grade()
+        return f"{self.name}: Noten={self.noten}, Durchschnitt={avg:.2f}"
+
+# Beispielcode
+student = Student("Max Mustermann")
+student.add_grade(85)
+student.add_grade(92)
+print(student)  # Max Mustermann: Noten=[85, 92], Durchschnitt=88.50
+```
+
+**Wichtige Punkte:**
+
+1. **Mutable Default Argument Falle:**
+   - FALSCH: `def __init__(self, name, noten=[])`
+   - Die leere Liste wird GETEILT zwischen allen Instanzen!
+   - RICHTIG: `noten=None` und dann im Body pruefen
+
+2. **`self` Parameter:**
+   - Jede Methode braucht `self` als ersten Parameter
+   - `self.attribut` greift auf Instanzattribute zu
+
+3. **`__str__` Methode:**
+   - Wird von `print()` aufgerufen
+   - Muss einen String zurueckgeben
+
+---
+
 # Zusammenfassung: Klausurtipps
 
 ## Haeufige Fallen:

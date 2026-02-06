@@ -31,33 +31,6 @@ print(x % y)
 
 ---
 
-**Frage E.2:** Was ist die Ausgabe?
-
-```python
-liste = [1, 2, 3, 4, 5]
-print(liste[1:4])
-```
-
-- [ ] a) [1, 2, 3, 4]
-- [ ] b) [2, 3, 4]
-- [ ] c) [2, 3, 4, 5]
-- [ ] d) [1, 2, 3]
-
-<details>
-<summary>Loesung anzeigen</summary>
-
-**Richtig: b)**
-
-`liste[1:4]` gibt Elemente von Index 1 bis Index 3 (4 ist exklusiv):
-- Index 1: 2
-- Index 2: 3
-- Index 3: 4
-
-Ergebnis: [2, 3, 4]
-</details>
-
----
-
 **Frage E.3:** Was ist die Ausgabe?
 
 ```python
@@ -132,37 +105,6 @@ print(a, b)
 
 ---
 
-**Frage E.6:** Was ist die Ausgabe?
-
-```python
-count = {}
-text = "aab"
-for c in text:
-    count[c] = count.get(c, 0) + 1
-print(count["a"])
-```
-
-- [ ] a) 1
-- [ ] b) 2
-- [ ] c) 3
-- [ ] d) KeyError
-
-<details>
-<summary>Loesung anzeigen</summary>
-
-**Richtig: b)**
-
-Der Code zaehlt Buchstaben:
-- 'a': count.get('a', 0)=0, dann 1
-- 'a': count.get('a', 0)=1, dann 2
-- 'b': count.get('b', 0)=0, dann 1
-
-count = {'a': 2, 'b': 1}
-`count["a"]` = 2
-</details>
-
----
-
 **Frage E.7:** Was ist die Ausgabe?
 
 ```python
@@ -213,31 +155,6 @@ if x % 5 == 0:
 Beide if-Bedingungen sind wahr, also wird "A" und dann "B" ausgegeben.
 
 **Hinweis:** Bei FizzBuzz waere es wichtig, elif zu verwenden!
-</details>
-
----
-
-**Frage E.9:** Was ist die Ausgabe?
-
-```python
-liste = [1, 2, 3]
-liste.append(4)
-liste.pop()
-print(liste)
-```
-
-- [ ] a) [1, 2, 3, 4]
-- [ ] b) [1, 2, 3]
-- [ ] c) [2, 3, 4]
-- [ ] d) [1, 2]
-
-<details>
-<summary>Loesung anzeigen</summary>
-
-**Richtig: b)**
-
-- `append(4)` fuegt 4 am Ende hinzu: [1, 2, 3, 4]
-- `pop()` entfernt das letzte Element: [1, 2, 3]
 </details>
 
 ---
@@ -1105,34 +1022,6 @@ def get_domain(email):
 print(get_domain("anna@example.com"))  # "example.com"
 print(get_domain("test@uni-dortmund.de"))  # "uni-dortmund.de"
 ```
-</details>
-
----
-
-### Frage E.43: Woerter aus Datei zaehlen
-
-**Schreibe Code, der alle Woerter in einer Datei zaehlt (mit dict.get()).**
-
-<details>
-<summary>Loesung anzeigen</summary>
-
-```python
-def woerter_zaehlen(filename):
-    counts = {}
-    with open(filename) as f:
-        for line in f:
-            words = line.split()
-            for word in words:
-                counts[word] = counts.get(word, 0) + 1
-    return counts
-
-# Aufruf:
-wort_counts = woerter_zaehlen("text.txt")
-for wort, anzahl in wort_counts.items():
-    print(f"{wort}: {anzahl}")
-```
-
-**Das Zaehlmuster:** `d[key] = d.get(key, 0) + 1` ist essentiell fuer die Klausur!
 </details>
 
 ---

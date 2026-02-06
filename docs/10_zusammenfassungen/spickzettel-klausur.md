@@ -330,3 +330,58 @@ bool("")       # False
 bool([])       # False
 bool(1)        # True
 ```
+
+## 14. Module importieren (KLAUSURRELEVANT!)
+```python
+# Ganzes Modul
+import math
+print(math.sqrt(16))     # 4.0
+
+# Modul mit Alias
+import math as m
+print(m.sqrt(16))        # 4.0
+
+# Spezifische Funktion importieren
+from math import sqrt
+print(sqrt(16))          # 4.0
+
+# Mehrere Funktionen
+from math import sqrt, pi, sin
+```
+
+## 15. NumPy Grundlagen (KLAUSURRELEVANT!)
+```python
+import numpy as np
+
+# Arrays erstellen
+np.array([1, 2, 3])           # 1D-Array
+np.array([[1,2], [3,4]])      # 2D-Matrix
+np.zeros((2, 3))              # 2x3 mit Nullen
+np.ones((3, 3))               # 3x3 mit Einsen
+
+# Elementweise Operationen!
+a = np.array([[1,2,3], [4,5,6], [7,8,9]])
+b = np.ones((3, 3))
+c = a + b    # [[2,3,4], [5,6,7], [8,9,10]]
+```
+
+## 16. random Modul
+```python
+from random import randint, choice, shuffle
+
+randint(1, 6)         # Zufallszahl 1-6 (inklusive!)
+choice([1,2,3])       # Zufaelliges Element
+shuffle(liste)        # Liste mischen (in-place!)
+```
+
+## 17. Set (Menge)
+```python
+s = {1, 2, 3}              # Set erstellen
+s = {1, 2, 2, 3, 3}        # {1, 2, 3} - keine Duplikate!
+s = set([1, 2, 2, 3])      # Liste zu Set
+3 in s                     # True - Element pruefen
+
+# Unterschied zu Dictionary:
+# Dict: {"a": 1} - Key-Value-Paare
+# Set:  {1, 2, 3} - nur Werte, keine Duplikate
+```
