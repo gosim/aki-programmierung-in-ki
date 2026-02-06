@@ -342,7 +342,7 @@ for alt, neu in ersetzungen.items():
 | `liste.index(x)` wenn fehlt | -1 | ValueError! |
 | `"abc".find(x)` wenn fehlt | ValueError | -1 |
 
-## Typumwandlung
+## 14. Typumwandlung
 ```python
 int("42")      # 42
 str(42)        # "42"
@@ -354,7 +354,7 @@ bool([])       # False
 bool(1)        # True
 ```
 
-## 14. Module importieren (KLAUSURRELEVANT!)
+## 15. Module importieren (KLAUSURRELEVANT!)
 ```python
 # Ganzes Modul
 import math
@@ -372,7 +372,7 @@ print(sqrt(16))          # 4.0
 from math import sqrt, pi, sin
 ```
 
-## 15. NumPy Grundlagen (KLAUSURRELEVANT!)
+## 16. NumPy Grundlagen (KLAUSURRELEVANT!)
 ```python
 import numpy as np
 
@@ -388,7 +388,7 @@ b = np.ones((3, 3))
 c = a + b    # [[2,3,4], [5,6,7], [8,9,10]]
 ```
 
-## 16. random Modul
+## 17. random Modul
 ```python
 from random import randint, choice, shuffle
 
@@ -397,7 +397,7 @@ choice([1,2,3])       # Zufaelliges Element
 shuffle(liste)        # Liste mischen (in-place!)
 ```
 
-## 17. Set (Menge)
+## 18. Set (Menge)
 ```python
 s = {1, 2, 3}              # Set erstellen
 s = {1, 2, 2, 3, 3}        # {1, 2, 3} - keine Duplikate!

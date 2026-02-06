@@ -347,37 +347,16 @@ ergebnis = funktionsname(wert1)  # parameter2 = "default"
 
 ---
 
-## Prioritaet A: MUSS sitzen!
+## Prioritaet A: MUSS sitzen! (Checkliste)
 
-### 1. dict.get() zum Zaehlen (30 Punkte!)
-```python
-count = {}
-for word in words:
-    count[word] = count.get(word, 0) + 1
-```
+> **Hinweis:** Details zu diesen Themen findest du in der SCHNELLREFERENZ oben und in den jeweiligen Kapiteln.
 
-### 2. try-except bei Eingabe
-```python
-try:
-    zahl = int(input("Zahl: "))
-except ValueError:
-    print("Fehler!")
-```
-
-### 3. for-Schleife mit range() - KLAUSURFALLE!
-```python
-i = 27
-j = 27
-for i in range(3):  # i wird ueberschrieben!
-    j += 1
-print(i, j)  # Ausgabe: 2 30
-# ACHTUNG: i hat danach den Wert 2, nicht 27!
-```
-
-### 4. Modulo fuer Teilbarkeit
-```python
-if x % 3 == 0:  # x ist durch 3 teilbar
-if x % 15 == 0:  # x ist durch 3 UND 5 teilbar
+- [ ] **dict.get() Zaehlmuster** - siehe SCHNELLREFERENZ Zeile 52-100
+- [ ] **try-except bei Eingabe** - siehe Kapitel 3
+- [ ] **for-Schleife ueberschreibt Variable** - siehe Kapitel 5
+- [ ] **Modulo fuer Teilbarkeit** - `x % 3 == 0` bedeutet "x durch 3 teilbar"
+- [ ] **Strings sind unveraenderlich** - `s = s.upper()` nicht vergessen!
+- [ ] **range(n) endet bei n-1** - `range(5)` gibt 0,1,2,3,4 (nicht 5!)
 ```
 
 ### 5. String-Methoden
@@ -901,42 +880,25 @@ except FileNotFoundError:
 
 # Kapitel 8: Listen
 
+> **Siehe auch:** Ausfuehrliche Listen-Methoden in der **SCHNELLREFERENZ** (oben) unter "Listen-Methoden"
+
 ## Listen sind veraenderbar (mutable)!
 
 ```python
-# Erstellen
 zahlen = [1, 2, 3, 4, 5]
-leer = []
-gemischt = [1, "Hallo", 3.14, True]
-
-# Zugriff (wie bei Strings)
-zahlen[0]     # 1
-zahlen[-1]    # 5
-zahlen[1:3]   # [2, 3]
-
-# Aendern (bei Listen moeglich!)
-zahlen[0] = 99  # [99, 2, 3, 4, 5]
+zahlen[0] = 99  # [99, 2, 3, 4, 5] - Aendern moeglich!
 ```
 
-## Listenmethoden
+## Wichtigste Methoden (Kurzuebersicht)
 
 ```python
-zahlen = [1, 2, 3]
-
-# Hinzufuegen
-zahlen.append(4)       # [1, 2, 3, 4]
-zahlen.extend([5, 6])  # [1, 2, 3, 4, 5, 6]
-zahlen.insert(0, 0)    # [0, 1, 2, 3, 4, 5, 6]
-
-# Entfernen
-letztes = zahlen.pop()     # Gibt 6 zurueck, entfernt es
-zweites = zahlen.pop(1)    # Gibt Element an Index 1 zurueck
-zahlen.remove(3)           # Entfernt erstes Vorkommen von 3
-
-# Sortieren
-zahlen.sort()              # Aufsteigend sortieren
-zahlen.sort(reverse=True)  # Absteigend sortieren
-zahlen.reverse()           # Reihenfolge umkehren
+lst.append(x)     # Am Ende hinzufuegen
+lst.pop()         # Letztes entfernen + zurueckgeben
+lst.remove(x)     # Erstes Vorkommen von x entfernen
+lst.sort()        # Sortieren (aendert Liste!)
+sorted(lst)       # Neue sortierte Liste
+x in lst          # Prueft ob x enthalten
+lst.index(x)      # Index von x (ValueError wenn nicht da!)
 ```
 
 ## Listen durchlaufen
@@ -945,20 +907,8 @@ zahlen.reverse()           # Reihenfolge umkehren
 for element in liste:
     print(element)
 
-# Mit Index
-for i, element in enumerate(liste):
+for i, element in enumerate(liste):  # Mit Index
     print(f"{i}: {element}")
-```
-
-## Aggregatfunktionen
-
-```python
-zahlen = [3, 1, 4, 1, 5, 9]
-
-len(zahlen)   # 6 - Anzahl
-sum(zahlen)   # 23 - Summe
-min(zahlen)   # 1 - Minimum
-max(zahlen)   # 9 - Maximum
 ```
 
 ## List Comprehension
@@ -977,51 +927,20 @@ gerade = [x for x in range(10) if x % 2 == 0]
 
 # Kapitel 9: Dictionaries (KLAUSURRELEVANT!)
 
-## Dictionary erstellen
+> **WICHTIG:** Das Zaehlmuster mit `dict.get()` ist ausfuehrlich in der **SCHNELLREFERENZ** (oben) erklaert!
+> Siehe dort: "dict.get() - SEHR WICHTIG!" und "Das Zaehlmuster mit dict.get()"
+
+## Dictionary erstellen und Zugriff
 
 ```python
-# Leeres Dictionary
-d = {}
-d = dict()
+# Erstellen
+d = {}                                    # Leeres Dictionary
+student = {"name": "Anna", "alter": 22}   # Mit Werten
 
-# Mit Werten
-student = {"name": "Anna", "alter": 22, "matrikel": 12345}
-```
-
-## Zugriff auf Elemente
-
-```python
-student = {"name": "Anna", "alter": 22}
-
-# Direkter Zugriff
-student["name"]  # "Anna"
-student["note"]  # KeyError!
-
-# Sicherer Zugriff mit get()
-student.get("name")           # "Anna"
-student.get("note")           # None
-student.get("note", "keine")  # "keine" (Standardwert)
-```
-
-## Das Zaehlmuster (AUSWENDIG LERNEN!)
-
-```python
-count = {}
-for word in words:
-    count[word] = count.get(word, 0) + 1
-```
-
-**Beispiel:**
-```python
-text = "die katze und die maus"
-words = text.split()
-
-count = {}
-for word in words:
-    count[word] = count.get(word, 0) + 1
-
-print(count)
-# {'die': 2, 'katze': 1, 'und': 1, 'maus': 1}
+# Zugriff
+student["name"]           # "Anna" - KeyError wenn Key fehlt!
+student.get("name")       # "Anna" - None wenn Key fehlt
+student.get("note", 0)    # 0 (Standardwert wenn Key fehlt)
 ```
 
 ## Dictionary durchlaufen
@@ -1029,30 +948,19 @@ print(count)
 ```python
 d = {"a": 1, "b": 2, "c": 3}
 
-# Nur Schluessel
-for key in d:
-    print(key)
-
-# Nur Werte
-for value in d.values():
-    print(value)
-
-# Schluessel UND Werte
-for key, value in d.items():
-    print(f"{key}: {value}")
+for key in d:                    # Nur Schluessel
+for value in d.values():         # Nur Werte
+for key, value in d.items():     # Schluessel + Werte
 ```
 
-## Wichtige Dictionary-Methoden
+## Wichtige Methoden
 
 ```python
-d = {"a": 1, "b": 2}
-
-d.keys()    # dict_keys(['a', 'b'])
-d.values()  # dict_values([1, 2])
-d.items()   # dict_items([('a', 1), ('b', 2)])
-
-"a" in d    # True (prueft Schluessel!)
-len(d)      # 2
+d.keys()     # Alle Schluessel
+d.values()   # Alle Werte
+d.items()    # Alle (Key, Value) Paare
+"a" in d     # True - prueft ob Schluessel existiert
+len(d)       # Anzahl der Eintraege
 ```
 
 ---
