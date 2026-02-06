@@ -1,5 +1,23 @@
 # Python Lernplan - Klausur 07.02.2026
 
+## Inhaltsverzeichnis
+
+1. [Grundlagen (Kapitel 1-2)](#1-grundlagen-kapitel-1-2) - Datentypen, Built-ins, Operatoren
+2. [Bedingte Ausfuehrung (Kapitel 3)](#2-bedingte-ausfuehrung-kapitel-3) - if/elif/else, try-except
+3. [Funktionen (Kapitel 4)](#3-funktionen-kapitel-4) - def, return, *args, **kwargs
+4. [Schleifen (Kapitel 5)](#4-schleifen-kapitel-5) - for, while, break, continue
+5. [Strings (Kapitel 6)](#5-strings-kapitel-6) - Slicing, Methoden, Umlaute
+6. [Dateien (Kapitel 7)](#6-dateien-kapitel-7) - open, read, write
+7. [Listen (Kapitel 8)](#7-listen-kapitel-8) - Methoden, List Comprehension
+8. [Dictionaries (Kapitel 9)](#8-dictionaries-kapitel-9---klausurrelevant) - dict.get(), Zaehlmuster ⭐
+9. [Tupel (Kapitel 10)](#9-tupel-kapitel-10) - Unpacking, Vergleich zu Listen
+10. [OOP (Kapitel 14)](#10-oop---objektorientierte-programmierung-kapitel-14) - Klassen, Objekte
+11. [Zusaetzliche Module](#11-zusaetzliche-module) - import, Set, NumPy, random
+12. [Praktische Beispiele](#12-praktische-beispiele) - Lohn, Fibonacci, etc.
+13. [Klausurtipps](#13-klausurtipps) - Fallen, Lernplan ⭐
+
+---
+
 ## Klausurstruktur (60 Punkte, 1 Stunde)
 
 | Aufgabe | Punkte | Thema |
@@ -10,19 +28,41 @@
 
 ---
 
-# SCHNELLREFERENZ: Alle wichtigen Konzepte
+# 1. Grundlagen (Kapitel 1-2)
 
-## Wichtige Built-in-Funktionen
+## Datentypen und Typumwandlung
+
+| Typ | Beschreibung | Beispiele |
+|-----|--------------|-----------|
+| `int` | Ganzzahlen | `42`, `-7`, `0` |
+| `float` | Gleitkommazahlen | `3.14`, `-2.5`, `1.0` |
+| `str` | Zeichenketten | `"Hallo"`, `'Python'` |
+| `bool` | Wahrheitswerte | `True`, `False` |
+
+```python
+# Typumwandlung
+int("42")      # 42
+str(42)        # "42"
+float("3.14")  # 3.14
+list("abc")    # ['a', 'b', 'c']
+bool(0)        # False
+bool("")       # False
+bool([])       # False
+bool(1)        # True
+```
+
+## Built-in-Funktionen
 
 | Funktion | Beschreibung | Beispiel | Ergebnis |
 |----------|--------------|----------|----------|
 | `print()` | Ausgabe auf Konsole | `print("Hallo")` | Hallo |
-| `input()` | Eingabe vom Benutzer | `name = input("Name: ")` | (wartet auf Eingabe) |
+| `input()` | Eingabe vom Benutzer | `name = input("Name: ")` | (wartet) |
 | `len()` | Laenge (String, Liste) | `len("abc")` | `3` |
 | `type()` | Datentyp abfragen | `type(42)` | `<class 'int'>` |
 | `int()` | In Ganzzahl umwandeln | `int("5")` | `5` |
 | `str()` | In String umwandeln | `str(5)` | `"5"` |
 | `float()` | In Dezimalzahl | `float("3.14")` | `3.14` |
+| `bool()` | In Boolean | `bool(0)` | `False` |
 | `range()` | Zahlenbereich erzeugen | `range(5)` | `0, 1, 2, 3, 4` |
 | `sum()` | Summe einer Liste | `sum([1, 2, 3])` | `6` |
 | `min()` | Minimum | `min(1, 2, 3)` | `1` |
@@ -31,141 +71,33 @@
 | `round()` | Runden | `round(3.7)` | `4` |
 | `sorted()` | Sortierte Kopie | `sorted([3,1,2])` | `[1, 2, 3]` |
 | `list()` | In Liste umwandeln | `list("abc")` | `["a","b","c"]` |
-| `dict()` | Leeres Dictionary | `dict()` | `{}` |
-| `bool()` | In Boolean | `bool(0)` | `False` |
 | `enumerate()` | Index + Wert | `enumerate(["a","b"])` | `(0,"a"), (1,"b")` |
 
-**Typische Klausurfallen:**
+**KLAUSURFALLE: input() gibt IMMER einen String zurueck!**
 ```python
-# input() gibt IMMER einen String zurueck!
 alter = input("Alter: ")    # alter ist "25" (String!)
 alter = int(input("Alter: "))  # alter ist 25 (Integer)
-
-# len() funktioniert fuer Strings UND Listen
-len("hallo")      # 5
-len([1, 2, 3])    # 3
-len({"a": 1})     # 1 (Anzahl der Keys)
 ```
 
----
+## Operatoren (Arithmetisch, Vergleich, Modulo)
 
-## dict.get() - SEHR WICHTIG!
+| Operator | Beschreibung | Beispiel | Ergebnis |
+|----------|--------------|----------|----------|
+| `+` `-` `*` `/` | Grundrechenarten | `7 / 2` | `3.5` |
+| `//` | Ganzzahldivision | `7 // 2` | `3` |
+| `%` | Modulo (Rest) | `7 % 2` | `1` |
+| `**` | Potenz | `2 ** 3` | `8` |
+| `==` `!=` | gleich, ungleich | `5 == 5` | `True` |
+| `<` `>` `<=` `>=` | Vergleiche | `3 < 5` | `True` |
 
-```python
-d = {"a": 1, "b": 2}
-
-# PROBLEM: Direkter Zugriff wirft Fehler bei fehlendem Key
-d["c"]              # KeyError! Programm stuerzt ab!
-
-# LOESUNG: get() gibt Standardwert zurueck
-d.get("c")          # None (kein Fehler)
-d.get("c", 0)       # 0 (Standardwert wenn Key fehlt)
-d.get("a", 0)       # 1 (Key existiert, also wird Wert zurueckgegeben)
-```
-
-**Warum wichtig?** Ermoeglicht sicheres Zaehlen ohne vorherige Pruefung!
-
-## Das Zaehlmuster mit dict.get()
-
-```python
-# OHNE get() - umstaendlich:
-count = {}
-for word in words:
-    if word in count:
-        count[word] = count[word] + 1
-    else:
-        count[word] = 1
-
-# MIT get() - elegant:
-count = {}
-for word in words:
-    count[word] = count.get(word, 0) + 1
-```
-
-**So funktioniert es Schritt fuer Schritt:**
-```python
-words = ["a", "b", "a"]
-count = {}
-
-# Durchlauf 1: word = "a"
-count["a"] = count.get("a", 0) + 1  # get("a", 0) = 0, also count["a"] = 1
-
-# Durchlauf 2: word = "b"
-count["b"] = count.get("b", 0) + 1  # get("b", 0) = 0, also count["b"] = 1
-
-# Durchlauf 3: word = "a"
-count["a"] = count.get("a", 0) + 1  # get("a", 0) = 1, also count["a"] = 2
-
-# Ergebnis: {"a": 2, "b": 1}
-```
-
-## String-Methoden - Uebersicht
-
-| Methode | Beschreibung | Beispiel | Ergebnis |
-|---------|--------------|----------|----------|
-| `lower()` | Kleinbuchstaben | `"ABC".lower()` | `"abc"` |
-| `upper()` | Grossbuchstaben | `"abc".upper()` | `"ABC"` |
-| `strip()` | Leerzeichen entfernen | `"  hi  ".strip()` | `"hi"` |
-| `split()` | In Liste aufteilen | `"a b c".split()` | `["a","b","c"]` |
-| `split(",")` | An Zeichen teilen | `"a,b,c".split(",")` | `["a","b","c"]` |
-| `replace(a,b)` | Ersetzen | `"hallo".replace("l","x")` | `"haxxo"` |
-| `find(x)` | Position finden | `"hallo".find("l")` | `2` |
-| `startswith(x)` | Anfang pruefen | `"hallo".startswith("ha")` | `True` |
-| `len(s)` | Laenge | `len("hallo")` | `5` |
-
-**WICHTIG:** Strings sind unveraenderlich! Ergebnis speichern!
-```python
-text = "HALLO"
-text.lower()        # Gibt "hallo" zurueck, text bleibt "HALLO"
-text = text.lower() # Jetzt ist text = "hallo"
-```
-
-## Slicing - Strings und Listen
-
-```python
-s = "Python"    # Index: 0=P, 1=y, 2=t, 3=h, 4=o, 5=n
-                # Negativ: -6=P, -5=y, -4=t, -3=h, -2=o, -1=n
-
-s[0]      # "P"     - erstes Zeichen
-s[-1]     # "n"     - letztes Zeichen
-s[1:4]    # "yth"   - Index 1 bis 3 (4 ist EXKLUSIV!)
-s[:3]     # "Pyt"   - von Anfang bis Index 2
-s[2:]     # "thon"  - von Index 2 bis Ende
-s[::2]    # "Pto"   - jedes zweite Zeichen
-s[::-1]   # "nohtyP" - UMKEHREN!
-```
-
-## range() - ACHTUNG: Endwert ist exklusiv!
-
-```python
-range(5)        # 0, 1, 2, 3, 4      (NICHT 5!)
-range(1, 5)     # 1, 2, 3, 4         (NICHT 5!)
-range(0, 10, 2) # 0, 2, 4, 6, 8      (Schrittweite 2)
-range(5, 0, -1) # 5, 4, 3, 2, 1      (rueckwaerts)
-```
-
-## for-Schleife - KLAUSURFALLE!
-
-```python
-i = 100
-for i in range(3):  # i wird ueberschrieben mit 0, 1, 2
-    pass
-print(i)  # Ausgabe: 2 (NICHT 100!)
-```
-
-**Nach der Schleife hat i den LETZTEN Wert aus range()!**
-
-## Modulo % - Teilbarkeit pruefen
-
+**Modulo fuer Teilbarkeit (KLAUSURRELEVANT!):**
 ```python
 x % 2 == 0   # x ist gerade
-x % 2 == 1   # x ist ungerade
 x % 3 == 0   # x ist durch 3 teilbar
-x % 5 == 0   # x ist durch 5 teilbar
 x % 15 == 0  # x ist durch 15 teilbar (3 UND 5)
 ```
 
-**FizzBuzz-Logik:**
+**FizzBuzz-Logik (KLAUSURAUFGABE!):**
 ```python
 for x in range(1, 101):
     if x % 15 == 0:      # ZUERST 15 pruefen!
@@ -178,25 +110,50 @@ for x in range(1, 101):
         print(x)
 ```
 
-## Verkettete Vergleiche (KLAUSURRELEVANT!)
-
+**Verkettete Vergleiche:**
 ```python
-# Statt:
-if x >= 0 and x <= 100:
+if 0 <= x <= 100:    # Statt: if x >= 0 and x <= 100
     print("Gueltig")
-
-# Eleganter:
-if 0 <= x <= 100:
-    print("Gueltig")
-
-# Haeufig bei Notenvergabe:
-if 0.0 <= punkte <= 1.0:
-    # Punkte sind gueltig
 ```
 
-## try-except - Fehler abfangen
+## Variablen und Zuweisungen
 
 ```python
+x = 42                # Einfache Zuweisung
+a, b = 10, 20         # Mehrfachzuweisung
+x += 1                # x = x + 1
+x -= 5                # x = x - 5
+x *= 2                # x = x * 2
+```
+
+---
+
+# 2. Bedingte Ausfuehrung (Kapitel 3)
+
+## if-Anweisung und logische Operatoren
+
+```python
+# if / elif / else
+if x > 0:
+    print("Positiv")
+elif x < 0:
+    print("Negativ")
+else:
+    print("Null")
+
+# Einzeiler (ternary)
+ergebnis = "ja" if x > 0 else "nein"
+
+# Logische Operatoren
+x > 0 and x < 10      # UND
+x == 0 or x == 1      # ODER
+not x > 0             # Negation
+```
+
+## try-except und Exceptions
+
+```python
+# Grundform
 try:
     zahl = int(input("Zahl: "))  # Kann ValueError werfen
     ergebnis = 10 / zahl         # Kann ZeroDivisionError werfen
@@ -206,284 +163,6 @@ except ZeroDivisionError:
     print("Division durch Null!")
 except:
     print("Unbekannter Fehler!")
-```
-
-**Multiple Exceptions zusammenfassen:**
-```python
-try:
-    zahl = float(input("Zahl: "))
-except (ValueError, TypeError):  # Mehrere Exceptions!
-    print("Fehler bei Eingabe")
-    quit()  # Programm beenden
-```
-
-## Listen-Methoden
-
-```python
-lst = [1, 2, 3, 2, 4]
-
-# Hinzufuegen/Entfernen
-lst.append(5)       # [1, 2, 3, 2, 4, 5] - am Ende hinzufuegen
-lst.pop()           # Gibt 5 zurueck, entfernt letztes Element
-lst.pop(0)          # Gibt 1 zurueck, entfernt erstes Element
-lst.remove(2)       # Entfernt ERSTES Vorkommen von 2
-del lst[0]          # Loescht Element an Index 0
-del lst[-1]         # Loescht letztes Element
-
-# Suchen - WICHTIG!
-lst.index(3)        # 2 - Index von 3 (ValueError wenn nicht gefunden!)
-lst.count(2)        # 1 - Anzahl Vorkommen von 2
-3 in lst            # True - Prueft ob Element vorhanden
-5 in lst            # False
-
-# Sortieren
-lst.sort()          # Aufsteigend sortieren (aendert Liste!)
-lst.sort(reverse=True)  # Absteigend sortieren
-sorted(lst)         # Gibt NEUE sortierte Liste zurueck
-lst.reverse()       # Reihenfolge umkehren
-
-# Aggregatfunktionen
-len(lst)   # Anzahl Elemente
-sum(lst)   # Summe
-min(lst)   # Minimum
-max(lst)   # Maximum
-```
-
-**ACHTUNG: Listen haben KEIN find()!**
-```python
-# String: find() gibt -1 zurueck wenn nicht gefunden
-"hallo".find("x")   # -1
-
-# Liste: index() wirft ValueError wenn nicht gefunden!
-[1, 2, 3].index(5)  # ValueError!
-
-# Sicher pruefen:
-if 5 in lst:
-    pos = lst.index(5)
-```
-
-## Dictionary-Methoden
-
-```python
-d = {"a": 1, "b": 2}
-
-d["a"]              # 1 (KeyError wenn nicht vorhanden!)
-d.get("a")          # 1
-d.get("c")          # None
-d.get("c", 0)       # 0 (Standardwert)
-
-d.keys()            # dict_keys(["a", "b"])
-d.values()          # dict_values([1, 2])
-d.items()           # dict_items([("a", 1), ("b", 2)])
-
-"a" in d            # True (prueft NUR Schluessel!)
-len(d)              # 2
-
-# items() in Liste konvertieren (fuer Sortierung!)
-liste = list(d.items())  # [("a", 1), ("b", 2)]
-```
-
-## Tupel-Liste fuer Sortierung (KLAUSURRELEVANT!)
-
-```python
-# Maximum aus Dictionary finden - WICHTIGES MUSTER!
-d = {"anna": 3, "ben": 5, "clara": 2}
-
-# 1. Tupel-Liste erstellen (Wert, Schluessel)
-lst = []
-for key, val in d.items():
-    lst.append((val, key))  # (Wert, Schluessel)!
-# lst = [(3, "anna"), (5, "ben"), (2, "clara")]
-
-# 2. Sortieren (sortiert nach erstem Element = Wert)
-lst.sort(reverse=True)
-# lst = [(5, "ben"), (3, "anna"), (2, "clara")]
-
-# 3. Maximum ist erstes Element
-print(lst[0])       # (5, "ben")
-print(lst[0][1])    # "ben" (Name)
-print(lst[0][0])    # 5 (Anzahl)
-```
-
-## Dateien lesen
-
-```python
-# Empfohlen: with-Statement (schliesst automatisch)
-with open("datei.txt", "r") as f:
-    for line in f:
-        line = line.strip()  # Zeilenumbruch entfernen!
-        words = line.split() # In Woerter aufteilen
-        print(words)
-```
-
-## Tupel - unveraenderliche Listen
-
-```python
-t = (1, 2, 3)       # Tupel mit Klammern
-t = 1, 2, 3         # Auch ohne Klammern
-t = (5,)            # Einelementig: Komma wichtig!
-
-# Tuple Unpacking
-x, y = (10, 20)     # x=10, y=20
-a, b = b, a         # Variablen tauschen!
-
-# In for-Schleifen
-for key, value in d.items():
-    print(key, value)
-```
-
-## Funktionen definieren
-
-```python
-def funktionsname(parameter1, parameter2="default"):
-    """Docstring: Beschreibung"""
-    # Code hier
-    return ergebnis
-
-# Aufruf
-ergebnis = funktionsname(wert1, wert2)
-ergebnis = funktionsname(wert1)  # parameter2 = "default"
-```
-
----
-
-## Prioritaet A: MUSS sitzen! (Checkliste)
-
-> **Hinweis:** Details zu diesen Themen findest du in der SCHNELLREFERENZ oben und in den jeweiligen Kapiteln.
-
-- [ ] **dict.get() Zaehlmuster** - siehe SCHNELLREFERENZ Zeile 52-100
-- [ ] **try-except bei Eingabe** - siehe Kapitel 3
-- [ ] **for-Schleife ueberschreibt Variable** - siehe Kapitel 5
-- [ ] **Modulo fuer Teilbarkeit** - `x % 3 == 0` bedeutet "x durch 3 teilbar"
-- [ ] **Strings sind unveraenderlich** - `s = s.upper()` nicht vergessen!
-- [ ] **range(n) endet bei n-1** - `range(5)` gibt 0,1,2,3,4 (nicht 5!)
-```
-
-### 5. String-Methoden
-```python
-text = text.lower()
-text = text.replace("ae", "ae")
-```
-
----
-
-# Kapitel 1-2: Grundlagen und Variablen
-
-## Datentypen
-
-| Typ | Beschreibung | Beispiele |
-|-----|--------------|-----------|
-| `int` | Ganzzahlen | `42`, `-7`, `0` |
-| `float` | Gleitkommazahlen | `3.14`, `-2.5`, `1.0` |
-| `str` | Zeichenketten | `"Hallo"`, `'Python'` |
-| `bool` | Wahrheitswerte | `True`, `False` |
-
-## Operatoren
-
-### Arithmetische Operatoren
-
-| Operator | Beschreibung | Beispiel | Ergebnis |
-|----------|--------------|----------|----------|
-| `+` | Addition | `5 + 3` | `8` |
-| `-` | Subtraktion | `5 - 3` | `2` |
-| `*` | Multiplikation | `5 * 3` | `15` |
-| `/` | Division | `7 / 2` | `3.5` |
-| `//` | Ganzzahldivision | `7 // 2` | `3` |
-| `%` | Modulo (Rest) | `7 % 2` | `1` |
-| `**` | Potenz | `2 ** 3` | `8` |
-
-### Der Modulo-Operator (KLAUSURRELEVANT!)
-
-```python
-# Teilbarkeit pruefen
-x % 2 == 0   # gerade Zahl
-x % 3 == 0   # durch 3 teilbar
-x % 15 == 0  # durch 3 UND 5 teilbar (FizzBuzz!)
-```
-
-### Vergleichsoperatoren
-
-| Operator | Bedeutung |
-|----------|-----------|
-| `==` | gleich |
-| `!=` | ungleich |
-| `<` | kleiner |
-| `>` | groesser |
-| `<=` | kleiner oder gleich |
-| `>=` | groesser oder gleich |
-
-## Variablen und Zuweisungen
-
-```python
-# Einfache Zuweisung
-x = 42
-name = "Python"
-
-# Mehrfachzuweisung
-a = b = c = 0
-x, y = 10, 20
-
-# Zusammengesetzte Operatoren
-x += 1   # entspricht x = x + 1
-x -= 5   # entspricht x = x - 5
-x *= 2   # entspricht x = x * 2
-```
-
-## Ein- und Ausgabe
-
-```python
-# Ausgabe
-print("Hallo Welt")
-print("x =", x)
-
-# Eingabe - IMMER String!
-name = input("Dein Name: ")
-zahl = int(input("Zahl: "))  # Umwandlung noetig!
-```
-
----
-
-# Kapitel 3: Bedingte Ausfuehrung
-
-## if-Anweisung
-
-```python
-# Einfache Bedingung
-if x > 0:
-    print("Positiv")
-
-# Mit else
-if x > 0:
-    print("Positiv")
-else:
-    print("Nicht positiv")
-
-# Mit elif (else if)
-if x > 0:
-    print("Positiv")
-elif x < 0:
-    print("Negativ")
-else:
-    print("Null")
-```
-
-## Logische Operatoren
-
-| Operator | Beschreibung | Beispiel |
-|----------|--------------|----------|
-| `and` | UND | `x > 0 and x < 10` |
-| `or` | ODER | `x == 0 or x == 1` |
-| `not` | Negation | `not x > 0` |
-
-## try-except (KLAUSURRELEVANT!)
-
-```python
-# Grundform
-try:
-    zahl = int(input("Zahl: "))
-    print("Eingabe:", zahl)
-except ValueError:
-    print("Keine gueltige Zahl!")
 
 # Mit Wiederholung
 while True:
@@ -492,14 +171,23 @@ while True:
         break  # Schleife verlassen wenn erfolgreich
     except ValueError:
         print("Bitte eine Zahl eingeben!")
+
+# Mit quit() bei Fehler
+try:
+    f = open("datei.txt")
+except FileNotFoundError:
+    print("Datei nicht gefunden!")
+    quit()
+
+# Multiple Exceptions
+try:
+    zahl = float(input("Zahl: "))
+except (ValueError, TypeError):
+    print("Fehler bei Eingabe")
+    quit()
 ```
 
-**Warum try-except wichtig ist:**
-- `int("abc")` wirft ValueError
-- Ohne try-except stuerzt das Programm ab
-- Mit try-except kann man den Fehler abfangen
-
-## Haeufige Exceptions
+**Haeufige Exceptions:**
 
 | Exception | Ursache |
 |-----------|---------|
@@ -508,29 +196,33 @@ while True:
 | `ZeroDivisionError` | Division durch Null |
 | `IndexError` | Index ausserhalb des Bereichs |
 | `KeyError` | Schluessel nicht im Dictionary |
+| `FileNotFoundError` | Datei nicht gefunden |
 
 ---
 
-# Kapitel 4: Funktionen
+# 3. Funktionen (Kapitel 4)
 
-## Funktionen definieren
+## Funktionen definieren und aufrufen
 
 ```python
-# Ohne Parameter
-def gruessen():
-    print("Hallo!")
-
-# Mit Parametern
-def gruessen(name):
+# Mit Parametern und Standardwert
+def gruessen(name="Welt"):
     print(f"Hallo, {name}!")
 
 # Mit Rueckgabewert
 def quadrat(x):
     return x * x
 
-# Mit Standardwert
-def gruessen(name="Welt"):
-    print(f"Hallo, {name}!")
+# Aufruf
+ergebnis = quadrat(5)        # 25
+gruessen()                    # Hallo, Welt!
+gruessen("Anna")              # Hallo, Anna!
+
+# Mehrere Rueckgabewerte (Tupel)
+def min_max(zahlen):
+    return min(zahlen), max(zahlen)
+
+minimum, maximum = min_max([3, 1, 4, 1, 5])
 ```
 
 ## Lokale vs. globale Variablen
@@ -544,75 +236,35 @@ def funktion():
 
 funktion()  # Ausgabe: 5
 print(x)    # Ausgabe: 10 (globale unveraendert)
-```
 
-**Mit global-Keyword:**
-```python
-x = 10
-
+# Mit global-Keyword:
 def aendern():
-    global x  # Zugriff auf globale Variable
+    global x
     x = 5
 
 aendern()
 print(x)  # Ausgabe: 5
 ```
 
-## Mehrere Rueckgabewerte (Tupel)
+## *args und **kwargs
 
 ```python
-def min_max(zahlen):
-    return min(zahlen), max(zahlen)
-
-minimum, maximum = min_max([3, 1, 4, 1, 5])
-print(minimum)  # 1
-print(maximum)  # 5
-```
-
-## *args und **kwargs - Variable Anzahl von Argumenten
-
-### *args - Beliebig viele Positions-Argumente
-
-Der `*` vor einem Parameter sammelt alle zusaetzlichen Positions-Argumente in einem **Tupel**.
-
-```python
+# *args - sammelt Positions-Argumente als Tupel
 def summe(*zahlen):
-    """Akzeptiert beliebig viele Zahlen."""
     print(type(zahlen))  # <class 'tuple'>
     return sum(zahlen)
 
-print(summe(1, 2))           # 3
 print(summe(1, 2, 3, 4, 5))  # 15
-print(summe())               # 0 (leeres Tupel)
-```
 
-### **kwargs - Beliebig viele Keyword-Argumente
-
-Der `**` vor einem Parameter sammelt alle zusaetzlichen Keyword-Argumente in einem **Dictionary**.
-
-```python
+# **kwargs - sammelt Keyword-Argumente als Dictionary
 def person_info(**daten):
-    """Akzeptiert beliebig viele benannte Argumente."""
     print(type(daten))  # <class 'dict'>
     for key, value in daten.items():
         print(f"{key}: {value}")
 
-person_info(name="Anna", alter=25, stadt="Berlin")
-# Ausgabe:
-# name: Anna
-# alter: 25
-# stadt: Berlin
-```
+person_info(name="Anna", alter=25)
 
-### Kombination aller Parameter-Typen
-
-**Reihenfolge ist wichtig:**
-1. Normale Parameter
-2. Parameter mit Standardwert
-3. `*args`
-4. `**kwargs`
-
-```python
+# Reihenfolge: normale Parameter, Standardwert, *args, **kwargs
 def beispiel(a, b, c=10, *args, **kwargs):
     print(f"a={a}, b={b}, c={c}")
     print(f"args={args}")
@@ -622,62 +274,55 @@ beispiel(1, 2, 3, 4, 5, name="Test", wert=42)
 # a=1, b=2, c=3
 # args=(4, 5)
 # kwargs={'name': 'Test', 'wert': 42}
-```
 
-### Entpacken mit * und **
-
-```python
-# Liste/Tupel entpacken mit *
+# Entpacken
 zahlen = [1, 2, 3]
-print(*zahlen)        # 1 2 3 (als separate Argumente)
-print(sum(zahlen))    # Funktioniert auch ohne *
+print(*zahlen)        # 1 2 3
 
-# Dictionary entpacken mit **
 daten = {"name": "Max", "alter": 30}
 person_info(**daten)  # Wie: person_info(name="Max", alter=30)
 ```
 
 ---
 
-# Kapitel 5: Iteration (Schleifen)
+# 4. Schleifen (Kapitel 5)
 
 ## for-Schleife
 
-### range()-Funktion
-
 ```python
 # range(stop) - von 0 bis stop-1
-for i in range(5):      # 0, 1, 2, 3, 4
+for i in range(5):      # 0, 1, 2, 3, 4 (NICHT 5!)
     print(i)
 
-# range(start, stop) - von start bis stop-1
-for i in range(1, 6):   # 1, 2, 3, 4, 5
+# range(start, stop, step)
+for i in range(1, 6):      # 1, 2, 3, 4, 5
     print(i)
-
-# range(start, stop, step) - mit Schrittweite
 for i in range(0, 10, 2):  # 0, 2, 4, 6, 8
     print(i)
-
-for i in range(10, 0, -1):  # 10, 9, 8, ..., 1
+for i in range(10, 0, -1): # 10, 9, 8, ..., 1
     print(i)
+
+# Ueber String/Liste iterieren
+for zeichen in "abc":
+    print(zeichen)  # a, b, c
+
+for element in [1, 2, 3]:
+    print(element)
+
+# Mit Index (enumerate)
+for i, element in enumerate(["a", "b", "c"]):
+    print(i, element)  # 0 a, 1 b, 2 c
 ```
 
-### KLAUSURFALLE: for-Schleife ueberschreibt Variable!
-
+**KLAUSURFALLE: for-Schleife ueberschreibt Variable!**
 ```python
 i = 27
-j = 27
-
 for i in range(3):  # i wird 0, 1, 2 - nicht 27!
-    j += 1
-
-print(i, j)  # Ausgabe: 2 30
-# i ist NICHT mehr 27, sondern 2 (letzter Wert von range)
+    pass
+print(i)  # Ausgabe: 2 (NICHT 27!)
 ```
 
-**WICHTIG:** Nach der Schleife hat `i` den letzten Wert aus range()!
-
-## while-Schleife
+## while-Schleife, break und continue
 
 ```python
 x = 0
@@ -685,14 +330,6 @@ while x < 5:
     print(x)
     x += 1
 
-# ACHTUNG: Endlosschleife vermeiden!
-# while True:  # Ohne break nie beendet!
-#     pass
-```
-
-## break und continue
-
-```python
 # break - Schleife sofort beenden
 for i in range(10):
     if i == 5:
@@ -703,77 +340,65 @@ for i in range(10):
 for i in range(5):
     if i == 2:
         continue
-    print(i)  # Ausgabe: 0, 1, 3, 4 (2 wird uebersprungen)
+    print(i)  # Ausgabe: 0, 1, 3, 4 (2 uebersprungen)
 ```
 
 ---
 
-# Kapitel 6: Zeichenketten (Strings)
+# 5. Strings (Kapitel 6)
 
-## Strings sind unveraenderlich (immutable)!
+## String-Grundlagen, Slicing und Methoden
 
+**Strings sind unveraenderlich (immutable)!**
 ```python
 text = "Hallo"
-text[0] = "M"  # FEHLER! TypeError
+text[0] = "M"       # FEHLER! TypeError
+text = "M" + text[1:]  # "Mallo" - neuen String erzeugen
 
-# Stattdessen neuen String erzeugen:
-text = "M" + text[1:]  # "Mallo"
+# WICHTIG: Ergebnis von Methoden SPEICHERN!
+text = "HALLO"
+text.lower()        # Gibt "hallo" zurueck, text bleibt "HALLO"
+text = text.lower() # Jetzt ist text = "hallo"
 ```
 
-## Indizierung und Slicing
-
+**Indizierung und Slicing:**
 ```python
 s = "Python"
-#    P  y  t  h  o  n
 #    0  1  2  3  4  5   (positive Indizes)
 #   -6 -5 -4 -3 -2 -1   (negative Indizes)
 
-s[0]     # 'P' - erstes Zeichen
-s[-1]    # 'n' - letztes Zeichen
-s[1:4]   # 'yth' - Index 1 bis 3 (4 exklusiv!)
-s[:3]    # 'Pyt' - von Anfang bis Index 2
-s[2:]    # 'thon' - von Index 2 bis Ende
-s[::-1]  # 'nohtyP' - String umkehren!
+s[0]      # "P"     - erstes Zeichen
+s[-1]     # "n"     - letztes Zeichen
+s[1:4]    # "yth"   - Index 1 bis 3 (4 ist EXKLUSIV!)
+s[:3]     # "Pyt"   - von Anfang bis Index 2
+s[2:]     # "thon"  - von Index 2 bis Ende
+s[::-1]   # "nohtyP" - UMKEHREN!
 ```
 
-## String-Methoden (KLAUSURRELEVANT!)
+**String-Methoden:**
+
+| Methode | Beschreibung | Beispiel | Ergebnis |
+|---------|--------------|----------|----------|
+| `lower()` | Kleinbuchstaben | `"ABC".lower()` | `"abc"` |
+| `upper()` | Grossbuchstaben | `"abc".upper()` | `"ABC"` |
+| `strip()` | Leerzeichen entfernen | `"  hi  ".strip()` | `"hi"` |
+| `split()` | In Liste aufteilen | `"a b c".split()` | `["a","b","c"]` |
+| `replace(a,b)` | Ersetzen | `"hallo".replace("l","x")` | `"haxxo"` |
+| `find(x)` | Position (-1 wenn fehlt) | `"hallo".find("x")` | `-1` |
+| `startswith(x)` | Anfang pruefen | `"hallo".startswith("ha")` | `True` |
+| `count(x)` | Anzahl zaehlen | `"hallo".count("l")` | `2` |
+| `join()` | Liste verbinden | `" ".join(["a","b"])` | `"a b"` |
 
 ```python
-text = "Hallo Welt"
-
-# Gross-/Kleinschreibung
-text.lower()   # 'hallo welt'
-text.upper()   # 'HALLO WELT'
-
-# Ersetzen
-text.replace("Welt", "Python")  # 'Hallo Python'
-
-# WICHTIG: Ergebnis speichern!
-text = text.lower()  # text ist jetzt 'hallo welt'
-
-# Aufteilen
-"a,b,c".split(",")  # ['a', 'b', 'c']
-"Hallo Welt".split()  # ['Hallo', 'Welt']
-
-# Verbinden
-" ".join(["Hallo", "Welt"])  # 'Hallo Welt'
-
-# Leerzeichen entfernen
-"  Hallo  ".strip()  # 'Hallo'
-
-# Suchen
-"Hallo".find("l")   # 2 (Index des ersten 'l')
-"Hallo".count("l")  # 2 (Anzahl der 'l')
-
-# Laenge
-len("Hallo")  # 5
+"Hallo" + " Welt"   # "Hallo Welt" - Verkettung
+"ab" * 3            # "ababab" - Wiederholung
+"x" in "text"       # True - Enthalten?
 ```
 
 ## Umlaute ersetzen (KLAUSURAUFGABE!)
 
-**Loesung 1: Mit mehreren replace()-Aufrufen**
-
 ```python
+# Loesung 1: Mit mehreren replace()
 def text_bereinigen(text):
     text = text.lower()
     text = text.replace("ä", "ae")
@@ -782,229 +407,249 @@ def text_bereinigen(text):
     text = text.replace("ß", "ss")
     return text
 
-# Beispiel
+# Loesung 2: Mit Dictionary (eleganter!)
+def text_bereinigen(text):
+    text = text.lower()
+    ersetzungen = {"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss"}
+    for alt, neu in ersetzungen.items():
+        text = text.replace(alt, neu)
+    return text
+
 print(text_bereinigen("Größe"))  # 'groesse'
 ```
 
-**Loesung 2: Mit Dictionary (eleganter!)**
-
-```python
-def text_bereinigen(text):
-    text = text.lower()
-
-    ersetzungen = {
-        "ä": "ae",
-        "ö": "oe",
-        "ü": "ue",
-        "ß": "ss"
-    }
-
-    for alt, neu in ersetzungen.items():
-        text = text.replace(alt, neu)
-
-    return text
-
-# Beispiel
-print(text_bereinigen("Größe und Übung"))  # 'groesse und uebung'
-```
-
-**Vorteile der Dictionary-Loesung:**
-- Leichter erweiterbar (neue Ersetzungen einfach hinzufuegen)
-- Weniger Code-Wiederholung
-- Uebersichtlicher bei vielen Ersetzungen
-
 ---
 
-# Kapitel 7: Dateien
+# 6. Dateien (Kapitel 7)
 
-## Dateien oeffnen und lesen
+## Dateien lesen und schreiben
 
 ```python
-# Klassische Methode
-datei = open("daten.txt", "r")
-inhalt = datei.read()
-datei.close()
-
-# Mit with-Statement (empfohlen!)
+# Lesen mit with-Statement (empfohlen!)
 with open("daten.txt", "r") as datei:
     inhalt = datei.read()
 # Datei wird automatisch geschlossen
-```
-
-## Dateimodi
-
-| Modus | Beschreibung |
-|-------|--------------|
-| `"r"` | Lesen (read) |
-| `"w"` | Schreiben (write) - ueberschreibt! |
-| `"a"` | Anhaengen (append) |
-| `"r+"` | Lesen und Schreiben |
-
-## Zeilenweise lesen
-
-```python
-# Alle Zeilen als Liste
-with open("daten.txt", "r") as datei:
-    zeilen = datei.readlines()
 
 # Zeilenweise iterieren
 with open("daten.txt", "r") as datei:
     for zeile in datei:
-        print(zeile.strip())  # strip() entfernt Zeilenumbruch
-```
+        zeile = zeile.strip()  # Zeilenumbruch entfernen!
+        words = zeile.split()
+        print(words)
 
-## In Datei schreiben
-
-```python
-# Ueberschreiben
+# Schreiben (ueberschreibt!)
 with open("ausgabe.txt", "w") as datei:
     datei.write("Zeile 1\n")
-    datei.write("Zeile 2\n")
 
 # Anhaengen
 with open("log.txt", "a") as datei:
     datei.write("Neuer Eintrag\n")
-```
 
-## Fehlerbehandlung
-
-```python
+# Fehlerbehandlung
 try:
     with open("datei.txt", "r") as f:
         inhalt = f.read()
 except FileNotFoundError:
     print("Datei nicht gefunden!")
+    quit()
 ```
+
+**Dateimodi:** `"r"` Lesen, `"w"` Schreiben (ueberschreibt), `"a"` Anhaengen
 
 ---
 
-# Kapitel 8: Listen
+# 7. Listen (Kapitel 8)
 
-> **Siehe auch:** Ausfuehrliche Listen-Methoden in der **SCHNELLREFERENZ** (oben) unter "Listen-Methoden"
+## Listen-Grundlagen und Methoden
 
-## Listen sind veraenderbar (mutable)!
-
+**Listen sind veraenderbar (mutable)!**
 ```python
 zahlen = [1, 2, 3, 4, 5]
 zahlen[0] = 99  # [99, 2, 3, 4, 5] - Aendern moeglich!
-```
 
-## Wichtigste Methoden (Kurzuebersicht)
+# Zugriff (wie Strings)
+liste[0]      # 1
+liste[-1]     # 5
+liste[1:3]    # [2, 3]
+liste[::-1]   # [5, 4, 3, 2, 1]
 
-```python
-lst.append(x)     # Am Ende hinzufuegen
-lst.pop()         # Letztes entfernen + zurueckgeben
-lst.remove(x)     # Erstes Vorkommen von x entfernen
-lst.sort()        # Sortieren (aendert Liste!)
-sorted(lst)       # Neue sortierte Liste
-x in lst          # Prueft ob x enthalten
-lst.index(x)      # Index von x (ValueError wenn nicht da!)
-```
+# Hinzufuegen
+lst.append(5)       # am Ende
+lst.insert(0, 0)    # an Index
+lst.extend([7, 8])  # mehrere
 
-## Listen durchlaufen
+# Entfernen
+lst.pop()           # letztes entfernen + zurueckgeben
+lst.pop(0)          # an Index entfernen
+lst.remove(2)       # ERSTES Vorkommen von 2 entfernen
+del lst[0]          # an Index loeschen
 
-```python
+# Suchen
+3 in lst            # True - enthalten?
+lst.index(3)        # Index (ValueError wenn nicht gefunden!)
+lst.count(2)        # Anzahl
+
+# Sortieren
+lst.sort()              # aufsteigend (aendert Liste!)
+lst.sort(reverse=True)  # absteigend
+sorted(lst)             # NEUE sortierte Liste
+lst.reverse()           # Reihenfolge umkehren
+
+# Aggregatfunktionen
+len(lst), sum(lst), min(lst), max(lst)
+
+# Durchlaufen
 for element in liste:
     print(element)
-
-for i, element in enumerate(liste):  # Mit Index
+for i, element in enumerate(liste):
     print(f"{i}: {element}")
+```
+
+**WICHTIG: Unterschied index() vs. find()**
+```python
+"hallo".find("x")   # -1 (String: gibt -1 wenn nicht gefunden)
+[1, 2, 3].index(5)  # ValueError! (Liste: wirft Fehler!)
+
+# Sicher pruefen:
+if 5 in lst:
+    pos = lst.index(5)
 ```
 
 ## List Comprehension
 
 ```python
-# Quadratzahlen von 0 bis 9
-quadrate = [x**2 for x in range(10)]
-# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-
-# Mit Bedingung
-gerade = [x for x in range(10) if x % 2 == 0]
-# [0, 2, 4, 6, 8]
+quadrate = [x**2 for x in range(10)]  # [0, 1, 4, 9, 16, ...]
+gerade = [x for x in range(10) if x % 2 == 0]  # [0, 2, 4, 6, 8]
 ```
 
 ---
 
-# Kapitel 9: Dictionaries (KLAUSURRELEVANT!)
+# 8. Dictionaries (Kapitel 9) - KLAUSURRELEVANT!
 
-> **WICHTIG:** Das Zaehlmuster mit `dict.get()` ist ausfuehrlich in der **SCHNELLREFERENZ** (oben) erklaert!
-> Siehe dort: "dict.get() - SEHR WICHTIG!" und "Das Zaehlmuster mit dict.get()"
-
-## Dictionary erstellen und Zugriff
+## Dictionary-Grundlagen und Methoden
 
 ```python
 # Erstellen
-d = {}                                    # Leeres Dictionary
-student = {"name": "Anna", "alter": 22}   # Mit Werten
+d = {}
+student = {"name": "Anna", "alter": 22}
 
 # Zugriff
 student["name"]           # "Anna" - KeyError wenn Key fehlt!
 student.get("name")       # "Anna" - None wenn Key fehlt
 student.get("note", 0)    # 0 (Standardwert wenn Key fehlt)
+
+# Aendern/Hinzufuegen/Entfernen
+student["name"] = "Max"   # Aendern
+student["note"] = 1.3     # Hinzufuegen
+del student["name"]       # Loeschen
+student.pop("name")       # Loeschen + zurueckgeben
+
+# Pruefen
+"name" in student         # True - Key vorhanden?
+len(student)              # Anzahl Eintraege
+
+# Methoden
+d.keys()                  # alle Schluessel
+d.values()                # alle Werte
+d.items()                 # alle (Key, Value) Paare
+list(d.items())           # in Liste konvertieren
+
+# Durchlaufen
+for key in d:
+    print(key)
+for value in d.values():
+    print(value)
+for key, value in d.items():
+    print(f"{key}: {value}")
 ```
 
-## Dictionary durchlaufen
+## dict.get() und Zaehlmuster - AUSWENDIG LERNEN!
 
 ```python
-d = {"a": 1, "b": 2, "c": 3}
+d = {"a": 1, "b": 2}
+d["c"]              # KeyError! Programm stuerzt ab!
+d.get("c")          # None (kein Fehler)
+d.get("c", 0)       # 0 (Standardwert)
 
-for key in d:                    # Nur Schluessel
-for value in d.values():         # Nur Werte
-for key, value in d.items():     # Schluessel + Werte
+# Das Zaehlmuster:
+count = {}
+for word in words:
+    count[word] = count.get(word, 0) + 1
+
+# Schritt fuer Schritt:
+words = ["a", "b", "a"]
+count = {}
+# word="a": count.get("a",0)=0 → count["a"]=1
+# word="b": count.get("b",0)=0 → count["b"]=1
+# word="a": count.get("a",0)=1 → count["a"]=2
+# Ergebnis: {"a": 2, "b": 1}
 ```
 
-## Wichtige Methoden
+## Maximum aus Dictionary finden
 
 ```python
-d.keys()     # Alle Schluessel
-d.values()   # Alle Werte
-d.items()    # Alle (Key, Value) Paare
-"a" in d     # True - prueft ob Schluessel existiert
-len(d)       # Anzahl der Eintraege
+d = {"anna": 3, "ben": 5, "clara": 2}
+
+# Tupel-Liste erstellen (Wert, Schluessel)
+lst = []
+for key, val in d.items():
+    lst.append((val, key))
+# lst = [(3, "anna"), (5, "ben"), (2, "clara")]
+
+# Sortieren und Maximum
+lst.sort(reverse=True)
+print(lst[0][1], lst[0][0])  # "ben" 5
+```
+
+## Praktisches Beispiel: E-Mail-Adressen zaehlen
+
+```python
+def count_mail_adresses(filename):
+    mail_counts = {}
+    with open(filename) as f:
+        for line in f:
+            if line.startswith("From "):
+                words = line.split()
+                sender = words[1]
+                mail_counts[sender] = mail_counts.get(sender, 0) + 1
+    return mail_counts
+
+# Maximum finden
+counts = count_mail_adresses("mbox.txt")
+lst = [(val, key) for key, val in counts.items()]
+lst.sort(reverse=True)
+print(lst[0][1], lst[0][0])
 ```
 
 ---
 
-# Kapitel 10: Tupel
+# 9. Tupel (Kapitel 10)
 
-## Tupel erstellen
-
-```python
-# Mit Klammern
-t = (1, 2, 3)
-
-# Ohne Klammern (aber mit Komma!)
-t = 1, 2, 3
-
-# Einelementiges Tupel - Komma wichtig!
-t = (5,)   # Tupel mit einem Element
-t = (5)    # Nur die Zahl 5!
-```
-
-## Tupel sind unveraenderlich!
+## Tupel-Grundlagen und Unpacking
 
 ```python
+# Erstellen
 t = (1, 2, 3)
+t = 1, 2, 3           # Klammern optional
+t = (5,)              # Einelementig: Komma wichtig!
+t = (5)               # NUR die Zahl 5, kein Tupel!
+
+# Tupel sind unveraenderlich!
 t[0] = 99  # TypeError!
-```
 
-## Tuple Unpacking
+# Zugriff (wie Listen)
+t[0], t[-1], t[1:3]
 
-```python
-koordinaten = (10, 20)
-x, y = koordinaten
-print(x)  # 10
-print(y)  # 20
-
-# Variablen tauschen
-a, b = b, a
+# Tuple Unpacking
+x, y = (10, 20)
+a, b = b, a           # Variablen tauschen!
 
 # In for-Schleifen
 for key, value in dictionary.items():
     print(f"{key}: {value}")
 ```
 
-## Tupel vs. Listen
+**Tupel vs. Listen:**
 
 | Eigenschaft | Tupel | Liste |
 |-------------|-------|-------|
@@ -1014,65 +659,38 @@ for key, value in dictionary.items():
 
 ---
 
-# Kapitel 14: Objektorientierte Programmierung (OOP)
+# 10. OOP - Objektorientierte Programmierung (Kapitel 14)
 
-## Klasse definieren
+## Klassen und Objekte
+
+**Unterschied Klasse vs. Objekt (PROBEKLAUSUR!):**
+- **Klasse:** Bauplan/Vorlage - definiert WAS ein Objekt hat/kann
+- **Objekt:** Konkrete Instanz - HAT eigene Werte
+- **Merkregel:** Klasse = Keksausstecher, Objekte = Kekse
 
 ```python
 class Student:
-    def __init__(self, name, matrikel):
-        self.name = name
+    def __init__(self, name, matrikel):  # Konstruktor
+        self.name = name                  # Instanzattribut
         self.matrikel = matrikel
 
-    def __str__(self):
+    def __str__(self):                    # fuer print()
         return f"Student: {self.name} ({self.matrikel})"
 
-    def vorstellen(self):
+    def vorstellen(self):                 # Methode
         print(f"Ich bin {self.name}")
-```
 
-## Objekte erstellen
-
-```python
+# Objekte erstellen und verwenden
 s1 = Student("Anna", 12345)
-s2 = Student("Ben", 67890)
-
 print(s1.name)      # "Anna"
 s1.vorstellen()     # "Ich bin Anna"
 print(s1)           # "Student: Anna (12345)"
 ```
 
-## __init__ und self
-
-- `__init__` ist der Konstruktor - wird bei Objekterstellung aufgerufen
-- `self` ist die Referenz auf das aktuelle Objekt
+**__init__ und self:**
+- `__init__` = Konstruktor (bei Objekterstellung aufgerufen)
+- `self` = Referenz auf aktuelles Objekt
 - Alle Methoden brauchen `self` als ersten Parameter
-
-## Was ist der Unterschied zwischen Klasse und Objekt? (PROBEKLAUSUR!)
-
-**Klasse:**
-- Eine Klasse ist ein **Bauplan** oder eine **Vorlage** fuer Objekte
-- Definiert Attribute (Daten) und Methoden (Funktionen)
-- Beispiel: `class Student:` definiert WAS ein Student hat/kann
-
-**Objekt:**
-- Ein Objekt ist eine **konkrete Instanz** einer Klasse
-- Hat eigene Werte fuer die Attribute
-- Beispiel: `s1 = Student("Anna", 12345)` ist EIN bestimmter Student
-
-```python
-# Klasse = Bauplan
-class Auto:
-    def __init__(self, marke, farbe):
-        self.marke = marke
-        self.farbe = farbe
-
-# Objekte = konkrete Instanzen
-auto1 = Auto("VW", "rot")      # Ein Objekt
-auto2 = Auto("BMW", "blau")    # Ein anderes Objekt
-```
-
-**Merkregel:** Klasse ist wie ein Keksausstecher, Objekte sind die Kekse.
 
 ## Beispiel: Student mit Noten
 
@@ -1090,71 +708,51 @@ class Student:
             return 0
         return sum(self.noten) / len(self.noten)
 
-    def __str__(self):
-        return f"{self.name}: {self.noten}"
-
-# Verwendung
 s = Student("Anna")
 s.note_hinzufuegen(1.3)
 s.note_hinzufuegen(2.0)
-s.note_hinzufuegen(1.7)
-print(s.durchschnitt())  # 1.6666...
+print(s.durchschnitt())  # 1.65
 ```
 
 ---
 
-# Zusaetzliche Themen
+# 11. Zusaetzliche Module
 
 ## Module importieren (PROBEKLAUSUR!)
 
 ```python
-# 1. Ganzes Modul importieren
-import math
-print(math.sqrt(16))     # 4.0
-print(math.pi)           # 3.141592653589793
+import math               # Ganzes Modul
+print(math.sqrt(16))      # 4.0
 
-# 2. Modul mit Alias importieren
-import math as m
-print(m.sqrt(16))        # 4.0
+import math as m          # Mit Alias
+print(m.sqrt(16))
 
-# 3. Nur bestimmte Funktion importieren
-from math import sqrt
-print(sqrt(16))          # 4.0 - ohne Prefix!
+from math import sqrt     # Nur bestimmte Funktion
+print(sqrt(16))           # Ohne Prefix!
 
-# 4. Mehrere Funktionen importieren
-from math import sqrt, pi, sin
+from math import sqrt, pi, sin  # Mehrere
 
-# Haeufige Aliase (Konvention):
+# Konventionen:
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 ```
 
 ## Set (Menge) - PROBEKLAUSUR!
 
-**Unterschied Dictionary vs Set:**
-- **Dictionary:** Speichert Key-Value-Paare `{"a": 1, "b": 2}`
-- **Set:** Speichert nur Werte, KEINE Duplikate `{1, 2, 3}`
-
 ```python
-# Set erstellen
-s = {1, 2, 3}
-s = {1, 2, 2, 3, 3, 3}    # Ergebnis: {1, 2, 3} - Duplikate entfernt!
+# Dictionary vs Set:
+# Dict: {"a": 1, "b": 2} - Key-Value-Paare
+# Set:  {1, 2, 3}        - nur Werte, KEINE Duplikate
 
-# Liste zu Set (Duplikate entfernen)
-liste = [1, 2, 2, 3, 3, 3]
-eindeutig = set(liste)    # {1, 2, 3}
-
-# Element pruefen
-print(3 in s)             # True
-print(5 in s)             # False
+s = {1, 2, 2, 3, 3}       # {1, 2, 3} - Duplikate entfernt!
+eindeutig = set([1,2,2,3])  # Liste zu Set
+3 in s                    # True
 
 # Set-Operationen
-a = {1, 2, 3}
-b = {2, 3, 4}
-print(a | b)              # {1, 2, 3, 4} - Vereinigung
-print(a & b)              # {2, 3} - Schnittmenge
-print(a - b)              # {1} - Differenz
+a, b = {1, 2, 3}, {2, 3, 4}
+a | b    # {1, 2, 3, 4} - Vereinigung
+a & b    # {2, 3} - Schnittmenge
+a - b    # {1} - Differenz
 ```
 
 ## NumPy Grundlagen (PROBEKLAUSUR!)
@@ -1162,334 +760,108 @@ print(a - b)              # {1} - Differenz
 ```python
 import numpy as np
 
-# Array erstellen
 a = np.array([[1, 2, 3], [4, 5, 6]])
 print(a.shape)  # (2, 3)
 
-# Spezielle Arrays
-np.zeros((3, 3))   # 3x3-Matrix nur mit 0en
-np.ones((3, 3))    # 3x3-Matrix nur mit 1en
-np.eye(3)          # 3x3-Einheitsmatrix
+np.zeros((3, 3))   # 3x3 mit 0en
+np.ones((3, 3))    # 3x3 mit 1en
+np.eye(3)          # Einheitsmatrix
 
-# PROBEKLAUSUR-AUFGABE: Elementweise Addition!
+# Elementweise Addition (PROBEKLAUSUR!)
 a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-b = np.ones((3, 3))   # [[1,1,1], [1,1,1], [1,1,1]]
-c = a + b             # Elementweise Addition!
-# c = [[2,3,4], [5,6,7], [8,9,10]]
-
-# Weitere elementweise Operationen
-b = a + 1   # Addiert 1 zu jedem Element
-c = a * 2   # Multipliziert jedes Element mit 2
+b = np.ones((3, 3))
+c = a + b   # [[2,3,4], [5,6,7], [8,9,10]]
 ```
 
 ## Random-Modul
 
 ```python
-from random import randint, random, choice
+from random import randint, choice, shuffle
 
-# Zufaellige Ganzzahl (inklusive beide Grenzen)
-wuerfel = randint(1, 6)
-
-# Zufaellige Fliesskommazahl 0 bis 1
-zufall = random()
-
-# Zufaelliges Element aus Liste
-farben = ["rot", "gruen", "blau"]
-auswahl = choice(farben)
+wuerfel = randint(1, 6)       # 1-6 (inklusive!)
+auswahl = choice(["a","b"])   # Zufaelliges Element
+shuffle(liste)                # Liste mischen (in-place!)
 ```
 
 ---
 
-# Praktische Beispiele aus den Uebungen (fhswf/pki)
-
-## Lohnberechnung mit Ueberstunden
+# 12. Praktische Beispiele
 
 ```python
+# Lohnberechnung mit Ueberstunden
 def lohnberechnung(stundenlohn, arbeitsstunden):
-    """Berechnet Lohn mit 1.5x Ueberstundenzuschlag ab 40h."""
     if arbeitsstunden > 40:
-        regelsatz = 40 * stundenlohn
-        ueberstunden = (arbeitsstunden - 40) * stundenlohn * 1.5
-        return regelsatz + ueberstunden
-    else:
-        return arbeitsstunden * stundenlohn
+        return 40 * stundenlohn + (arbeitsstunden - 40) * stundenlohn * 1.5
+    return arbeitsstunden * stundenlohn
 
-# Beispiel:
-print(lohnberechnung(15, 45))  # 40*15 + 5*15*1.5 = 712.50
-```
-
-## E-Mail-Adressen aus Datei zaehlen (KLAUSURRELEVANT!)
-
-```python
-def count_mail_adresses(filename):
-    """Zaehlt E-Mail-Adressen aus From-Zeilen."""
-    mail_counts = {}
-    with open(filename) as f:
-        for line in f:
-            if line.startswith("From "):
-                words = line.split()
-                sender = words[1]  # 2. Wort ist die E-Mail
-                mail_counts[sender] = mail_counts.get(sender, 0) + 1
-    return mail_counts
-
-# Beispiel-Zeile: "From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008"
-```
-
-## Domain aus E-Mail extrahieren
-
-```python
-def count_mail_domains(filename):
-    """Extrahiert und zaehlt Domains aus E-Mail-Adressen."""
-    domain_counts = {}
-    with open(filename) as f:
-        for line in f:
-            if line.startswith("From "):
-                words = line.split()
-                sender = words[1]
-                domain = sender.split("@")[1]  # Alles nach @
-                domain_counts[domain] = domain_counts.get(domain, 0) + 1
-    return domain_counts
-```
-
-## Maximum aus Dictionary finden
-
-```python
-def max_count(counts_dict):
-    """Findet den Schluessel mit dem hoechsten Wert."""
-    max_key = None
-    max_value = 0
-    for key, value in counts_dict.items():
-        if value > max_value:
-            max_value = value
-            max_key = key
-    return (max_key, max_value)
-```
-
-## Wert aus String mit find() extrahieren
-
-```python
-def extract_value(line):
-    """Extrahiert Wert nach dem Doppelpunkt."""
-    # Beispiel: "X-DSPAM-Confidence: 0.8475" -> 0.8475
-    pos = line.find(":")
-    if pos != -1:
-        wert = line[pos+1:].strip()
-        return float(wert)
-    return None
-```
-
-## Durchschnitt mit While-Schleife und done-Abbruch
-
-```python
+# Durchschnitt mit done-Abbruch
 def durchschnitt():
-    """Berechnet Durchschnitt von Eingaben bis 'done'."""
-    anzahl = 0
-    summe = 0.0
+    anzahl, summe = 0, 0.0
     while True:
-        eingabe = input("Zahl eingeben (oder 'done'): ")
+        eingabe = input("Zahl (oder 'done'): ")
         if eingabe == "done":
             break
         try:
-            zahl = float(eingabe)
-            summe += zahl
+            summe += float(eingabe)
             anzahl += 1
         except ValueError:
-            print("Ungueltige Eingabe!")
+            print("Ungueltig!")
+    return summe / anzahl if anzahl > 0 else 0
 
-    if anzahl > 0:
-        return summe / anzahl
-    return 0
-```
-
-## Vokale zaehlen (String durchlaufen)
-
-```python
+# Vokale zaehlen
 def count_vocals(text):
-    """Zaehlt Vokale in einem Text (case-insensitive)."""
-    vokale = "aeiouAEIOU"
-    count = 0
-    for buchstabe in text:
-        if buchstabe in vokale:
-            count += 1
-    return count
+    return sum(1 for c in text if c in "aeiouAEIOU")
 
-# Beispiel:
-print(count_vocals("Hallo Welt"))  # 3 (a, o, e)
-```
-
-## Teiler einer Zahl finden (Modulo)
-
-```python
+# Teiler finden
 def finde_teiler(n):
-    """Findet alle Teiler einer Zahl."""
-    teiler = []
-    for i in range(1, n + 1):
-        if n % i == 0:
-            teiler.append(i)
-    return teiler
+    return [i for i in range(1, n + 1) if n % i == 0]
 
-# Beispiel:
-print(finde_teiler(12))  # [1, 2, 3, 4, 6, 12]
-```
-
-## Fibonacci-Folge
-
-```python
+# Fibonacci
 def fibonacci(n):
-    """Berechnet die ersten n Fibonacci-Zahlen."""
-    if n <= 0:
-        return []
-    if n == 1:
-        return [1]
-
+    if n <= 0: return []
+    if n == 1: return [1]
     folge = [1, 1]
     while len(folge) < n:
-        naechste = folge[-1] + folge[-2]
-        folge.append(naechste)
+        folge.append(folge[-1] + folge[-2])
     return folge
-
-# Beispiel:
-print(fibonacci(10))  # [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
-```
-
-## Steuertabelle mit Progressionsstufen
-
-```python
-def nettolohn(brutto):
-    """Berechnet Nettolohn basierend auf Steuertabelle."""
-    if brutto <= 10000:
-        steuersatz = 0
-    elif brutto <= 14000:
-        steuersatz = 0.14
-    elif brutto <= 31000:
-        steuersatz = 0.22
-    elif brutto <= 56000:
-        steuersatz = 0.29
-    elif brutto <= 83000:
-        steuersatz = 0.32
-    else:
-        steuersatz = 0.36
-
-    steuer = brutto * steuersatz
-    return brutto - steuer
-
-# Beispiel:
-print(nettolohn(17000))  # 17000 - 17000*0.22 = 13260.0
 ```
 
 ---
 
-# Musterloesungen aus Python for Everybody
+# 13. Klausurtipps
 
-Im Ordner `python-for-everybody-solutions-master/` befinden sich **35 Loesungsdateien** aus dem Kurs "Python for Everybody" von Charles R. Severance.
+## Haeufige Fallen - AUSWENDIG LERNEN!
 
-**Vollstaendige Uebersicht:** Siehe [loesungen-referenz.md](loesungen-referenz.md)
+| Falle | Falsch | Richtig |
+|-------|--------|---------|
+| `range(3)` | 0,1,2,3 | 0,1,2 |
+| `for i` ueberschreibt | i bleibt | i = letzter Wert |
+| `s.upper()` | aendert s | s = s.upper() |
+| `d["x"]` wenn fehlt | None | KeyError! |
+| `d.get("x", 0)` | KeyError | gibt 0 |
+| `input()` Typ | int | immer String! |
+| `liste.index(x)` wenn fehlt | -1 | ValueError! |
+| `"abc".find(x)` wenn fehlt | ValueError | -1 |
 
-## Die 5 wichtigsten Loesungen fuer die Klausur
+## Wichtigste Konzepte und Lernplan
 
-| Datei | Thema | Beschreibung |
-|-------|-------|--------------|
-| `exercise9_3.py` | Zaehlmuster | `d[k] = d.get(k, 0) + 1` |
-| `exercise3_1.py` | Lohnberechnung | 1.5x Ueberstunden ab 40h |
-| `exercise5_1.py` | While + done | Akkumulatoren (total, count, average) |
-| `exercise10_1.py` | E-Mail-Zaehlung | Dictionary + Maximum finden |
-| `exercise8_4.py` | Liste + sortieren | Datei parsen, Duplikate filtern |
-
-## Wichtigstes Muster: E-Mail-Zaehlung (exercise10_1.py)
-
-```python
-# 1. Dictionary fuer Zaehlung
-mail_counts = {}
-
-# 2. Datei zeilenweise lesen
-for line in fhand:
-    words = line.split()
-    if words[0] != 'From':
-        continue
-    email = words[1]
-    # 3. Zaehlen mit dict.get()
-    mail_counts[email] = mail_counts.get(email, 0) + 1
-
-# 4. Maximum finden mit Tupel-Liste
-lst = []
-for key, val in mail_counts.items():
-    lst.append((val, key))
-lst.sort(reverse=True)
-
-# 5. Ergebnis ausgeben
-print(lst[0][1], lst[0][0])  # email, count
-```
-
-**Dieses Muster kombiniert:** Datei lesen, split(), dict.get(), Tupel, sort()
-
----
-
-# Zusammenfassung: Klausurtipps
-
-## Haeufige Fallen
-
-1. **for-Schleife ueberschreibt Variable:**
-   ```python
-   i = 100
-   for i in range(3):
-       pass
-   # i ist jetzt 2, nicht 100!
-   ```
-
-2. **range(n) endet bei n-1:**
-   ```python
-   range(5)     # 0, 1, 2, 3, 4 (nicht 5!)
-   range(1, 5)  # 1, 2, 3, 4 (nicht 5!)
-   ```
-
-3. **Strings sind unveraenderlich:**
-   ```python
-   s = "hallo"
-   s.upper()      # Gibt "HALLO" zurueck, s bleibt "hallo"
-   s = s.upper()  # Jetzt ist s = "HALLO"
-   ```
-
-4. **dict[key] vs dict.get(key):**
-   ```python
-   d = {"a": 1}
-   d["b"]         # KeyError!
-   d.get("b", 0)  # Gibt 0 zurueck (kein Fehler)
-   ```
-
-## Wichtigste Konzepte
-
-1. **Modulo fuer Teilbarkeit:** `x % y == 0`
-2. **dict.get() zum Zaehlen:** `d[key] = d.get(key, 0) + 1`
-3. **try-except fuer Benutzereingaben**
+1. **Modulo:** `x % y == 0` fuer Teilbarkeit
+2. **dict.get():** `d[key] = d.get(key, 0) + 1`
+3. **try-except** fuer Benutzereingaben
 4. **String-Methoden:** `lower()`, `replace()`
-5. **for-Schleifen mit range()**
+5. **for-Schleifen** mit `range()`
+
+**Lernplan (4 Tage):**
+- Tag 1: Modulo, FizzBuzz, dict.get()
+- Tag 2: String-Methoden, try-except
+- Tag 3: for-Schleifen, Quiz durcharbeiten
+- Tag 4: Spickzettel, Probeklausur unter Zeitdruck
+
+**Erkenntnisse aus Gedaechtnisprotokollen:**
+- Zeit ist knapp - direkt anfangen
+- Textverarbeitung kam viel - replace() ueben!
+- FizzBuzz und dict.get() - muss sitzen
 
 ---
 
-## Lernplan (4 Tage)
-
-### Tag 1: Kernkonzepte
-- [ ] Modulo und FizzBuzz ueben
-- [ ] dict.get() zum Zaehlen
-
-### Tag 2: Textverarbeitung
-- [ ] String-Methoden (lower, replace)
-- [ ] try-except bei input
-
-### Tag 3: Code-Verstaendnis
-- [ ] for-Schleifen mit range()
-- [ ] Quiz durcharbeiten
-
-### Tag 4: Wiederholung
-- [ ] Spickzettel vorbereiten
-- [ ] Probeklausur unter Zeitdruck
-
----
-
-## Wichtige Erkenntnisse aus Gedaechtnisprotokollen
-
-1. **Zeit ist knapp** - kaum Zeit fuer Spickzettel
-2. **Direkt anfangen** - nicht lange ueberlegen
-3. **Textverarbeitung kam viel** - replace() ueben!
-4. **FizzBuzz ist Standard** - muss sitzen
-5. **dict.get() verstehen** - kommt garantiert
+**Weitere Loesungen:** Siehe [loesungen-referenz.md](loesungen-referenz.md)
