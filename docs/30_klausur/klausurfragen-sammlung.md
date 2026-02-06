@@ -6,6 +6,44 @@ Diese Sammlung enthaelt die echten Klausuraufgaben basierend auf den Gedaechtnis
 
 ---
 
+## Inhaltsverzeichnis
+
+**Hauptaufgaben (Klausur):**
+1. [Code-Verstaendnis (30P)](#aufgabe-1-code-verstaendnis-30-punkte) - for-Schleife, try-except, dict.get()
+2. [FizzBuzz (15P)](#aufgabe-2-fizzbuzz-15-punkte) - Modulo, Teilbarkeit
+3. [Textverarbeitung (15P)](#aufgabe-3-textverarbeitung-15-punkte) - lower(), Umlaute ersetzen
+4. [Schaltjahr (10P)](#aufgabe-4-schaltjahr-pruefen-10-punkte) - Modulo-Logik
+5. [Gleiche Zahlen (10P)](#aufgabe-5-wie-viele-zahlen-sind-gleich-10-punkte) - Vergleiche
+6. [Pluralendung (10P)](#aufgabe-6-pluralendung-10-punkte) - if/else, f-Strings
+
+**Probeklausur-Aufgaben:**
+7. [Module importieren](#aufgabe-7-module-importieren-probeklausur) - import, from, as
+8. [NumPy Grundlagen](#aufgabe-8-numpy-grundlagen-probeklausur) - Arrays, elementweise Operationen
+9. [random Modul](#aufgabe-9-random-modul-probeklausur) - randint, Wuerfel
+10. [Dreierpasch](#aufgabe-10-dreierpasch-probeklausur) - dict.get() Zaehlmuster
+11. [Dictionary vs Set](#aufgabe-11-dictionary-vs-menge-probeklausur) - Unterschiede
+12. [Listen-Operationen](#aufgabe-12-listen-operationen-probeklausur) - extend, IndexError
+13. [List Comprehension](#aufgabe-13-list-comprehension-probeklausur) - Quadratzahlen
+14. [input() Falle](#aufgabe-14-input-falle-probeklausur) - String vs. int
+15. [Klasse Student](#aufgabe-15-klasse-student-probeklausur) - OOP, __init__, Methoden
+16. [*args und **kwargs](#aufgabe-16-args-und-kwargs) - Tupel, Dictionary
+
+**Algorithmus-Aufgaben (aus Quiz):**
+17. [Primzahl pruefen](#aufgabe-17-primzahl-pruefen) - Teilbarkeit, Optimierung
+18. [Fibonacci-Folge](#aufgabe-18-fibonacci-folge) - Schleifen, Listen
+19. [Quersumme berechnen](#aufgabe-19-quersumme-berechnen) - Modulo, Ganzzahldivision
+20. [Fakultaet berechnen](#aufgabe-20-fakultaet-berechnen) - Schleifen, Rekursion
+21. [Palindrom pruefen](#aufgabe-21-palindrom-pruefen) - String-Slicing
+22. [Zeichen zaehlen](#aufgabe-22-zeichen-zaehlen) - dict.get() Muster
+23. [Maximum ohne max()](#aufgabe-23-maximum-ohne-max) - Schleifen, Vergleiche
+24. [Duplikate entfernen](#aufgabe-24-duplikate-entfernen) - Set, Listen
+25. [Zahl umkehren](#aufgabe-25-zahl-umkehren) - Modulo, Ganzzahldivision
+26. [Anagramm pruefen](#aufgabe-26-anagramm-pruefen) - sorted(), Strings
+
+[Zusammenfassung: Klausurtipps](#zusammenfassung-klausurtipps)
+
+---
+
 # Aufgabe 1: Code-Verstaendnis (30 Punkte)
 
 ## Aufgabe 1a: for-Schleife mit range()
@@ -948,6 +986,323 @@ info(1, 2, 3, 4, x=10, y=20)
 **Reihenfolge der Parameter:** normale → mit Standardwert → *args → **kwargs
 
 </details>
+
+---
+
+# Aufgabe 17: Primzahl pruefen
+
+**Schreiben Sie eine Funktion `ist_primzahl(n)`, die `True` zurueckgibt, wenn n eine Primzahl ist, sonst `False`.**
+
+Eine Primzahl ist nur durch 1 und sich selbst teilbar.
+
+**Loesung:**
+
+```python
+def ist_primzahl(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+# Test
+print(ist_primzahl(17))   # True
+print(ist_primzahl(18))   # False
+print(ist_primzahl(2))    # True
+```
+
+**Wichtige Punkte:**
+
+1. **Sonderfaelle abfangen:**
+   - n <= 1: keine Primzahlen
+   - n == 2: einzige gerade Primzahl
+
+2. **Optimierung:**
+   - Nur bis sqrt(n) pruefen (wenn n = a * b und a > sqrt(n), dann b < sqrt(n))
+   - Nur ungerade Zahlen pruefen (gerade durch 2 teilbar)
+
+---
+
+# Aufgabe 18: Fibonacci-Folge
+
+**Schreiben Sie eine Funktion `fibonacci(n)`, die die ersten n Fibonacci-Zahlen als Liste zurueckgibt.**
+
+Die Folge: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+
+**Loesung:**
+
+```python
+def fibonacci(n):
+    if n <= 0:
+        return []
+    if n == 1:
+        return [0]
+
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[-1] + fib[-2])
+    return fib
+
+print(fibonacci(10))  # [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+```
+
+**Alternative (nur Ausgabe):**
+
+```python
+def fibonacci_print(n):
+    a, b = 0, 1
+    for _ in range(n):
+        print(a, end=" ")
+        a, b = b, a + b
+```
+
+**Wichtige Punkte:**
+
+1. **Tuple Unpacking:** `a, b = b, a + b` tauscht und addiert gleichzeitig
+2. **Negative Indizes:** `fib[-1]` ist das letzte Element, `fib[-2]` das vorletzte
+
+---
+
+# Aufgabe 19: Quersumme berechnen
+
+**Schreiben Sie eine Funktion `quersumme(n)`, die die Summe aller Ziffern einer positiven ganzen Zahl berechnet.**
+
+Beispiel: `quersumme(1234)` soll `10` zurueckgeben (1+2+3+4=10)
+
+**Loesung:**
+
+```python
+def quersumme(n):
+    summe = 0
+    while n > 0:
+        summe += n % 10   # Letzte Ziffer addieren
+        n = n // 10       # Letzte Ziffer entfernen
+    return summe
+
+print(quersumme(1234))   # 10
+print(quersumme(9999))   # 36
+```
+
+**Alternative mit String:**
+
+```python
+def quersumme_string(n):
+    return sum(int(ziffer) for ziffer in str(n))
+```
+
+**Wichtige Punkte:**
+
+1. **Modulo fuer letzte Ziffer:** `n % 10` gibt die letzte Ziffer
+2. **Ganzzahldivision:** `n // 10` entfernt die letzte Ziffer
+
+---
+
+# Aufgabe 20: Fakultaet berechnen
+
+**Schreiben Sie eine Funktion `fakultaet(n)`, die n! berechnet.**
+
+n! = n * (n-1) * (n-2) * ... * 2 * 1
+
+Beispiel: 5! = 120
+
+**Loesung (iterativ):**
+
+```python
+def fakultaet(n):
+    ergebnis = 1
+    for i in range(2, n + 1):
+        ergebnis *= i
+    return ergebnis
+
+print(fakultaet(5))   # 120
+print(fakultaet(0))   # 1
+```
+
+**Loesung (rekursiv):**
+
+```python
+def fakultaet_rekursiv(n):
+    if n <= 1:
+        return 1
+    return n * fakultaet_rekursiv(n - 1)
+```
+
+**Wichtige Punkte:**
+
+1. **Basisfall:** 0! = 1! = 1
+2. **Iterativ ist oft effizienter** als rekursiv (kein Call Stack)
+
+---
+
+# Aufgabe 21: Palindrom pruefen
+
+**Schreiben Sie eine Funktion `ist_palindrom(text)`, die `True` zurueckgibt, wenn der Text vorwaerts und rueckwaerts gleich ist.**
+
+Beispiele: "anna", "otto", "12321"
+
+**Loesung:**
+
+```python
+def ist_palindrom(text):
+    text = text.lower()
+    return text == text[::-1]
+
+print(ist_palindrom("Anna"))      # True
+print(ist_palindrom("Otto"))      # True
+print(ist_palindrom("12321"))     # True
+print(ist_palindrom("Hallo"))     # False
+```
+
+**Wichtige Punkte:**
+
+1. **String-Slicing `[::-1]`** kehrt einen String um
+2. **`lower()`** fuer Gross-/Kleinschreibung ignorieren
+
+---
+
+# Aufgabe 22: Zeichen zaehlen
+
+**Schreiben Sie eine Funktion `zeichen_zaehlen(text)`, die ein Dictionary mit der Haeufigkeit jedes Zeichens zurueckgibt.**
+
+**Loesung:**
+
+```python
+def zeichen_zaehlen(text):
+    zaehler = {}
+    for zeichen in text:
+        zaehler[zeichen] = zaehler.get(zeichen, 0) + 1
+    return zaehler
+
+print(zeichen_zaehlen("hallo"))
+# {'h': 1, 'a': 1, 'l': 2, 'o': 1}
+
+print(zeichen_zaehlen("mississippi"))
+# {'m': 1, 'i': 4, 's': 4, 'p': 2}
+```
+
+**Das ist das `dict.get()` Zaehlmuster - AUSWENDIG LERNEN!**
+
+---
+
+# Aufgabe 23: Maximum ohne max()
+
+**Schreiben Sie eine Funktion `finde_max(liste)` OHNE die eingebaute max()-Funktion.**
+
+**Loesung:**
+
+```python
+def finde_max(liste):
+    if not liste:
+        return None
+    maximum = liste[0]
+    for element in liste:
+        if element > maximum:
+            maximum = element
+    return maximum
+
+zahlen = [3, 1, 4, 1, 5, 9, 2, 6]
+print(finde_max(zahlen))  # 9
+```
+
+**Analog fuer Minimum:**
+
+```python
+def finde_min(liste):
+    if not liste:
+        return None
+    minimum = liste[0]
+    for element in liste:
+        if element < minimum:
+            minimum = element
+    return minimum
+```
+
+---
+
+# Aufgabe 24: Duplikate entfernen
+
+**Schreiben Sie eine Funktion `duplikate_entfernen(liste)`, die eine Liste ohne Duplikate zurueckgibt.**
+
+**Loesung (mit Set):**
+
+```python
+def duplikate_entfernen(liste):
+    return list(set(liste))
+
+print(duplikate_entfernen([1, 2, 2, 3, 3, 3]))  # [1, 2, 3]
+```
+
+**Mit Reihenfolge erhalten:**
+
+```python
+def duplikate_entfernen_order(liste):
+    gesehen = []
+    for element in liste:
+        if element not in gesehen:
+            gesehen.append(element)
+    return gesehen
+```
+
+**Wichtiger Punkt:** `set()` entfernt Duplikate, aber die Reihenfolge ist nicht garantiert!
+
+---
+
+# Aufgabe 25: Zahl umkehren
+
+**Schreiben Sie eine Funktion `zahl_umkehren(n)`, die die Ziffern einer Zahl umkehrt.**
+
+Beispiel: `zahl_umkehren(1234)` soll `4321` zurueckgeben.
+
+**Loesung:**
+
+```python
+def zahl_umkehren(n):
+    umgekehrt = 0
+    while n > 0:
+        letzte_ziffer = n % 10
+        umgekehrt = umgekehrt * 10 + letzte_ziffer
+        n = n // 10
+    return umgekehrt
+
+print(zahl_umkehren(1234))   # 4321
+print(zahl_umkehren(54321))  # 12345
+```
+
+**Wichtige Punkte:**
+
+1. `n % 10` holt die letzte Ziffer
+2. `umgekehrt * 10` schiebt bisherige Ziffern nach links
+3. `+ letzte_ziffer` fuegt neue Ziffer rechts an
+
+---
+
+# Aufgabe 26: Anagramm pruefen
+
+**Zwei Woerter sind Anagramme, wenn sie die gleichen Buchstaben enthalten.**
+
+Beispiel: "listen" und "silent"
+
+**Loesung:**
+
+```python
+def sind_anagramme(wort1, wort2):
+    return sorted(wort1.lower()) == sorted(wort2.lower())
+
+print(sind_anagramme("listen", "silent"))  # True
+print(sind_anagramme("Erde", "Rede"))      # True
+print(sind_anagramme("Hallo", "Welt"))     # False
+```
+
+**Wichtige Punkte:**
+
+1. `sorted()` gibt eine sortierte Liste der Zeichen zurueck
+2. Zwei Anagramme haben die gleichen sortierten Buchstaben
 
 ---
 
