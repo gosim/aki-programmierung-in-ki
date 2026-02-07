@@ -677,29 +677,28 @@ def dreierpasch(wurf):
 
 **Loesung:**
 
+```python
+# Dictionary vs Set:
+# Dict: {"a": 1, "b": 2} - Key-Value-Paare
+# Set:  {1, 2, 3}        - nur Werte, KEINE Duplikate
+
+s = {1, 2, 2, 3, 3}         # {1, 2, 3} - Duplikate entfernt!
+eindeutig = set([1,2,2,3])  # Liste zu Set
+3 in s                      # True
+
+# Set-Operationen
+a, b = {1, 2, 3}, {2, 3, 4}
+a | b    # {1, 2, 3, 4} - Vereinigung
+a & b    # {2, 3}       - Schnittmenge
+a - b    # {1}          - Differenz
+```
+
 | Eigenschaft | Dictionary | Menge (Set) |
 |-------------|------------|-------------|
 | Syntax | `{"a": 1, "b": 2}` | `{1, 2, 3}` |
 | Speichert | Key-Value-Paare | Nur Werte |
 | Zugriff | `d["key"]` | `x in s` |
 | Duplikate | Keys eindeutig | Keine Duplikate |
-| Reihenfolge | Erhalten (ab 3.7) | Nicht garantiert |
-
-**Beispiele:**
-
-```python
-# Dictionary: Key-Value-Paare
-person = {"name": "Anna", "alter": 25}
-print(person["name"])  # "Anna"
-
-# Menge (Set): Nur einzigartige Werte
-zahlen = {1, 2, 2, 3, 3, 3}
-print(zahlen)  # {1, 2, 3} - Duplikate entfernt!
-
-# Set aus Liste erstellen (Duplikate entfernen)
-liste = [1, 2, 2, 3, 3, 3]
-eindeutig = set(liste)  # {1, 2, 3}
-```
 
 **Wann was verwenden?**
 - **Dictionary:** Wenn Werte zu Schluesseln gehoeren (z.B. Name → Alter)
