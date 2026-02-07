@@ -683,7 +683,8 @@ def dreierpasch(wurf):
 # Set:  {1, 2, 3}        - nur Werte, KEINE Duplikate
 
 s = {1, 2, 2, 3, 3}         # {1, 2, 3} - Duplikate entfernt!
-eindeutig = set([1,2,2,3])  # Liste zu Set
+eindeutig = set([1,2,2,3])
+print(eindeutig)            # {1, 2, 3} - Liste zu Set
 3 in s                      # True
 
 # Set-Operationen
