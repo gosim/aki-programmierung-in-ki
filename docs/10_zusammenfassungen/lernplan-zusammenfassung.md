@@ -12,9 +12,12 @@
 8. [Dictionaries (Kapitel 9)](#8-dictionaries-kapitel-9---klausurrelevant) - dict.get(), Zaehlmuster ⭐
 9. [Tupel (Kapitel 10)](#9-tupel-kapitel-10) - Unpacking, Vergleich zu Listen
 10. [OOP (Kapitel 14)](#10-oop---objektorientierte-programmierung-kapitel-14) - Klassen, Objekte
-11. [Zusaetzliche Module](#11-zusaetzliche-module) - import, Set, NumPy, random
-12. [Praktische Beispiele](#12-praktische-beispiele) - Lohn, Fibonacci, etc.
-13. [Klausurtipps](#13-klausurtipps) - Fallen, Lernplan ⭐
+11. [Zusaetzliche Module](#11-zusaetzliche-module) - import, Set, random
+12. [NumPy (Kapitel 3)](#12-numpy-kapitel-3) - Arrays, Slicing, Operationen ⭐
+13. [Matplotlib (Kapitel 4)](#13-matplotlib-kapitel-4) - Plots, Subplots, Speichern
+14. [Regulaere Ausdruecke (Kapitel 11)](#14-regulaere-ausdruecke-kapitel-11) - re.search, re.findall, Muster
+15. [Praktische Beispiele](#15-praktische-beispiele) - Lohn, Fibonacci, etc.
+16. [Klausurtipps](#16-klausurtipps) - Fallen, Lernplan ⭐
 
 ---
 
@@ -746,31 +749,24 @@ import pandas as pd
 
 s = {1, 2, 2, 3, 3}       # {1, 2, 3} - Duplikate entfernt!
 eindeutig = set([1,2,2,3])  # Liste zu Set
+print(eindeutig)            # {1, 2, 3}
 3 in s                    # True
+
+# set() funktioniert mit JEDEM Iterable, nicht nur Listen!
+set((1, 2, 2, 3))        # {1, 2, 3} - Tupel
+set("hallo")             # {'h', 'a', 'l', 'o'} - String
+set(range(5))            # {0, 1, 2, 3, 4} - Range
+
+# KLAUSURFALLE: Leeres Set vs. leeres Dictionary!
+leer = set()             # leeres Set
+leer = {}                # ACHTUNG: leeres Dictionary, KEIN Set!
 
 # Set-Operationen
 a, b = {1, 2, 3}, {2, 3, 4}
 a | b    # {1, 2, 3, 4} - Vereinigung
 a & b    # {2, 3} - Schnittmenge
-a - b    # {1} - Differenz
-```
-
-## NumPy Grundlagen (PROBEKLAUSUR!)
-
-```python
-import numpy as np
-
-a = np.array([[1, 2, 3], [4, 5, 6]])
-print(a.shape)  # (2, 3)
-
-np.zeros((3, 3))   # 3x3 mit 0en
-np.ones((3, 3))    # 3x3 mit 1en
-np.eye(3)          # Einheitsmatrix
-
-# Elementweise Addition (PROBEKLAUSUR!)
-a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-b = np.ones((3, 3))
-c = a + b   # [[2,3,4], [5,6,7], [8,9,10]]
+a - b    # {1} - Differenz ("Was hat a, was b nicht hat?")
+b - a    # {4} - Differenz ("Was hat b, was a nicht hat?")
 ```
 
 ## Random-Modul
@@ -785,7 +781,425 @@ shuffle(liste)                # Liste mischen (in-place!)
 
 ---
 
-# 12. Praktische Beispiele
+# 12. NumPy (Kapitel 3)
+
+## Arrays erstellen (PROBEKLAUSUR!)
+
+```python
+import numpy as np
+
+# Aus Listen
+a = np.array([1, 2, 3])              # 1D-Array
+m = np.array([[1, 2, 3], [4, 5, 6]]) # 2D-Array (Matrix)
+
+# Spezielle Arrays
+np.zeros((2, 3))     # 2x3 mit Nullen (float!)
+np.ones((3, 3))      # 3x3 mit Einsen
+np.eye(3)            # 3x3 Einheitsmatrix
+np.diag([1, 2, 3])   # Diagonalmatrix
+
+# Zahlenfolgen
+np.arange(0, 10, 2)       # [0, 2, 4, 6, 8] - wie range()
+np.linspace(0, 1, 5)      # [0, 0.25, 0.5, 0.75, 1.0] - gleichmaessig verteilt
+```
+
+## Array-Attribute
+
+```python
+a = np.array([[1, 2, 3], [4, 5, 6]])
+
+a.shape    # (2, 3) - Dimensionen (Zeilen, Spalten)
+a.ndim     # 2 - Anzahl Dimensionen
+a.size     # 6 - Gesamtanzahl Elemente
+a.dtype    # int64 - Datentyp
+```
+
+## Reshape und Transponieren
+
+```python
+a = np.arange(12)          # [0, 1, 2, ..., 11]
+b = a.reshape(3, 4)        # 3x4 Matrix
+# [[0,  1,  2,  3],
+#  [4,  5,  6,  7],
+#  [8,  9, 10, 11]]
+
+b.T                         # Transponiert (4x3)
+# [[ 0,  4,  8],
+#  [ 1,  5,  9],
+#  [ 2,  6, 10],
+#  [ 3,  7, 11]]
+```
+
+**KLAUSURFALLE: reshape erzeugt eine ANSICHT (View), keine Kopie!**
+```python
+m1 = np.arange(4)
+m2 = m1.reshape(2, 2)
+m1[0] = 99          # Aendert AUCH m2!
+# m2 = [[99, 1], [2, 3]]
+```
+
+## Array-Slicing (2D)
+
+```python
+a = np.arange(36).reshape(6, 6)
+# [[ 0,  1,  2,  3,  4,  5],
+#  [ 6,  7,  8,  9, 10, 11],
+#  [12, 13, 14, 15, 16, 17],
+#  [18, 19, 20, 21, 22, 23],
+#  [24, 25, 26, 27, 28, 29],
+#  [30, 31, 32, 33, 34, 35]]
+
+a[2, 3]          # 15 - Element in Zeile 2, Spalte 3
+a[2:4, 2:4]      # [[14, 15], [20, 21]] - Teilmatrix
+a[:, 0]          # [0, 6, 12, 18, 24, 30] - ganze Spalte 0
+a[0, :]          # [0, 1, 2, 3, 4, 5] - ganze Zeile 0
+a[::2, ::2]      # Jede zweite Zeile/Spalte
+```
+
+**WICHTIG: Spalten direkt ansprechen - Vorteil gegenueber verschachtelten Listen!**
+
+## Elementweise Operationen (PROBEKLAUSUR!)
+
+```python
+a = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+b = np.ones((3, 3))
+
+# Elementweise (jedes Element einzeln!)
+c = a + b    # Addition
+c = a * b    # Multiplikation
+c = a ** 2   # Quadrieren
+c = a * 3    # Skalar * Array (Broadcasting)
+
+#  a:          b:          c = a + b:
+# [1, 2, 3]   [1, 1, 1]   [2,  3,  4]
+# [4, 5, 6] + [1, 1, 1] = [5,  6,  7]
+# [7, 8, 9]   [1, 1, 1]   [8,  9, 10]
+
+# Matrizenmultiplikation (NICHT elementweise!)
+c = a @ b    # oder: np.dot(a, b)
+```
+
+**KLAUSURFALLE: `*` ist elementweise, `@` ist Matrizenmultiplikation!**
+
+## Aggregatfunktionen mit axis
+
+```python
+a = np.array([[1, 2, 3],
+              [4, 5, 6]])
+
+a.sum()          # 21 - Summe aller Elemente
+a.sum(axis=0)    # [5, 7, 9] - Summe pro Spalte (ueber Zeilen)
+a.sum(axis=1)    # [6, 15] - Summe pro Zeile (ueber Spalten)
+
+a.min(), a.max()          # Minimum/Maximum
+a.mean()                  # Durchschnitt
+np.sqrt(a)                # Wurzel (elementweise)
+```
+
+**Merkregel axis:** `axis=0` → entlang Zeilen (↓), `axis=1` → entlang Spalten (→)
+
+## Boolean Indexing
+
+```python
+a = np.array([1, 5, 3, 8, 2, 7])
+mask = a > 4            # [False, True, False, True, False, True]
+a[mask]                 # [5, 8, 7] - nur Elemente > 4
+a[a > 4] = 0            # Alle Werte > 4 auf 0 setzen
+```
+
+## Zufallszahlen mit NumPy
+
+```python
+np.random.rand(2, 3)        # 2x3 Zufallswerte zwischen 0 und 1
+np.random.randint(1, 7, 10) # 10 Wuerfelwuerfe (1-6)
+np.random.seed(42)          # Reproduzierbare Ergebnisse
+```
+
+---
+
+# 13. Matplotlib (Kapitel 4)
+
+## Import und einfacher Plot
+
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+
+plt.plot(x, y)
+plt.show()
+```
+
+## Achsenbeschriftung, Titel und Legende
+
+```python
+x = np.linspace(0, 10, 30)
+y1 = np.cos(x)
+y2 = np.sin(x)
+
+plt.plot(x, y1, label="Kosinus")
+plt.plot(x, y2, label="Sinus")
+plt.xlabel("t")
+plt.ylabel("f(t)")
+plt.title("Trigonometrische Funktionen")
+plt.legend()
+plt.grid()
+plt.show()
+```
+
+## Linien-Stile, Farben und Marker
+
+```python
+# Format-String: 'FarbeMarkerLinie'
+plt.plot(x, y1, 'ro-')    # rot, Kreise, durchgezogen
+plt.plot(x, y2, 'b--')    # blau, gestrichelt
+plt.plot(x, y1, 'g^:')    # gruen, Dreiecke, gepunktet
+
+# Oder mit Keywords
+plt.plot(x, y1, color='red', linestyle='--', linewidth=2, marker='o')
+```
+
+| Farbe | Code | Linie | Code | Marker | Code |
+|-------|------|-------|------|--------|------|
+| Blau | `b` | Durchgezogen | `-` | Punkt | `.` |
+| Rot | `r` | Gestrichelt | `--` | Kreis | `o` |
+| Gruen | `g` | Strich-Punkt | `-.` | Dreieck | `^` |
+| Schwarz | `k` | Gepunktet | `:` | Quadrat | `s` |
+
+## Scatter Plot und Histogramm
+
+```python
+# Scatter Plot
+plt.scatter(x, y, c='red', s=20)   # c=Farbe, s=Groesse
+
+# Histogramm
+daten = np.random.randn(1000)
+plt.hist(daten, bins=30)
+plt.show()
+```
+
+## Subplots (mehrere Plots)
+
+```python
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(8, 5))
+
+ax1.plot(x, y1)
+ax1.set_ylabel("cos(t)")
+
+ax2.plot(x, y2)
+ax2.set_xlabel("t")
+ax2.set_ylabel("sin(t)")
+
+plt.show()
+```
+
+## Speichern
+
+```python
+plt.savefig("plot.png")   # als PNG (Bitmap)
+plt.savefig("plot.pdf")   # als PDF (Vektor)
+```
+
+## Contour-Plot (2D-Funktionen)
+
+```python
+x, y = np.mgrid[-3:3:100j, -3:3:100j]
+z = np.sin(x) * np.cos(y)
+
+plt.contourf(x, y, z, levels=10, cmap='viridis')
+plt.colorbar()
+plt.show()
+```
+
+## 3D-Plot
+
+```python
+from mpl_toolkits.mplot3d import Axes3D
+
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+ax.plot_surface(x, y, z, cmap='coolwarm')
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+plt.show()
+```
+
+---
+
+# 14. Regulaere Ausdruecke (Kapitel 11)
+
+## Import und Grundlagen
+
+```python
+import re
+
+# re.search() - Pruefen ob Muster vorkommt
+if re.search('From:', line):
+    print(line)
+
+# ^ fuer Zeilenanfang
+if re.search('^From:', line):
+    print(line)
+```
+
+## Sonderzeichen und Muster
+
+| Zeichen | Bedeutung | Beispiel |
+|---------|-----------|----------|
+| `.` | Ein beliebiges Zeichen | `F..m` passt auf `From`, `Fxxm` |
+| `^` | Zeilenanfang | `^From` - Zeile beginnt mit "From" |
+| `$` | Zeilenende | `end$` - Zeile endet mit "end" |
+| `\d` | Eine Ziffer `[0-9]` | `\d{5}` - fuenf Ziffern (PLZ) |
+| `\D` | Keine Ziffer `[^0-9]` | |
+| `\w` | Wortzeichen `[a-zA-Z0-9_]` | `\w+` - ein Wort |
+| `\W` | Kein Wortzeichen | |
+| `\s` | Leerzeichen/Whitespace | `\s+` - ein oder mehr Leerzeichen |
+| `\S` | Kein Leerzeichen | `\S+@\S+` - E-Mail-Muster |
+| `\b` | Wortgrenze | `\bHallo\b` - ganzes Wort |
+
+## Quantoren (Wiederholungen)
+
+| Quantor | Bedeutung | Beispiel |
+|---------|-----------|----------|
+| `+` | 1 oder mehr | `\d+` - mindestens eine Ziffer |
+| `*` | 0 oder mehr | `\d*` - Ziffern optional |
+| `?` | 0 oder 1 | `\d?` - hoechstens eine Ziffer |
+| `{n}` | Genau n mal | `\d{5}` - genau 5 Ziffern |
+| `+?` | Non-greedy (so wenig wie moeglich) | |
+
+## Zeichenklassen
+
+```python
+[a-z]        # Kleinbuchstaben a-z
+[A-Z]        # Grossbuchstaben A-Z
+[0-9]        # Ziffern (wie \d)
+[a-zA-Z0-9]  # Buchstaben und Ziffern
+[^0-9]       # NICHT Ziffern (invertiert mit ^)
+[aeiou]      # Nur Vokale
+```
+
+## re.findall() - Alle Treffer extrahieren
+
+```python
+import re
+
+# Alle E-Mail-Adressen finden
+s = 'Von csev@umich.edu an cwen@iupui.edu'
+lst = re.findall('\S+@\S+', s)
+print(lst)  # ['csev@umich.edu', 'cwen@iupui.edu']
+
+# Alle Zahlen finden
+s = 'Preis: 12.50 Euro, Rabatt: 3.00'
+lst = re.findall('[0-9.]+', s)
+print(lst)  # ['12.50', '3.00']
+
+# Postleitzahlen finden (genau 5 Ziffern)
+text = "58590 Iserlohn und 58095 Hagen"
+lst = re.findall(r'\d{5}', text)
+print(lst)  # ['58590', '58095']
+```
+
+## Klammern () fuer selektives Extrahieren
+
+```python
+# OHNE Klammern: ganzer Match
+re.findall('\S+@\S+', text)        # ['csev@umich.edu']
+
+# MIT Klammern: nur der Teil IN den Klammern
+re.findall('^From (\S+)', line)    # ['csev@umich.edu']
+
+# Mehrere Gruppen → Tupel
+re.findall(r'([\w.-]+)@([\w.-]+)', text)
+# [('csev', 'umich.edu')]
+
+# Stunde aus Zeitstempel extrahieren
+# "From user@host Sat Jan 5 09:14:16 2008"
+re.findall('^From .* ([0-9][0-9]):', line)  # ['09']
+```
+
+## match.group() - Gruppen aus re.search()
+
+```python
+import re
+
+m = re.search(r'(\w+)@(\w+)', 'Mail: anna@fh.de')
+
+# Pruefen ob Match gefunden wurde!
+if m:
+    m.group()    # 'anna@fh.de'  - ganzer Match
+    m.group(0)   # 'anna@fh.de'  - dasselbe wie group()
+    m.group(1)   # 'anna'        - erste Klammer
+    m.group(2)   # 'fh'          - zweite Klammer
+
+# KLAUSURFALLE: Immer pruefen ob Match existiert!
+m = re.search(r'\d+', 'kein Treffer')
+# m ist None → m.group() wuerde AttributeError werfen!
+if m:
+    print(m.group())
+```
+
+**Unterschied findall() vs. search().group():**
+- `re.findall()` → gibt **Liste** aller Treffer zurueck
+- `re.search().group()` → gibt nur den **ersten** Treffer zurueck
+
+## re.sub() - Suchen und Ersetzen
+
+```python
+import re
+
+# Alle Ziffern entfernen
+text = "Haus Nr. 42 in 58095 Hagen"
+neu = re.sub(r'\d+', '', text)
+print(neu)  # "Haus Nr.  in  Hagen"
+
+# Artikel am Zeilenanfang entfernen
+text = "Der Rektor ist seit 2024 da"
+neu = re.sub(r'^(Der|Die|Das) ', '', text)
+print(neu)  # "Rektor ist seit 2024 da"
+```
+
+## Escapezeichen
+
+```python
+# Sonderzeichen mit \ escapen
+re.findall(r'\$[0-9.]+', 'Preis: $10.00')  # ['$10.00']
+# \$ = echtes Dollarzeichen, \. = echter Punkt
+```
+
+**WICHTIG: Immer Raw-Strings `r'...'` fuer Regex-Muster verwenden!**
+
+## Praktische Beispiele
+
+```python
+# E-Mail-Adressen aus Datei zaehlen
+import re
+
+counts = {}
+with open('mbox.txt') as f:
+    for line in f:
+        if re.search('^From ', line):
+            emails = re.findall('\S+@\S+', line)
+            for email in emails:
+                counts[email] = counts.get(email, 0) + 1
+
+# Durchschnitt von extrahierten Zahlen
+zahlen = []
+with open('mbox.txt') as f:
+    for line in f:
+        found = re.findall('^New Revision: ([0-9.]+)', line)
+        for z in found:
+            zahlen.append(float(z))
+print(sum(zahlen) / len(zahlen))
+```
+
+**Regex testen:** [regex101.com](https://regex101.com)
+
+---
+
+# 15. Praktische Beispiele
 
 ```python
 # Lohnberechnung mit Ueberstunden
@@ -828,7 +1242,7 @@ def fibonacci(n):
 
 ---
 
-# 13. Klausurtipps
+# 16. Klausurtipps
 
 ## Haeufige Fallen - AUSWENDIG LERNEN!
 

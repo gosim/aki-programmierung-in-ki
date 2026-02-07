@@ -166,7 +166,7 @@ liste.extend([7, 8])     # mehrere: [1,2,3,4,5,7,8]
 
 # Entfernen
 liste.pop()              # letztes entfernen + zurueckgeben
-liste.pop(0)             # an Index entfernen
+liste.pop(0)             # an Index entfernen + zurueckgeben
 liste.remove(3)          # erstes 3 entfernen
 del liste[0]             # an Index loeschen
 
